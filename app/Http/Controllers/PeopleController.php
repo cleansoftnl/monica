@@ -122,16 +122,18 @@ class PeopleController extends Controller
      */
     public function update(Request $request, Contact $contact)
     {
-        $validator = Validator::make($request->all(), [
+        /*$validator = Validator::make($request->all(), [
             'firstname' => 'required|max:255',
             'gender' => 'required',
             'file' => 'max:10240',
         ]);
+
         if ($validator->fails()) {
             return back()
                 ->withInput()
                 ->withErrors($validator);
-        }
+        }*/
+
         $contact->gender = $request->input('gender');
         $contact->first_name = $request->input('firstname');
         if ($request->input('lastname') != '') {
@@ -188,7 +190,8 @@ class PeopleController extends Controller
         } else {
             $contact->country_id = null;
         }
-        $birthdateApproximate = $request->input('is_birthdate_approximate');
+
+        /*$birthdateApproximate = $request->input('is_birthdate_approximate');
         if ($birthdateApproximate == 'approximate') {
             $age = $request->input('age');
             $year = Carbon::now()->subYears($age)->year;
@@ -200,9 +203,14 @@ class PeopleController extends Controller
             $birthdate = Carbon::createFromFormat('Y-m-d', $request->input('specificDate'));
             $contact->birthdate = $birthdate;
         }
-        $contact->is_birthdate_approximate = $birthdateApproximate;
+
+        $contact->is_birthdate_approximate = $birthdateApproximate;*/
+
+
+
         $contact->save();
-        if ($birthdateApproximate == 'exact') {
+
+        /*if ($birthdateApproximate == 'exact') {
             // check if a reminder was previously set for this birthdate
             // if so, we delete the old reminder, and create a new one
             if (!is_null($contact->birthday_reminder_id)) {
@@ -229,7 +237,7 @@ class PeopleController extends Controller
                     'birthday_reminder_id' => null,
                 ]);
             }
-        }
+        }*/
         $contact->logEvent('contact', $contact->id, 'update');
         dispatch(new ResizeAvatars($contact));
         // for performance reasons, we check if a gravatar exists for this email

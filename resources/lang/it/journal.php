@@ -1,5 +1,4 @@
 <?php
-
 return [
     'journal_add' => 'Scrivi nel diario',
     'journal_entry_delete' => 'Rimuovi',

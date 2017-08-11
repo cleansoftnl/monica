@@ -1,5 +1,4 @@
 <?php
-
 return [
     'journal_add' => 'Tagebucheintrag hinzufügen',
     'journal_entry_delete' => 'Löschen',

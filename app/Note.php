@@ -1,11 +1,10 @@
 <?php
-
 namespace App;
 
-use Parsedown;
 use App\Helpers\DateHelper;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Parsedown;
 
 /**
  * @property Account $account

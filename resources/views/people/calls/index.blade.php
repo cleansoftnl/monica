@@ -24,23 +24,24 @@
 
     <ul class="table">
       @foreach($contact->calls as $call)
-      <li class="table-row">
-        <div class="table-cell date">
-          {{ \App\Helpers\DateHelper::getShortDate($call->called_at) }}
-        </div>
-        <div class="table-cell reason">
-          @if (! is_null($call->content))
-            {{ $call->content }}
-          @else
-            <span class="empty">{{ trans('people.call_empty_comment') }}</span>
-          @endif
-        </div>
-        <div class="table-cell list-actions">
-          <a href="/people/{{ $contact->id }}/call/{{ $call->id }}/delete" onclick="return confirm('{{ trans('people.call_delete_confirmation') }}')">
-            <i class="fa fa-trash-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </li>
+        <li class="table-row">
+          <div class="table-cell date">
+            {{ \App\Helpers\DateHelper::getShortDate($call->called_at) }}
+          </div>
+          <div class="table-cell reason">
+            @if (! is_null($call->content))
+              {{ $call->content }}
+            @else
+              <span class="empty">{{ trans('people.call_empty_comment') }}</span>
+            @endif
+          </div>
+          <div class="table-cell list-actions">
+            <a href="/people/{{ $contact->id }}/call/{{ $call->id }}/delete"
+               onclick="return confirm('{{ trans('people.call_delete_confirmation') }}')">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
       @endforeach
     </ul>
 

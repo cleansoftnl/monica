@@ -27,40 +27,41 @@
 
       <ul class="table">
         @foreach($contact->getGiftIdeas() as $gift)
-        <li class="table-row">
-          <div class="table-cell date">
-            {{ \App\Helpers\DateHelper::getShortDate($gift->getCreatedAt()) }}
-          </div>
-          <div class="table-cell">
-            @if (! empty($gift->getValue()))
-              <span class="value">
+          <li class="table-row">
+            <div class="table-cell date">
+              {{ \App\Helpers\DateHelper::getShortDate($gift->getCreatedAt()) }}
+            </div>
+            <div class="table-cell">
+              @if (! empty($gift->getValue()))
+                <span class="value">
                   {{ MoneyHelper::format($gift->getValue()) }}
               </span>
-            @endif
-            {{ $gift->getName() }}
-            @if (! empty($gift->getUrl()))
-              <span class="gift-list-item-url">
+              @endif
+              {{ $gift->getName() }}
+              @if (! empty($gift->getUrl()))
+                <span class="gift-list-item-url">
                 <a href="{{ $gift->getUrl() }}">{{ trans('people.gifts_link') }}</a>
               </span>
-            @endif
-            @if($gift->hasParticularRecipient())
-              <span class="for">
+              @endif
+              @if($gift->hasParticularRecipient())
+                <span class="for">
               For:
-                {{ $gift->recipient_name }}
+                  {{ $gift->recipient_name }}
               </span>
-            @endif
-          </div>
-          <div class="table-cell comment">
-            @if (! empty($gift->getComment()))
-              {{ $gift->getComment() }}
-            @endif
-          </div>
-          <div class="table-cell list-actions">
-            <a href="/people/{{ $contact->id }}/gifts/{{ $gift->id }}/delete" onclick="return confirm('{{ trans('people.gifts_delete_confirmation') }}')">
-              <i class="fa fa-trash-o" aria-hidden="true"></i>
-            </a>
-          </div>
-        </li>
+              @endif
+            </div>
+            <div class="table-cell comment">
+              @if (! empty($gift->getComment()))
+                {{ $gift->getComment() }}
+              @endif
+            </div>
+            <div class="table-cell list-actions">
+              <a href="/people/{{ $contact->id }}/gifts/{{ $gift->id }}/delete"
+                 onclick="return confirm('{{ trans('people.gifts_delete_confirmation') }}')">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+              </a>
+            </div>
+          </li>
         @endforeach
       </ul>
     @endif
@@ -70,40 +71,41 @@
 
       <ul class="table">
         @foreach($contact->getGiftsOffered() as $gift)
-        <li class="table-row">
-          <div class="table-cell date">
-            {{ \App\Helpers\DateHelper::getShortDate($gift->getCreatedAt()) }}
-          </div>
-          <div class="table-cell">
-            @if (! empty($gift->getValue()))
-              <span class="value">
+          <li class="table-row">
+            <div class="table-cell date">
+              {{ \App\Helpers\DateHelper::getShortDate($gift->getCreatedAt()) }}
+            </div>
+            <div class="table-cell">
+              @if (! empty($gift->getValue()))
+                <span class="value">
                   {{ MoneyHelper::format($gift->getValue()) }}
               </span>
-            @endif
-            {{ $gift->getName() }}
-            @if (! empty($gift->getUrl()))
-              <span class="gift-list-item-url">
+              @endif
+              {{ $gift->getName() }}
+              @if (! empty($gift->getUrl()))
+                <span class="gift-list-item-url">
                 <a href="{{ $gift->getUrl() }}">{{ trans('people.gifts_link') }}</a>
               </span>
-            @endif
-            @if($gift->hasParticularRecipient()))
+              @endif
+              @if($gift->hasParticularRecipient()))
               <span class="for">
               For:
                 {{ $gift->recipient_name }}
               </span>
-            @endif
-          </div>
-          <div class="table-cell comment">
-            @if (! empty($gift->getComment()))
-              {{ $gift->getComment() }}
-            @endif
-          </div>
-          <div class="table-cell list-actions">
-            <a href="/people/{{ $contact->id }}/gifts/{{ $gift->id }}/delete" onclick="return confirm('{{ trans('people.gifts_delete_confirmation') }}')">
-              <i class="fa fa-trash-o" aria-hidden="true"></i>
-            </a>
-          </div>
-        </li>
+              @endif
+            </div>
+            <div class="table-cell comment">
+              @if (! empty($gift->getComment()))
+                {{ $gift->getComment() }}
+              @endif
+            </div>
+            <div class="table-cell list-actions">
+              <a href="/people/{{ $contact->id }}/gifts/{{ $gift->id }}/delete"
+                 onclick="return confirm('{{ trans('people.gifts_delete_confirmation') }}')">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+              </a>
+            </div>
+          </li>
         @endforeach
       </ul>
     @endif

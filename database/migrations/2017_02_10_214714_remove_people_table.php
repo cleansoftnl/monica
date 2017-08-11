@@ -1,8 +1,7 @@
 <?php
-
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class RemovePeopleTable extends Migration
 {
@@ -26,7 +25,7 @@ class RemovePeopleTable extends Migration
         Schema::create('peoples', function (Blueprint $table) {
             $table->increments('id');
             $table->string('api_id');
-            $table->integer('account_id');
+            $table->integer('company_id');
             $table->enum('type', ['entity', 'contact']);
             $table->integer('object_id');
             $table->string('sortable_name')->nullable()->after('object_id');

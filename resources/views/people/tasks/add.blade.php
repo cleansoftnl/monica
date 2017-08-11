@@ -27,7 +27,7 @@
     <!-- Page header -->
     @include('people._header')
 
-    <!-- Page content -->
+      <!-- Page content -->
     <div class="main-content tasks central-form">
       <div class="{{ Auth::user()->getFluidLayout() }}">
         <div class="row">
@@ -42,12 +42,14 @@
               {{-- First name --}}
               <div class="form-group">
                 <label for="title">{{ trans('people.tasks_add_title') }}</label>
-                <input type="text" class="form-control" name="title" id="title" value="{{ old('title') ?? $task->description }}" autofocus required>
+                <input type="text" class="form-control" name="title" id="title"
+                       value="{{ old('title') ?? $task->description }}" autofocus required>
               </div>
 
               <div class="form-group">
                 <label for="description">{{ trans('people.tasks_add_optional_comment') }}</label>
-                <textarea class="form-control" id="description" name="description" rows="3">{{ old('description') ?? $task->description }}</textarea>
+                <textarea class="form-control" id="description" name="description"
+                          rows="3">{{ old('description') ?? $task->description }}</textarea>
               </div>
 
               <div class="form-group actions">

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Jobs;
 
 use App\Contact;
@@ -39,15 +38,13 @@ class ResizeAvatars implements ShouldQueue
             $avatar_path = Storage::disk('public')->url($this->contact->avatar_file_name);
             $avatar_filename_without_extension = pathinfo($avatar_path, PATHINFO_FILENAME);
             $avatar_extension = pathinfo($avatar_path, PATHINFO_EXTENSION);
-
             $size = 110;
-            $avatar_cropped_path = 'avatars/'.$avatar_filename_without_extension.'_'.$size.'.'.$avatar_extension;
+            $avatar_cropped_path = 'avatars/' . $avatar_filename_without_extension . '_' . $size . '.' . $avatar_extension;
             $avatar = Image::make($avatar_file);
             $avatar->fit($size);
             Storage::disk('public')->put($avatar_cropped_path, $avatar->stream());
-
             $size = 174;
-            $avatar_cropped_path = 'avatars/'.$avatar_filename_without_extension.'_'.$size.'.'.$avatar_extension;
+            $avatar_cropped_path = 'avatars/' . $avatar_filename_without_extension . '_' . $size . '.' . $avatar_extension;
             $avatar = Image::make($avatar_file);
             $avatar->fit($size);
             Storage::disk('public')->put($avatar_cropped_path, $avatar->stream());

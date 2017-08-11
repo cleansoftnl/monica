@@ -61,7 +61,8 @@
                       <ul>
                         <li>{{ \App\Helpers\DateHelper::getShortDate($entry->created_at) }}</li>
                         <li>
-                          <a href="/journal/{{ $entry->id }}/delete" onclick="return confirm('{{ trans('journal.delete_confirmation') }}')">{{ trans('journal.journal_entry_delete') }}</a>
+                          <a href="/journal/{{ $entry->id }}/delete"
+                             onclick="return confirm('{{ trans('journal.delete_confirmation') }}')">{{ trans('journal.journal_entry_delete') }}</a>
                         </li>
                       </ul>
                     </div>
@@ -69,7 +70,7 @@
 
                   <div class="col-xs-12 col-sm-10">
                     @if (! is_null($entry->getTitle()))
-                    <h2>{{ $entry->getTitle() }}</h2>
+                      <h2>{{ $entry->getTitle() }}</h2>
                     @endif
                     <div class="entry-content">{{ $entry->getPost() }}</div>
                   </div>
@@ -77,7 +78,7 @@
               @endforeach
             </div>
 
-			
+
             <div class="col-md-3">
               <a class="btn btn-primary btn-add-people" href="/journal/add">{{ trans('journal.journal_add') }}</a>
             </div>

@@ -1,7 +1,6 @@
 <?php
-
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateReminderTypeTable extends Migration
 {
@@ -18,7 +17,6 @@ class CreateReminderTypeTable extends Migration
             $table->string('translation_key');
             $table->timestamps();
         });
-
         Schema::table('reminders', function (Blueprint $table) {
             $table->integer('reminder_type_id')->after('people_id')->nullable();
         });
@@ -32,7 +30,6 @@ class CreateReminderTypeTable extends Migration
     public function down()
     {
         Schema::drop('reminder_types');
-
         Schema::table('reminders', function ($table) {
             $table->dropColumn(['reminder_type_id']);
         });

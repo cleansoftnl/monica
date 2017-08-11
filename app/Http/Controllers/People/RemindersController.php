@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\People;
 
 use App\Contact;
@@ -51,12 +50,10 @@ class RemindersController extends Controller
                 'next_expected_date',
                 'frequency_number',
             ])
-            + ['account_id' => $contact->account_id]
+            + ['company_id' => $contact->company_id]
         );
-
         $contact->logEvent('reminder', $reminder->id, 'create');
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.reminders_create_success'));
     }
 
@@ -104,12 +101,10 @@ class RemindersController extends Controller
                 'frequency_type',
                 'frequency_number',
             ])
-            + ['account_id' => $contact->account_id]
+            + ['company_id' => $contact->company_id]
         );
-
         $contact->logEvent('reminder', $reminder->id, 'update');
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.reminders_update_success'));
     }
 
@@ -123,10 +118,8 @@ class RemindersController extends Controller
     public function destroy(Contact $contact, Reminder $reminder)
     {
         $reminder->delete();
-
         $contact->events()->forObject($reminder)->get()->each->delete();
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.reminders_delete_success'));
     }
 }

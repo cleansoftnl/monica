@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use DB;
@@ -217,17 +216,14 @@ class Account extends Model
         $canDowngrade = true;
         $numberOfUsers = $this->users()->count();
         $numberPendingInvitations = $this->invitations()->count();
-
         // number of users in the account should be == 1
         if ($numberOfUsers > 1) {
             $canDowngrade = false;
         }
-
         // there should not be any pending user invitations
         if ($numberPendingInvitations > 0) {
             $canDowngrade = false;
         }
-
         return $canDowngrade;
     }
 
@@ -239,11 +235,9 @@ class Account extends Model
     public function isSubscribed()
     {
         $isSubscribed = false;
-
         if ($this->subscribed(config('monica.paid_plan_friendly_name'))) {
             $isSubscribed = true;
         }
-
         return $isSubscribed;
     }
 
@@ -256,11 +250,10 @@ class Account extends Model
      */
     public function hasInvoices()
     {
-        $query = DB::table('subscriptions')->where('account_id', $this->id)->count();
+        $query = DB::table('subscriptions')->where('company_id', $this->id)->count();
         if ($query > 0) {
             return true;
         }
-
         return false;
     }
 
@@ -274,8 +267,7 @@ class Account extends Model
         // Weird method to get the next billing date from Laravel Cashier
         // see https://stackoverflow.com/questions/41576568/get-next-billing-date-from-laravel-cashier
         $timestamp = $this->asStripeCustomer()['subscriptions']
-                            ->data[0]['current_period_end'];
-
+            ->data[0]['current_period_end'];
         return \App\Helpers\DateHelper::getShortDate($timestamp);
     }
 }

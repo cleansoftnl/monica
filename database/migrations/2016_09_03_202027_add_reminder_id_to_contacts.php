@@ -1,8 +1,7 @@
 <?php
-
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddReminderIdToContacts extends Migration
 {
@@ -16,11 +15,9 @@ class AddReminderIdToContacts extends Migration
         Schema::table('contacts', function (Blueprint $table) {
             $table->integer('birthday_reminder_id')->nullable()->after('birthdate');
         });
-
         Schema::table('kids', function (Blueprint $table) {
             $table->integer('birthday_reminder_id')->nullable()->after('birthdate');
         });
-
         Schema::table('significant_others', function (Blueprint $table) {
             $table->integer('birthday_reminder_id')->nullable()->after('birthdate');
         });
@@ -36,11 +33,9 @@ class AddReminderIdToContacts extends Migration
         Schema::table('contacts', function ($table) {
             $table->dropColumn('fluid_container');
         });
-
         Schema::table('kids', function ($table) {
             $table->dropColumn('fluid_container');
         });
-
         Schema::table('significant_others', function ($table) {
             $table->dropColumn('fluid_container');
         });

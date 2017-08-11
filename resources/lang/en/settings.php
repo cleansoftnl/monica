@@ -1,5 +1,4 @@
 <?php
-
 return [
     'sidebar_settings' => 'Account settings',
     'sidebar_settings_export' => 'Export data',
@@ -7,14 +6,12 @@ return [
     'sidebar_settings_subscriptions' => 'Subscription',
     'sidebar_settings_import' => 'Import data',
     'sidebar_settings_tags' => 'Tags management',
-
     'export_title' => 'Export your account data',
     'export_be_patient' => 'Click the button to start the export. It might take several minutes to process the export - please be patient and do not spam the button.',
     'export_title_sql' => 'Export to SQL',
     'export_sql_explanation' => 'Exporting your data in SQL format allows you to take your data and import it to your own Monica instance. This is only valuable if you do have your own server.',
     'export_sql_cta' => 'Export to SQL',
     'export_sql_link_instructions' => 'Note: <a href=":url">read the instructions</a> to learn more about importing this file to your instance.',
-
     'name_order' => 'Name order',
     'name_order_firstname_first' => 'First name first (John Doe)',
     'name_order_lastname_first' => 'Last name first (Doe John)',
@@ -46,7 +43,6 @@ return [
     'locale_cz' => 'Czech',
     'locale_it' => 'Italian',
     'locale_de' => 'German',
-
     'users_list_title' => 'Users with access to your account',
     'users_list_add_user' => 'Invite a new user',
     'users_list_you' => 'That\'s you',
@@ -70,7 +66,6 @@ return [
     'users_invitation_deleted_confirmation_message' => 'The invitation has been successfully deleted',
     'users_invitations_delete_confirmation' => 'Are you sure you want to delete this invitation?',
     'users_list_delete_confirmation' => 'Are you sure to delete this user from your account?',
-
     'subscriptions_account_current_plan' => 'Your current plan',
     'subscriptions_account_paid_plan' => 'You are on the :name plan. It costs $:price every month.',
     'subscriptions_account_next_billing' => 'Your subscription will auto-renew on <strong>:date</strong>. You can <a href=":url">cancel subscription</a> anytime.',
@@ -94,7 +89,6 @@ return [
     'subscriptions_upgrade_warning' => 'Your account will be instantly updated. You can upgrade, downgrade, or cancel any time. When you cancel, you will never be charged again. However, you will not be refunded for the current month.',
     'subscriptions_upgrade_cta' => ' Charge my card $:price every month',
     'subscriptions_pdf_title' => 'Your :name monthly subscription',
-
     'import_title' => 'Import contacts in your account',
     'import_cta' => 'Upload contacts',
     'import_stat' => 'You\'ve imported :number files so far.',
@@ -125,7 +119,6 @@ return [
     'import_blank_question' => 'Would you like to import contacts now?',
     'import_blank_description' => 'We can import vCard files that you can get from Google Contacts or your Contact manager.',
     'import_blank_cta' => 'Import vCard',
-
     'tags_list_title' => 'Tags',
     'tags_list_description' => 'You can organize your contacts by setting up tags. Tags work like folders, but you can add more than one tag to a contact. To add a new tag, add it on the contact itself.',
     'tags_list_contact_number' => ':count contacts',
@@ -133,5 +126,4 @@ return [
     'tags_list_delete_confirmation' => 'Are you sure you want to delete the tag? No contacts will be deleted, only the tag.',
     'tags_blank_title' => 'Tags are a great way of categorizing your contacts.',
     'tags_blank_description' => 'Tags work like folders, but you can add more than one tag to a contact. Go to a contact and tag a friend, right below the name. Once a contact is tagged, go back here to manage all the tags in your account.',
-
 ];

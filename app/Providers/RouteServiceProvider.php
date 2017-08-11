@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Providers;
 
 use Route;
@@ -34,64 +33,55 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
-
         Route::bind('contact', function ($value) {
-            return Contact::where('account_id', auth()->user()->account_id)
+            return Contact::where('company_id', auth()->user()->company_id)
                 ->where('id', $value)
                 ->firstOrFail();
         });
-
         Route::bind('activity', function ($value, $route) {
-            return  Activity::where('account_id', auth()->user()->account_id)
+            return Activity::where('company_id', auth()->user()->company_id)
                 ->where('contact_id', $route->parameter('contact')->id)
                 ->where('id', $value)
                 ->firstOrFail();
         });
-
         Route::bind('reminder', function ($value, $route) {
-            return  Reminder::where('account_id', auth()->user()->account_id)
+            return Reminder::where('company_id', auth()->user()->company_id)
                 ->where('contact_id', $route->parameter('contact')->id)
                 ->where('id', $value)
                 ->firstOrFail();
         });
-
         Route::bind('task', function ($value, $route) {
-            return  Task::where('account_id', auth()->user()->account_id)
+            return Task::where('company_id', auth()->user()->company_id)
                 ->where('contact_id', $route->parameter('contact')->id)
                 ->where('id', $value)
                 ->firstOrFail();
         });
-
         Route::bind('gift', function ($value, $route) {
-            return  Gift::where('account_id', auth()->user()->account_id)
+            return Gift::where('company_id', auth()->user()->company_id)
                 ->where('contact_id', $route->parameter('contact')->id)
                 ->where('id', $value)
                 ->firstOrFail();
         });
-
         Route::bind('debt', function ($value, $route) {
-            return  Debt::where('account_id', auth()->user()->account_id)
+            return Debt::where('company_id', auth()->user()->company_id)
                 ->where('contact_id', $route->parameter('contact')->id)
                 ->where('id', $value)
                 ->firstOrFail();
         });
-
         Route::bind('significant_other', function ($value, $route) {
-            return  SignificantOther::where('account_id', auth()->user()->account_id)
+            return SignificantOther::where('company_id', auth()->user()->company_id)
                 ->where('contact_id', $route->parameter('contact')->id)
                 ->where('id', $value)
                 ->firstOrFail();
         });
-
         Route::bind('kid', function ($value, $route) {
-            return  Kid::where('account_id', auth()->user()->account_id)
+            return Kid::where('company_id', auth()->user()->company_id)
                 ->where('child_of_contact_id', $route->parameter('contact')->id)
                 ->where('id', $value)
                 ->firstOrFail();
         });
-
         Route::bind('note', function ($value, $route) {
-            return  Note::where('account_id', auth()->user()->account_id)
+            return Note::where('company_id', auth()->user()->company_id)
                 ->where('contact_id', $route->parameter('contact')->id)
                 ->where('id', $value)
                 ->firstOrFail();
@@ -101,7 +91,7 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Define the routes for the application.
      *
-     * @param  \Illuminate\Routing\Router  $router
+     * @param  \Illuminate\Routing\Router $router
      * @return void
      */
     public function map(Router $router)
@@ -116,7 +106,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * These routes all receive session state, CSRF protection, etc.
      *
-     * @param  \Illuminate\Routing\Router  $router
+     * @param  \Illuminate\Routing\Router $router
      * @return void
      */
     protected function mapWebRoutes(Router $router)

@@ -24,36 +24,37 @@
 
     <ul class="table">
       @foreach($contact->getDebts() as $debt)
-      <li class="table-row">
-        <div class="table-cell date">
-          {{ \App\Helpers\DateHelper::getShortDate($debt->created_at) }}
-        </div>
-        <div class="table-cell debt-nature">
-          @if ($debt->in_debt == 'yes')
-            {{ trans('people.debt_you_owe', [
-                'amount' => MoneyHelper::format($debt->amount)
-            ]) }}
-          @else
-            {{ trans('people.debt_they_owe', [
-                'name' => $contact->getFirstName(),
-                'amount' => MoneyHelper::format($debt->amount)
-            ]) }}
-          @endif
-        </div>
-        <div class="table-cell reason">
-          @if (! is_null($debt->reason))
-            {{ $debt->reason }}
-          @endif
-        </div>
-        <div class="table-cell list-actions">
-          <a href="{{ route('people.debt.edit', ['people' => $contact->id, 'debtId' => $debt->id]) }}">
-            <i class="fa fa-pencil" aria-hidden="true"></i>
-          </a>
-          <a href="/people/{{ $contact->id }}/debt/{{ $debt->id }}/delete" onclick="return confirm('{{ trans('people.debt_delete_confirmation') }}')">
-            <i class="fa fa-trash-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </li>
+        <li class="table-row">
+          <div class="table-cell date">
+            {{ \App\Helpers\DateHelper::getShortDate($debt->created_at) }}
+          </div>
+          <div class="table-cell debt-nature">
+            @if ($debt->in_debt == 'yes')
+              {{ trans('people.debt_you_owe', [
+                  'amount' => MoneyHelper::format($debt->amount)
+              ]) }}
+            @else
+              {{ trans('people.debt_they_owe', [
+                  'name' => $contact->getFirstName(),
+                  'amount' => MoneyHelper::format($debt->amount)
+              ]) }}
+            @endif
+          </div>
+          <div class="table-cell reason">
+            @if (! is_null($debt->reason))
+              {{ $debt->reason }}
+            @endif
+          </div>
+          <div class="table-cell list-actions">
+            <a href="{{ route('people.debt.edit', ['people' => $contact->id, 'debtId' => $debt->id]) }}">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </a>
+            <a href="/people/{{ $contact->id }}/debt/{{ $debt->id }}/delete"
+               onclick="return confirm('{{ trans('people.debt_delete_confirmation') }}')">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
       @endforeach
       <li class="table-row">
         <div class="table-cell"></div>

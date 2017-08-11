@@ -1,5 +1,4 @@
 <?php
-
 use App\Kid;
 use Illuminate\Database\Migrations\Migration;
 
@@ -17,7 +16,6 @@ class MigrateKidsTable extends Migration
             if ($kid->is_birthdate_approximate == 'true') {
                 $kid->is_birthdate_approximate = 'approximate';
             }
-
             if ($kid->is_birthdate_approximate == 'false') {
                 $kid->is_birthdate_approximate = 'exact';
             }

@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
@@ -43,10 +42,9 @@ class Event extends Model
      */
     public function scopeForObject(Builder $query, Model $object, string $key = null)
     {
-        if (! $key) {
+        if (!$key) {
             $key = strtolower(class_basename($object));
         }
-
         return $query->where('object_type', $key)
             ->where('object_id', $object->id);
     }
@@ -56,11 +54,9 @@ class Event extends Model
         if ($this->nature_of_operation == 'create') {
             $description = 'You added ';
         }
-
         if ($this->nature_of_operation == 'update') {
             $description = 'You updated ';
         }
-
         // You added a reminder about John Doe
         if ($this->object_type == 'reminder') {
             $reminder = Reminder::findOrFail($this->object_id);

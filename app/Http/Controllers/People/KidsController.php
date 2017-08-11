@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\People;
 
 use App\Kid;
@@ -51,17 +50,15 @@ class KidsController extends Controller
                 'is_birthdate_approximate',
             ])
             + [
-                'account_id' => $contact->account_id,
+                'company_id' => $contact->company_id,
                 'food_preferencies' => $request->get('food_preferences'),
             ]
         );
-
         $kid->assignBirthday(
             $request->get('is_birthdate_approximate'),
             $request->get('birthdate'),
             $request->get('age')
         );
-
         if ($kid->is_birthdate_approximate === 'exact') {
             $reminder = Reminder::addBirthdayReminder(
                 $contact,
@@ -72,15 +69,12 @@ class KidsController extends Controller
                 $request->get('birthdate'),
                 $kid
             );
-
             $kid->update([
                 'birthday_reminder_id' => $reminder->id,
             ]);
         }
-
         $contact->logEvent('kid', $kid->id, 'create');
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.kids_add_success'));
     }
 
@@ -127,27 +121,22 @@ class KidsController extends Controller
                 'is_birthdate_approximate',
             ])
             + [
-                'account_id' => $contact->account_id,
+                'company_id' => $contact->company_id,
                 'food_preferencies' => $request->get('food_preferences'),
             ]
         );
-
         $kid->assignBirthday(
             $request->get('is_birthdate_approximate'),
             $request->get('birthdate'),
             $request->get('age')
         );
-
         if ($kid->reminder) {
             $kid->update([
                 'birthday_reminder_id' => null,
             ]);
-
             $kid->reminder->delete();
         }
-
         $kid->refresh();
-
         if ($kid->is_birthdate_approximate === 'exact') {
             $reminder = Reminder::addBirthdayReminder(
                 $contact,
@@ -158,15 +147,12 @@ class KidsController extends Controller
                 $request->get('birthdate'),
                 $kid
             );
-
             $kid->update([
                 'birthday_reminder_id' => $reminder->id,
             ]);
         }
-
         $contact->logEvent('kid', $kid->id, 'update');
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.kids_update_success'));
     }
 
@@ -182,12 +168,9 @@ class KidsController extends Controller
         if ($kid->reminder) {
             $kid->reminder->delete();
         }
-
         $contact->events()->forObject($kid)->get()->each->delete();
-
         $kid->delete();
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.kids_delete_success'));
     }
 }

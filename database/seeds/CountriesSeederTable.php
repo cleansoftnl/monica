@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Seeder;
 
 class CountriesSeederTable extends Seeder
@@ -12,7 +11,6 @@ class CountriesSeederTable extends Seeder
     public function run()
     {
         DB::table('countries')->truncate();
-
         DB::table('countries')->insert(['iso' => 'us', 'country' => 'United States']);
         DB::table('countries')->insert(['iso' => 'ca', 'country' => 'Canada']);
         DB::table('countries')->insert(['iso' => 'fr', 'country' => 'France']);
@@ -254,6 +252,6 @@ class CountriesSeederTable extends Seeder
         DB::table('countries')->insert(['iso' => 'py', 'country' => 'Paraguay']);
         DB::table('countries')->insert(['iso' => 'uy', 'country' => 'Uruguay']);
         DB::table('countries')->insert(['iso' => 've', 'country' => 'Venezuela']);
-        DB::table('countries')->insert(['iso'=>'ae', 'country' => 'United Arab Emirates']);
+        DB::table('countries')->insert(['iso' => 'ae', 'country' => 'United Arab Emirates']);
     }
 }

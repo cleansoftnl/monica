@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Console\Commands;
 
 use App\Contact;
@@ -43,24 +42,19 @@ class PingVersionServer extends Command
         if (config('monica.check_version') == false) {
             return false;
         }
-
         if (env('APP_ENV') != 'production') {
             return false;
         }
-
         $instance = Instance::first();
-
         // Prepare the json to query version.monicahq.com
         $json = [
             'uuid' => $instance->uuid,
             'version' => $instance->current_version,
             'contacts' => Contact::count(),
         ];
-
         $data['uuid'] = $instance->uuid;
         $data['version'] = $instance->current_version;
         $data['contacts'] = Contact::all()->count();
-
         // Send the JSON
         try {
             $client = new Client();
@@ -72,21 +66,17 @@ class PingVersionServer extends Command
         } catch (\GuzzleHttp\Exception\TransferException $e) {
             return;
         }
-
         // Receive the JSON
         $json = json_decode($response->getBody(), true);
-
         if (json_last_error() !== JSON_ERROR_NONE) {
             // JSON is invalid
             // The function json_last_error returns the last error occurred during the JSON encoding and decoding
             return;
         }
-
         // make sure the JSON has all the fields we need
         if (isset($json['latest_version']) == false or isset($json['new_version']) == false or isset($json['number_of_versions_since_user_version']) == false) {
             return;
         }
-
         if ($json['latest_version'] != $instance->current_version) {
             $instance->latest_version = $json['latest_version'];
             $instance->latest_release_notes = $json['notes'];

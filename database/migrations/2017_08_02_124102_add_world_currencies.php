@@ -23,14 +23,12 @@ class AddWorldCurrencies extends Migration
      */
     public function up()
     {
-        $currencies = json_decode(file_get_contents(__DIR__.'/2017_08_02_124102_add_world_currencies.json'), true);
-
+        $currencies = json_decode(file_get_contents(__DIR__ . '/2017_08_02_124102_add_world_currencies.json'), true);
         DB::transaction(function () use ($currencies) {
             foreach ($currencies as $currency) {
                 if (in_array($currency['iso']['code'], $this->ignore)) {
                     continue;
                 }
-
                 DB::table('currencies')->insert([
                     'iso' => $currency['iso']['code'],
                     'name' => $currency['name'],

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Auth;
@@ -50,7 +49,6 @@ class SettingsController extends Controller
                 'fluid_container' => $request->get('layout'),
             ]
         );
-
         return redirect('settings')
             ->with('status', trans('settings.settings_success'));
     }
@@ -65,7 +63,6 @@ class SettingsController extends Controller
     {
         $user = $request->user();
         $account = $user->account;
-
         if ($account) {
             $account->reminders->each->forceDelete();
             $account->kids->each->forceDelete();
@@ -81,10 +78,8 @@ class SettingsController extends Controller
             $account->importjobreports->each->forceDelete();
             $account->forceDelete();
         }
-
         auth()->logout();
         $user->forceDelete();
-
         return redirect('/');
     }
 
@@ -98,7 +93,6 @@ class SettingsController extends Controller
     {
         $user = $request->user();
         $account = $user->account;
-
         if ($account) {
             $account->reminders->each->forceDelete();
             $account->kids->each->forceDelete();
@@ -113,9 +107,8 @@ class SettingsController extends Controller
             $account->importjobs->each->forceDelete();
             $account->importjobreports->each->forceDelete();
         }
-
         return redirect('/settings')
-                    ->with('status', trans('settings.reset_success'));
+            ->with('status', trans('settings.reset_success'));
     }
 
     /**
@@ -136,9 +129,8 @@ class SettingsController extends Controller
     public function exportToSql()
     {
         $path = $this->dispatchNow(new ExportAccountAsSQL());
-
         return response()
-            ->download(Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix().$path, 'monica.sql')
+            ->download(Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix() . $path, 'monica.sql')
             ->deleteFileAfterSend(true);
     }
 
@@ -152,7 +144,6 @@ class SettingsController extends Controller
         if (auth()->user()->account->importjobs->count() == 0) {
             return view('settings.imports.blank');
         }
-
         return view('settings.imports.index');
     }
 
@@ -169,15 +160,12 @@ class SettingsController extends Controller
     public function storeImport(ImportsRequest $request)
     {
         $filename = $request->file('vcard')->store('imports', 'public');
-
         $importJob = auth()->user()->account->importjobs()->create([
             'user_id' => auth()->user()->id,
             'type' => 'vcard',
             'filename' => $filename,
         ]);
-
         dispatch(new AddContactFromVCard($importJob));
-
         return redirect()->route('settings.import');
     }
 
@@ -189,11 +177,9 @@ class SettingsController extends Controller
     public function report($importJobId)
     {
         $importJob = ImportJob::findOrFail($importJobId);
-
-        if ($importJob->account_id != auth()->user()->account->id) {
+        if ($importJob->company_id != auth()->user()->account->id) {
             return redirect()->route('settings.index');
         }
-
         return view('settings.imports.report', compact('importJob'));
     }
 
@@ -205,11 +191,9 @@ class SettingsController extends Controller
     public function users()
     {
         $users = auth()->user()->account->users;
-
         if ($users->count() == 1 && auth()->user()->account->invitations()->count() == 0) {
             return view('settings.users.blank');
         }
-
         return view('settings.users.index', compact('users'));
     }
 
@@ -220,10 +204,9 @@ class SettingsController extends Controller
      */
     public function addUser()
     {
-        if (config('monica.requires_subscription') && ! auth()->user()->account->isSubscribed()) {
+        if (config('monica.requires_subscription') && !auth()->user()->account->isSubscribed()) {
             return redirect('/settings/subscriptions');
         }
-
         return view('settings.users.add');
     }
 
@@ -236,39 +219,33 @@ class SettingsController extends Controller
     public function inviteUser(InvitationRequest $request)
     {
         // Make sure the confirmation to invite has not been bypassed
-        if (! $request->get('confirmation')) {
+        if (!$request->get('confirmation')) {
             return redirect()->back()->withErrors(trans('settings.users_error_please_confirm'))->withInput();
         }
-
         // Is the email address already taken?
         $users = User::where('email', $request->only(['email']))->count();
         if ($users > 0) {
             return redirect()->back()->withErrors(trans('settings.users_error_email_already_taken'))->withInput();
         }
-
         // Has this user been invited already?
         $invitations = Invitation::where('email', $request->only(['email']))->count();
         if ($invitations > 0) {
             return redirect()->back()->withErrors(trans('settings.users_error_already_invited'))->withInput();
         }
-
         $invitation = auth()->user()->account->invitations()->create(
             $request->only([
                 'email',
             ])
             + [
                 'invited_by_user_id' => auth()->user()->id,
-                'account_id' => auth()->user()->account_id,
+                'company_id' => auth()->user()->company_id,
                 'invitation_key' => RandomHelper::generateString(100),
             ]
         );
-
         dispatch(new SendInvitationEmail($invitation));
-
         auth()->user()->account->update([
             'number_of_invitations_sent' => auth()->user()->account->number_of_invitations_sent + 1,
         ]);
-
         return redirect('settings/users')
             ->with('status', trans('settings.settings_success'));
     }
@@ -282,7 +259,6 @@ class SettingsController extends Controller
     public function destroyInvitation(Invitation $invitation)
     {
         $invitation->delete();
-
         return redirect('/settings/users')
             ->with('success', trans('settings.users_invitation_deleted_confirmation_message'));
     }
@@ -298,10 +274,8 @@ class SettingsController extends Controller
         if (Auth::check()) {
             return redirect('/');
         }
-
         $invitation = Invitation::where('invitation_key', $key)
-                                ->firstOrFail();
-
+            ->firstOrFail();
         return view('settings.users.accept', compact('key'));
     }
 
@@ -315,14 +289,12 @@ class SettingsController extends Controller
     public function storeAcceptedInvitation(Request $request, $key)
     {
         $invitation = Invitation::where('invitation_key', $key)
-                                    ->firstOrFail();
-
+            ->firstOrFail();
         // as a security measure, make sure that the new user provides the email
         // of the person who has invited him/her.
         if ($request->input('email_security') != $invitation->invitedBy->email) {
             return redirect()->back()->withErrors(trans('settings.users_error_email_not_similar'))->withInput();
         }
-
         $user = new User;
         $user->first_name = $request->input('first_name');
         $user->last_name = $request->input('last_name');
@@ -330,14 +302,11 @@ class SettingsController extends Controller
         $user->password = bcrypt($request->input('password'));
         $user->timezone = config('app.timezone');
         $user->created_at = Carbon::now();
-        $user->account_id = $invitation->account_id;
+        $user->company_id = $invitation->company_id;
         $user->save();
-
         $invitation->delete();
-
         // send me an alert
         dispatch(new SendNewUserAlert($user));
-
         if (Auth::attempt(['email' => $user->email, 'password' => $request->input('password')])) {
             return redirect('dashboard');
         }
@@ -352,21 +321,17 @@ class SettingsController extends Controller
     public function deleteAdditionalUser(Request $request, $userID)
     {
         $user = User::find($userID);
-
-        if ($user->account_id != auth()->user()->account_id) {
+        if ($user->company_id != auth()->user()->company_id) {
             return redirect('/');
         }
-
         // make sure you don't delete yourself from this screen
         if ($user->id == auth()->user()->id) {
             return redirect('/');
         }
-
         $user = User::find($userID);
         $user->delete();
-
         return redirect('/settings/users')
-                ->with('success', trans('settings.users_list_delete_success'));
+            ->with('success', trans('settings.users_list_delete_success'));
     }
 
     /**
@@ -380,16 +345,12 @@ class SettingsController extends Controller
     public function deleteTag(Request $request, $tagId)
     {
         $tag = Tag::findOrFail($tagId);
-
-        if ($tag->account_id != auth()->user()->account_id) {
+        if ($tag->company_id != auth()->user()->company_id) {
             return redirect('/');
         }
-
         $tag->contacts()->detach();
-
         $tag->delete();
-
         return redirect('/settings/tags')
-                ->with('success', trans('settings.tags_list_delete_success'));
+            ->with('success', trans('settings.tags_list_delete_success'));
     }
 }

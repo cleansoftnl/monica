@@ -1,8 +1,7 @@
 <?php
-
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class ChangeUniqueConstraintForContacts extends Migration
 {
@@ -15,8 +14,7 @@ class ChangeUniqueConstraintForContacts extends Migration
     {
         Schema::table('contacts', function (Blueprint $table) {
             $table->dropUnique(['email']);
-
-            $table->unique(['account_id', 'email'], 'unique_for_each_account_email_pair');
+            $table->unique(['company_id', 'email'], 'unique_for_each_account_email_pair');
         });
     }
 
@@ -29,7 +27,6 @@ class ChangeUniqueConstraintForContacts extends Migration
     {
         Schema::table('contacts', function (Blueprint $table) {
             $table->dropUnique('unique_for_each_account_email_pair');
-
             $table->unique('email');
         });
     }

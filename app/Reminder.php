@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use Auth;
@@ -59,7 +58,6 @@ class Reminder extends Model
         if (auth()->user()) {
             return Carbon::parse($value, auth()->user()->timezone);
         }
-
         return Carbon::parse($value);
     }
 
@@ -86,26 +84,22 @@ class Reminder extends Model
     public static function addBirthdayReminder($contact, $title, $date, $kid = null, $significantOther = null)
     {
         $date = Carbon::parse($date);
-
         $reminder = $contact->reminders()
             ->create([
                 'title' => $title,
                 'frequency_type' => 'year',
                 'frequency_number' => 1,
                 'next_expected_date' => $date,
-                'account_id' => $contact->account_id,
+                'company_id' => $contact->company_id,
                 'is_birthday' => 'true',
                 'about_object' => $kid ? 'kid' : ($significantOther ? 'significantother' : 'contact'),
                 'about_object_id' => $kid ? $kid->id : ($significantOther ? $significantOther->id : $contact->id),
             ]);
-
         $account = $reminder->contact->account;
         foreach ($account->users as $user) {
             $userTimezone = $user->timezone;
         }
-
         $reminder->calculateNextExpectedDate($userTimezone)->save();
-
         return $reminder;
     }
 
@@ -118,7 +112,6 @@ class Reminder extends Model
         if (is_null($this->title)) {
             return;
         }
-
         return $this->title;
     }
 
@@ -131,7 +124,6 @@ class Reminder extends Model
         if (is_null($this->description)) {
             return;
         }
-
         return $this->description;
     }
 
@@ -153,17 +145,13 @@ class Reminder extends Model
     public function calculateNextExpectedDate($timezone)
     {
         $date = $this->next_expected_date->setTimezone($timezone);
-
         while ($date->isPast()) {
             $date = DateHelper::addTimeAccordingToFrequencyType($date, $this->frequency_type, $this->frequency_number);
         }
-
         if ($date->isToday()) {
             $date = DateHelper::addTimeAccordingToFrequencyType($date, $this->frequency_type, $this->frequency_number);
         }
-
         $this->next_expected_date = $date;
-
         return $this;
     }
 }

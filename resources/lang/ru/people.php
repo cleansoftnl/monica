@@ -1,7 +1,5 @@
 <?php
-
 return [
-
     //index
     'people_list_number_kids' => ':count ребёнок|:count ребёнка|:count детей',
     'people_list_last_updated' => 'Последнее обновление:',
@@ -19,7 +17,6 @@ return [
     'people_list_contacts_per_tags' => '{0} 0 contact|{1,1} 1 contact|{2,*} :count contacts',
     'people_search' => 'Search your contacts...',
     'people_search_no_results' => 'No relevant contacts found :(',
-
     // people add
     'people_add_title' => 'Добавить человека',
     'people_add_firstname' => 'Имя',
@@ -33,21 +30,17 @@ return [
     'people_delete_confirmation' => 'Вы уверены что хотите удалить этот контакт? Восстановление невозможно.',
     'people_add_birthday_reminder' => 'Wish happy birthday to :name',
     'people_add_import' => 'Do you want to <a href="/settings/import">import your contacts</a>?',
-
     // show
     'section_personal_information' => 'Личные данные',
     'section_personal_activities' => 'Активности',
     'section_personal_reminders' => 'Напоминания',
     'section_personal_tasks' => 'Задачи',
     'section_personal_gifts' => 'Подарки',
-
     //
     'link_to_list' => 'Список людей',
-
     // Header
     'edit_contact_information' => 'Редактировать контакты',
     'call_button' => 'Log a call',
-
     // Calls
     'modal_call_title' => 'Log a call',
     'modal_call_comment' => 'What did you talk about? (optional)',
@@ -60,19 +53,16 @@ return [
     'call_title' => 'Phone calls',
     'call_empty_comment' => 'No details',
     'call_blank_title' => 'Keep track of the phone calls you\'ve done with :name',
-
     // age - birthday
     'birthdate_not_set' => 'День рождения не указан',
     'age_approximate_in_years' => 'примерно :age лет',
     'age_exact_in_years' => ':age лет',
     'age_exact_birthdate' => 'день рожнения: :date',
-
     // Last called
     'last_called' => 'Последний звонок: :date',
     'last_called_empty' => 'Последний звонок: неизвестно',
     'last_activity_date' => 'Последняя активность вместе: :date',
     'last_activity_date_empty' => 'Последняя активность вместе: неизвестно',
-
     // additional information
     'information_edit_success' => 'Профиль был успешно обновлён',
     'information_edit_title' => 'Редактировать данные :name',
@@ -107,7 +97,6 @@ return [
     'work_edit_title' => 'Update :name\'s job information',
     'work_edit_job' => 'Job title (optional)',
     'work_edit_company' => 'Company (optional)',
-
     // food preferencies
     'food_preferencies_add_success' => 'Предпочтения в еде были сохранены',
     'food_preferencies_edit_description' => 'Возможно у :firstname или кого-то из его(её) семьи есть аллергия. Или не любит какой-то определённый продукт. Запишите это и в следующий раз когда вы будете кушать вместе вы вспомните об этом.',
@@ -116,7 +105,6 @@ return [
     'food_preferencies_edit_cta' => 'Сохранить предпочтения в еде',
     'food_preferencies_title' => 'Предпочтения в еде',
     'food_preferencies_cta' => 'Добавить предпочтения в еде',
-
     // reminders
     'reminders_blank_title' => 'Есть ли что-то связанное с :name, о чём вы хотите получить напоминание?',
     'reminders_blank_add_activity' => 'Добавить напоминание',
@@ -132,7 +120,6 @@ return [
     'reminders_add_error_custom_text' => 'Вы должны указать текст для этого напоминания',
     'reminders_create_success' => 'Напоминание было добавлено',
     'reminders_delete_success' => 'Напоминание было удалено',
-
     'reminder_frequency_week' => 'каждую :number неделю|каждые :number недели|каждые :number недель',
     'reminder_frequency_month' => 'каждый :number месяц|каждые :number месяца|каждые :number месяцев',
     'reminder_frequency_year' => 'каждый :number год|каждые :number года|каждые :number лет',
@@ -146,7 +133,6 @@ return [
     'reminders_type_week' => 'неделя',
     'reminders_type_month' => 'месяц',
     'reminders_type_year' => 'год',
-
     // significant other
     'significant_other_sidebar_title' => 'Вторая половинка',
     'significant_other_cta' => 'Добавить вторую половинку',
@@ -164,7 +150,6 @@ return [
     'significant_other_edit_success' => 'Вторая половинка была успешно обновлена',
     'significant_other_delete_success' => 'Вторая половинка была успешно удалена',
     'significant_other_add_birthday_reminder' => 'Поздравьте с днём рождения :name, вторую половинку :contact_firstname',
-
     // kids
     'kids_sidebar_title' => 'Дети',
     'kids_sidebar_cta' => 'Добавить ещё одного ребёнка',
@@ -186,7 +171,6 @@ return [
     'kids_update_success' => 'Запись о ребёнке была успешно обновлена!',
     'kids_delete_success' => 'Запись о ребёнке была удалена!',
     'kids_add_birthday_reminder' => 'Поздравьте с днём рождения :name, ребёнка :contact_firstname',
-
     // tasks
     'tasks_desc' => 'Управляйте Задачами связанными с :name',
     'tasks_blank_title' => 'Похоже что у вас пока нет задач связанных с :name',
@@ -204,7 +188,6 @@ return [
     'tasks_delete_confirmation' => 'Вы уверены что хотите удалить эту задачу?',
     'tasks_delete_success' => 'Задача была усрешна удалена',
     'tasks_complete_success' => 'Статус задачи был изменён',
-
     // activities
     'activity_title' => 'Активности',
     'activity_type_group_simple_activities' => 'Простые',
@@ -241,7 +224,6 @@ return [
     'activities_add_success' => 'Активность была добавлена',
     'activities_update_success' => 'Активность была обновлена',
     'activities_delete_success' => 'Активность была удалена',
-
     // notes
     'notes_create_success' => 'Заметка была добавлена',
     'notes_update_success' => 'The note has been saved successfully',
@@ -256,7 +238,6 @@ return [
     'notes_blank_link' => 'Добавить заметку',
     'notes_blank_name' => 'о :name',
     'notes_delete_confirmation' => 'Вы уверены что хотите удалить эту заметку? Восстановление невозможно.',
-
     // gifts
     'gifts_blank_title' => 'Сохраняйте идеи подарков для :name',
     'gifts_blank_add_gift' => 'Добавить подарок',
@@ -282,7 +263,6 @@ return [
     'gifts_table_date_added' => 'Дата создания',
     'gifts_table_description' => 'Описание',
     'gifts_table_actions' => 'Действия',
-
     // debts
     'debt_delete_confirmation' => 'Вы уверены что хотите удалить этот долг?',
     'debt_delete_success' => 'Долг был удалён',
@@ -300,7 +280,6 @@ return [
     'debt_edit_update_cta' => 'Update debt',
     'debt_edit_success' => 'The debt has been updated successfully',
     'debts_blank_title' => 'Manage debts you owe to :name or :name owes you',
-
     // tags
     'tag_edit' => 'Edit tag',
 ];

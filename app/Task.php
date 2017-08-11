@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
@@ -79,7 +78,6 @@ class Task extends Model
     {
         $this->status = $this->status === 'completed' ? 'inprogress' : 'completed';
         $this->save();
-
         return $this;
     }
 

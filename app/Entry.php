@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
@@ -21,7 +20,6 @@ class Entry extends Model
         if (is_null($this->post)) {
             return;
         }
-
         return $this->post;
     }
 
@@ -30,7 +28,6 @@ class Entry extends Model
         if (is_null($this->title)) {
             return;
         }
-
         return $this->title;
     }
 }

@@ -27,7 +27,7 @@
     <!-- Page header -->
     @include('people._header')
 
-    <!-- Page content -->
+      <!-- Page content -->
     <div class="main-content food-preferencies central-form">
       <div class="{{ Auth::user()->getFluidLayout() }}">
         <div class="row">
@@ -41,13 +41,14 @@
 
               <p>
                 @if (is_null($contact->getLastName()))
-                {{ trans('people.food_preferencies_edit_description_no_last_name', ['firstname' => $contact->getFirstname()]) }}</p>
-                @else
-                {{ trans('people.food_preferencies_edit_description', ['firstname' => $contact->getFirstname(), 'family' => $contact->getLastName()]) }}</p>
-                @endif
+                  {{ trans('people.food_preferencies_edit_description_no_last_name', ['firstname' => $contact->getFirstname()]) }}</p>
+              @else
+              {{ trans('people.food_preferencies_edit_description', ['firstname' => $contact->getFirstname(), 'family' => $contact->getLastName()]) }}</p>
+              @endif
 
               <div class="form-group">
-                <textarea class="form-control" id="food" name="food" rows="3">{{ $contact->getFoodPreferencies() }}</textarea>
+                <textarea class="form-control" id="food" name="food"
+                          rows="3">{{ $contact->getFoodPreferencies() }}</textarea>
               </div>
 
               <div class="form-group actions">

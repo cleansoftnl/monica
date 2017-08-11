@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Middleware;
 
 use Auth;
@@ -11,8 +10,8 @@ class CheckLocale
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)
@@ -21,7 +20,6 @@ class CheckLocale
             \App::setLocale(Auth::user()->locale);
             Carbon::setLocale(config('app.locale'));
         }
-
         return $next($request);
     }
 }

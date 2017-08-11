@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use Auth;
@@ -24,7 +23,6 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
     use RegistersUsers;
 
     /**
@@ -54,14 +52,13 @@ class RegisterController extends Controller
         if (config('monica.disable_signup') == 'true') {
             abort(403, trans('auth.signup_disabled'));
         }
-
         return view('auth.register');
     }
 
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -77,7 +74,7 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return User
      */
     protected function create(array $data)
@@ -90,19 +87,15 @@ class RegisterController extends Controller
         $user->timezone = config('app.timezone');
         $user->created_at = Carbon::now();
         $user->save();
-
         // create a new account
         $account = new Account;
         $account->api_key = RandomHelper::generateString(30);
         $account->created_at = Carbon::now();
         $account->save();
-
-        $user->account_id = $account->id;
+        $user->company_id = $account->id;
         $user->save();
-
         // send me an alert
         dispatch(new SendNewUserAlert($user));
-
         return $user;
     }
 }

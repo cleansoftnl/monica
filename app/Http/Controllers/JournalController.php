@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Auth;
@@ -16,14 +15,12 @@ class JournalController extends Controller
      */
     public function index()
     {
-        $entries = Entry::where('account_id', Auth::user()->account_id)
-                      ->orderBy('created_at', 'desc')
-                      ->get();
-
+        $entries = Entry::where('company_id', Auth::user()->company_id)
+            ->orderBy('created_at', 'desc')
+            ->get();
         $data = [
             'entries' => $entries,
         ];
-
         return view('journal.index', $data);
     }
 
@@ -43,23 +40,18 @@ class JournalController extends Controller
         $validator = Validator::make($request->all(), [
             'entry' => 'required',
         ]);
-
         if ($validator->fails()) {
             return back()
                 ->withInput()
                 ->withErrors($validator);
         }
-
         $entry = new Entry;
-        $entry->account_id = Auth::user()->account_id;
+        $entry->company_id = Auth::user()->company_id;
         $entry->post = $request->input('entry');
-
         if ($request->input('title') != '') {
             $entry->title = $request->input('title');
         }
-
         $entry->save();
-
         return redirect()->route('journal.index');
     }
 
@@ -69,14 +61,11 @@ class JournalController extends Controller
     public function deleteEntry(Request $request, $entryId)
     {
         $entry = Entry::findOrFail($entryId);
-
-        if ($entry->account_id != Auth::user()->account_id) {
+        if ($entry->company_id != Auth::user()->company_id) {
             return redirect()->route('people.index');
         }
-
         $entry->delete();
         $request->session()->flash('success', trans('journal.entry_delete_success'));
-
         return redirect('/journal');
     }
 }

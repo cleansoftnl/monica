@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
@@ -38,18 +37,16 @@ class SetupProduction extends Command
      */
     public function handle()
     {
-        if (! $this->confirmToProceed()) {
+        if (!$this->confirmToProceed()) {
             return;
         }
-
         /*
          * If the .env file does not exist, then key generation
          * will fail. So we create one if it does not already exist.
          */
-        if (! file_exists('.env')) {
+        if (!file_exists('.env')) {
             touch('.env');
         }
-
         $this->call('migrate', ['--force' => true]);
         $this->call('db:seed', ['--class' => 'ActivityTypesTableSeeder', '--force' => true]);
         $this->call('db:seed', ['--class' => 'CountriesSeederTable', '--force' => true]);

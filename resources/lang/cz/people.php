@@ -1,7 +1,5 @@
 <?php
-
 return [
-
     //index
     'people_list_number_kids' => '{0} 0 dětí|{1,1} 1 dítě|{2,*} :count děti',
     'people_list_last_updated' => 'Naposledy konzultováno:',
@@ -17,7 +15,6 @@ return [
     'people_list_filter_tag' => 'Zobrazeny všechny kontakty s tagem <span class="pretty-tag">:name</span>',
     'people_list_clear_filter' => 'Vyčistit filtr',
     'people_list_contacts_per_tags' => '{0} 0 kontaktů|{1,1} 1 kontakt|{2,*} :count kontaktů',
-
     // people add
     'people_add_title' => 'Přidat novou osobu',
     'people_add_firstname' => 'Jméno',
@@ -31,32 +28,26 @@ return [
     'people_delete_confirmation' => 'Opravdu chcete smazat tento kontakt? Smazání je trvalé.',
     'people_add_birthday_reminder' => 'Popřát k narozeninám :name',
     'people_add_import' => 'Chcete <a href="/settings/import">importovat své kontakty</a>?',
-
     // show
     'section_personal_information' => 'Osobní informace',
     'section_personal_activities' => 'Aktivity',
     'section_personal_reminders' => 'Upozornění',
     'section_personal_tasks' => 'Úkoly',
     'section_personal_gifts' => 'Dárky',
-
     //
     'link_to_list' => 'Seznam osob',
-
     // Header
     'edit_contact_information' => 'Upravit informace kontaktu',
-
     // age - birthday
     'birthdate_not_set' => 'Datum narození není zadáno',
     'age_approximate_in_years' => 'věk okolo :age',
     'age_exact_in_years' => ':age let',
     'age_exact_birthdate' => 'narozeniny :date',
-
     // Last called
     'last_called' => 'Poslední telefonát: :date',
     'last_called_empty' => 'Poslední telefonát: neznámo',
     'last_activity_date' => 'Poslední společná aktivita: :date',
     'last_activity_date_empty' => 'Poslední společná aktivita: neznámo',
-
     // additional information
     'information_edit_success' => 'Profil byl úspěšně aktualizován',
     'information_edit_title' => 'Upravit osobní informace o :name',
@@ -91,7 +82,6 @@ return [
     'work_edit_title' => 'Aktualizovat informace o práci pro :name',
     'work_edit_job' => 'Pracovní pozice (volitelné)',
     'work_edit_company' => 'Společnost (volitelné)',
-
     // food preferencies
     'food_preferencies_add_success' => 'Informace o oblíbených potravinách uloženy',
     'food_preferencies_edit_description' => 'Možná má :firstname nebo někdo z rodiny :family alergii. Nebo nemusí nějaké specifické víno. Poznačte si to zde, abyste si vzpoměli před příštím pozváním na večeři',
@@ -100,7 +90,6 @@ return [
     'food_preferencies_edit_cta' => 'Uložit informace o potravinách',
     'food_preferencies_title' => 'Upřednostňované potraviny',
     'food_preferencies_cta' => 'Přidat upřednostňované potraviny',
-
     // reminders
     'reminders_blank_title' => 'Je něco na co chcete být upozorňováni pro osobu :name?',
     'reminders_blank_add_activity' => 'Přidat upozornění',
@@ -116,7 +105,6 @@ return [
     'reminders_add_error_custom_text' => 'Musíte zadat text tohoto upozornění',
     'reminders_create_success' => 'Upozornění bylo úspěšně přidáno',
     'reminders_delete_success' => 'Upozornění bylo úspěšně smazáno',
-
     'reminder_frequency_week' => 'každý týden|každé :number týdny',
     'reminder_frequency_month' => 'každý měsíc|každé :number měsíce',
     'reminder_frequency_year' => 'každý rok|každé :number roky',
@@ -130,7 +118,6 @@ return [
     'reminders_type_week' => 'týdně',
     'reminders_type_month' => 'měsíčně',
     'reminders_type_year' => 'ročně',
-
     // significant other
     'significant_other_sidebar_title' => 'Drahá polovička',
     'significant_other_cta' => 'Přidat drahou polovičku',
@@ -148,7 +135,6 @@ return [
     'significant_other_edit_success' => 'Drahá polovička byla úspěšně aktualizována',
     'significant_other_delete_success' => 'Drahá polovička byla úspěšně smazána',
     'significant_other_add_birthday_reminder' => 'Popřát k narozeninám :name, drahá polovička od :contact_firstname',
-
     // kids
     'kids_sidebar_title' => 'Děti',
     'kids_sidebar_cta' => 'Přidat další dítě',
@@ -170,7 +156,6 @@ return [
     'kids_update_success' => 'Dítě bylo úspěšně aktualizován',
     'kids_delete_success' => 'Dítě bylo úspěšně smazáno',
     'kids_add_birthday_reminder' => 'Popřát k narozeninám :name, dítě od :contact_firstname',
-
     // tasks
     'tasks_desc' => 'Udržovat přehled o detailech pro :name',
     'tasks_blank_title' => 'Zdá se, že zatím nemáte žádné úkoly pro :name',
@@ -188,7 +173,6 @@ return [
     'tasks_delete_confirmation' => 'Opravdu chcete smazat tento úkol?',
     'tasks_delete_success' => 'Úkol byl úspěšně smazán',
     'tasks_complete_success' => 'Úkol úspěšně změnil svůj stav',
-
     // activities
     'activity_title' => 'Aktivity',
     'activity_type_group_simple_activities' => 'Jednoduché aktivity',
@@ -225,7 +209,6 @@ return [
     'activities_add_success' => 'Aktivita byla úspěšně přidána',
     'activities_update_success' => 'Aktivita byla úspěšně aktualizována',
     'activities_delete_success' => 'Aktivita byla úspěšně smazána',
-
     // notes
     'notes_create_success' => 'Poznámka byla úspěšně vytvořena',
     'notes_update_success' => 'Poznámka byla úspěšně uložena',
@@ -240,7 +223,6 @@ return [
     'notes_blank_link' => 'Přidat poznámku',
     'notes_blank_name' => 'k :name',
     'notes_delete_confirmation' => 'Opravdu chcete smazat tuto poznámku? Smazání je trvalé.',
-
     // gifts
     'gifts_blank_title' => 'Udržujte přehled o nápadech na dárky a o dárcích, které jste darovali osobě :name',
     'gifts_blank_add_gift' => 'Přidat dárek',
@@ -266,7 +248,6 @@ return [
     'gifts_table_date_added' => 'Datum přidání',
     'gifts_table_description' => 'Popis',
     'gifts_table_actions' => 'Akce',
-
     // debts
     'debt_delete_confirmation' => 'Opravdu chcete smazat tento dluh?',
     'debt_delete_success' => 'Dluh byl úspěšně smazán',
@@ -284,7 +265,6 @@ return [
     'debt_edit_update_cta' => 'Aktualizovat dluh',
     'debt_edit_success' => 'Dluh byl úspěšně aktualizován',
     'debts_blank_title' => 'Spravovat dluh pro :name nebo :name dlužící mně',
-
     // tags
     'tag_edit' => 'Upravit tag',
 ];

@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use Carbon\Carbon;
@@ -95,9 +94,7 @@ class SignificantOther extends Model
         } else {
             $this->birthdate = null;
         }
-
         $this->save();
-
         return $this;
     }
 
@@ -112,7 +109,6 @@ class SignificantOther extends Model
         if (auth()->user()) {
             return Carbon::parse($value, auth()->user()->timezone);
         }
-
         return Carbon::parse($value);
     }
 
@@ -123,7 +119,7 @@ class SignificantOther extends Model
      */
     public function getAgeAttribute()
     {
-        return ! $this->birthdate->isToday() ? $this->birthdate->diffInYears(Carbon::now()) : null;
+        return !$this->birthdate->isToday() ? $this->birthdate->diffInYears(Carbon::now()) : null;
     }
 
     /**
@@ -136,7 +132,6 @@ class SignificantOther extends Model
         if ($this->first_name == '') {
             return;
         }
-
         return $this->first_name;
     }
 
@@ -150,7 +145,6 @@ class SignificantOther extends Model
         if (is_null($this->birthdate)) {
             return;
         }
-
         return $this->birthdate;
     }
 

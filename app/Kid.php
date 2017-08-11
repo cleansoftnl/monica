@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use Carbon\Carbon;
@@ -73,9 +72,7 @@ class Kid extends Model
         } else {
             $this->birthdate = null;
         }
-
         $this->save();
-
         return $this;
     }
 
@@ -90,7 +87,6 @@ class Kid extends Model
         if (auth()->user()) {
             return Carbon::parse($value, auth()->user()->timezone);
         }
-
         return Carbon::parse($value);
     }
 
@@ -101,7 +97,7 @@ class Kid extends Model
      */
     public function getAgeAttribute()
     {
-        return ! $this->birthdate->isToday() ? $this->birthdate->diffInYears(Carbon::now()) : null;
+        return !$this->birthdate->isToday() ? $this->birthdate->diffInYears(Carbon::now()) : null;
     }
 
     /**
@@ -125,7 +121,6 @@ class Kid extends Model
         if (is_null($this->birthdate)) {
             return;
         }
-
         return $this->birthdate;
     }
 
@@ -138,7 +133,6 @@ class Kid extends Model
         if (is_null($this->first_name)) {
             return;
         }
-
         return $this->first_name;
     }
 }

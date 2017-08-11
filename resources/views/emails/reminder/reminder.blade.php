@@ -10,8 +10,8 @@
 
 {{-- COMMENTS --}}
 @if (! is_null($reminder->getDescription()))
-COMMENT:
-{!! $reminder->getDescription() !!}
+  COMMENT:
+  {!! $reminder->getDescription() !!}
 @endif
 
 -------

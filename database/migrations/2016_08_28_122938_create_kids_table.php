@@ -1,7 +1,6 @@
 <?php
-
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class CreateKidsTable extends Migration
 {
@@ -14,10 +13,9 @@ class CreateKidsTable extends Migration
     {
         // drop existing kids table (created in a former migration)
         Schema::drop('kids');
-
         Schema::create('kids', function ($table) {
             $table->increments('id');
-            $table->integer('account_id');
+            $table->integer('company_id');
             $table->integer('child_of_people_id');
             $table->enum('gender', ['male', 'female']);
             $table->string('first_name');
@@ -27,12 +25,10 @@ class CreateKidsTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
-
         Schema::table('peoples', function ($table) {
             $table->string('has_kids')->default('false')->after('object_id')->nullable();
             $table->integer('number_of_kids')->after('has_kids')->nullable();
         });
-
         Schema::table('contacts', function ($table) {
             $table->dropColumn(['first_parent_id', 'status', 'has_kids', 'warned_about_birthdate']);
         });
@@ -46,7 +42,6 @@ class CreateKidsTable extends Migration
     public function down()
     {
         Schema::drop('kids');
-
         Schema::table('peoples', function ($table) {
             $table->dropColumn('has_kids');
         });

@@ -1,7 +1,6 @@
 <?php
-
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class CreateRelationsTable extends Migration
 {
@@ -15,10 +14,9 @@ class CreateRelationsTable extends Migration
         Schema::table('contacts', function ($table) {
             $table->dropColumn(['second_parent_id', 'couple_status']);
         });
-
         Schema::create('significant_others', function ($table) {
             $table->increments('id');
-            $table->integer('account_id');
+            $table->integer('company_id');
             $table->integer('people_id');
             $table->enum('status', ['active', 'past']);
             $table->string('first_name');

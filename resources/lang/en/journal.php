@@ -1,5 +1,4 @@
 <?php
-
 return [
     'journal_add' => 'Add a journal entry',
     'journal_entry_delete' => 'Delete',

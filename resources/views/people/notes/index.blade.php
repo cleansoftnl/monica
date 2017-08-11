@@ -13,7 +13,9 @@
 
   <div class="col-xs-12">
     <div class="section-blank">
-      <a href="{{ route('people.notes.add', $contact) }}">{{ trans('people.notes_blank_link') }}</a> {{ trans('people.notes_blank_name', ['name' => $contact->getFirstName() ]) }}.
+      <a
+        href="{{ route('people.notes.add', $contact) }}">{{ trans('people.notes_blank_link') }}</a> {{ trans('people.notes_blank_name', ['name' => $contact->getFirstName() ]) }}
+      .
     </div>
   </div>
 
@@ -29,7 +31,8 @@
             {{ $note->getCreatedAt(Auth::user()->locale) }}
             <a href="{{ route('people.notes.edit', [$contact, $note]) }}">{{ trans('app.edit') }}</a>
             |
-            <a href="{{ route('people.notes.delete', [$contact, $note]) }}" onclick="return confirm('{{ trans('people.notes_delete_confirmation') }}');">{{ trans('app.delete') }}</a>
+            <a href="{{ route('people.notes.delete', [$contact, $note]) }}"
+               onclick="return confirm('{{ trans('people.notes_delete_confirmation') }}');">{{ trans('app.delete') }}</a>
           </span>
         </li>
       @endforeach

@@ -1,5 +1,4 @@
 <?php
-
 use App\User;
 use Illuminate\Database\Migrations\Migration;
 

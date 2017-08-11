@@ -1,9 +1,8 @@
 <?php
-
 use App\Instance;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateInstanceTable extends Migration
 {
@@ -23,7 +22,6 @@ class CreateInstanceTable extends Migration
             $table->integer('number_of_versions_since_current_version')->nullable();
             $table->timestamps();
         });
-
         $instance = new Instance;
         $instance->current_version = config('monica.app_version');
         $instance->latest_version = config('monica.app_version');

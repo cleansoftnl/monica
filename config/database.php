@@ -1,7 +1,5 @@
 <?php
-
 $db = [
-
     /*
     |--------------------------------------------------------------------------
     | PDO Fetch Style
@@ -12,9 +10,7 @@ $db = [
     | array format for simplicity. Here you can tweak the fetch style.
     |
     */
-
     'fetch' => PDO::FETCH_CLASS,
-
     /*
     |--------------------------------------------------------------------------
     | Default Database Connection Name
@@ -25,9 +21,7 @@ $db = [
     | you may use many connections at once using the Database library.
     |
     */
-
     'default' => env('DB_CONNECTION', 'mysql'),
-
     /*
     |--------------------------------------------------------------------------
     | Database Connections
@@ -43,15 +37,12 @@ $db = [
     | choice installed on your machine before you begin development.
     |
     */
-
     'connections' => [
-
         'sqlite' => [
             'driver' => 'sqlite',
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
             'prefix' => '',
         ],
-
         'mysql' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', 'localhost'),
@@ -65,19 +56,17 @@ $db = [
             'strict' => false,
             'engine' => null,
         ],
-
         'testing' => [
-            'driver'    => 'mysql',
-            'host'      => env('DB_TEST_HOST'),
-            'database'  => env('DB_TEST_DATABASE'),
-            'username'  => env('DB_TEST_USERNAME'),
-            'password'  => env('DB_TEST_PASSWORD'),
-            'charset'   => 'utf8',
+            'driver' => 'mysql',
+            'host' => env('DB_TEST_HOST'),
+            'database' => env('DB_TEST_DATABASE'),
+            'username' => env('DB_TEST_USERNAME'),
+            'password' => env('DB_TEST_PASSWORD'),
+            'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
-            'prefix'    => '',
-            'strict'    => false,
+            'prefix' => '',
+            'strict' => false,
         ],
-
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', 'localhost'),
@@ -89,9 +78,7 @@ $db = [
             'prefix' => '',
             'schema' => 'public',
         ],
-
     ],
-
     /*
     |--------------------------------------------------------------------------
     | Migration Repository Table
@@ -102,9 +89,7 @@ $db = [
     | the migrations on disk haven't actually been run in the database.
     |
     */
-
     'migrations' => 'migrations',
-
     /*
     |--------------------------------------------------------------------------
     | Redis Databases
@@ -115,22 +100,16 @@ $db = [
     | such as APC or Memcached. Laravel makes it easy to dig right in.
     |
     */
-
     'redis' => [
-
         'cluster' => false,
-
         'default' => [
             'host' => env('REDIS_HOST', 'localhost'),
             'password' => env('REDIS_PASSWORD', null),
             'port' => env('REDIS_PORT', 6379),
             'database' => 0,
         ],
-
     ],
-
 ];
-
 /*
  * If the instance is hosted on Heroku, then the database information
  * needs to be parsed from the environment variable provided by Heroku.
@@ -138,7 +117,6 @@ $db = [
  */
 if (env('HEROKU')) {
     $url = parse_url(env('CLEARDB_DATABASE_URL'));
-
     $db['connections']['heroku'] = [
         'driver' => 'mysql',
         'host' => $url['host'],
@@ -151,5 +129,4 @@ if (env('HEROKU')) {
         'schema' => 'public',
     ];
 }
-
 return $db;

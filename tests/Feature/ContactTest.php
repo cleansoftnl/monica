@@ -20,7 +20,7 @@ class ContactTest extends FeatureTestCase
         $user = $this->signIn();
 
         $contact = factory(Contact::class)->create([
-            'account_id' => $user->account_id,
+            'company_id' => $user->account_id,
         ]);
 
         return [$user, $contact];
@@ -50,7 +50,7 @@ class ContactTest extends FeatureTestCase
         $this->post('/people', $params);
 
         // Assert the contact has been added for the correct user.
-        $params['account_id'] = $user->account_id;
+        $params['company_id'] = $user->account_id;
 
         $this->assertDatabaseHas('contacts', $params);
     }
@@ -68,7 +68,7 @@ class ContactTest extends FeatureTestCase
 
         $this->assertDatabaseHas('notes', [
             'contact_id' => $contact->id,
-            'account_id' => $user->account_id,
+            'company_id' => $user->account_id,
             'body' => $body,
         ]);
     }
@@ -92,7 +92,7 @@ class ContactTest extends FeatureTestCase
             'activities',
             $activity + [
                 'contact_id' => $contact->id,
-                'account_id' => $user->account_id,
+                'company_id' => $user->account_id,
             ]
         );
     }
@@ -118,7 +118,7 @@ class ContactTest extends FeatureTestCase
             array_merge($reminder, [
                 'frequency_type' => 'one_time',
                 'contact_id' => $contact->id,
-                'account_id' => $user->account_id,
+                'company_id' => $user->account_id,
             ])
         );
     }
@@ -141,7 +141,7 @@ class ContactTest extends FeatureTestCase
             'tasks',
             $task + [
                 'contact_id' => $contact->id,
-                'account_id' => $user->account_id,
+                'company_id' => $user->account_id,
             ]
         );
     }
@@ -171,7 +171,7 @@ class ContactTest extends FeatureTestCase
                 'is_an_idea' => true,
                 'has_been_offered' => false,
                 'contact_id' => $contact->id,
-                'account_id' => $user->account_id,
+                'company_id' => $user->account_id,
             ]
         );
     }
@@ -194,7 +194,7 @@ class ContactTest extends FeatureTestCase
         $this->assertDatabaseHas('debts',
             $debt + [
                 'contact_id' => $contact->id,
-                'account_id' => $user->account_id,
+                'company_id' => $user->account_id,
             ]);
     }
 
@@ -216,7 +216,7 @@ class ContactTest extends FeatureTestCase
         $this->assertDatabaseHas('debts',
             $debt + [
                 'contact_id' => $contact->id,
-                'account_id' => $user->account_id,
+                'company_id' => $user->account_id,
             ]);
     }
 

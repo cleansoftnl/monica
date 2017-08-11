@@ -1,7 +1,5 @@
 <?php
-
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Language Lines
@@ -12,11 +10,9 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
     'failed' => 'Tyto přihlašovací údaje neodpovídají uloženým záznamům.',
     'throttle' => 'Příliš mnoho pokusů o přihlášení. Opakujte pokus za :seconds sekund.',
     'not_authorized' => 'Nejste oprávněni provést tuto akci',
     'signup_disabled' => 'Nové registrace jsou aktuálně zastaveny',
     'back_homepage' => 'Zpět na domovskou stránku',
-
 ];

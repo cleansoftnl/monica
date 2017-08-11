@@ -10,17 +10,17 @@
           <div class="col-xs-12">
             <ul class="horizontal">
               <li>
-                  <a href="/dashboard">{{ trans('app.breadcrumb_dashboard') }}</a>
-                </li>
-                <li>
-                  <a href="/settings">{{ trans('app.breadcrumb_settings') }}</a>
-                </li>
-                <li>
+                <a href="/dashboard">{{ trans('app.breadcrumb_dashboard') }}</a>
+              </li>
+              <li>
+                <a href="/settings">{{ trans('app.breadcrumb_settings') }}</a>
+              </li>
+              <li>
                 <a href="/settings/users">{{ trans('app.breadcrumb_settings_users') }}</a>
-                </li>
-                <li>
-                  {{ trans('app.breadcrumb_settings_users_add') }}
-                </li>
+              </li>
+              <li>
+                {{ trans('app.breadcrumb_settings_users_add') }}
+              </li>
             </ul>
           </div>
         </div>
@@ -52,13 +52,15 @@
               {{-- Explicit confirmation --}}
               <div class="warning-zone">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" name="confirmation" value="1" v-model="accept_invite_user">
-                    {{ trans('settings.users_add_confirmation') }}
+                  <input class="form-check-input" type="checkbox" name="confirmation" value="1"
+                         v-model="accept_invite_user">
+                  {{ trans('settings.users_add_confirmation') }}
                 </label>
               </div>
 
               <div class="form-group actions">
-                <button type="submit" class="btn btn-primary" :disabled="!accept_invite_user">{{ trans('settings.users_add_cta') }}</button>
+                <button type="submit" class="btn btn-primary"
+                        :disabled="!accept_invite_user">{{ trans('settings.users_add_cta') }}</button>
                 <a href="/settings/users" class="btn btn-secondary">{{ trans('app.cancel') }}</a>
               </div>
             </form>

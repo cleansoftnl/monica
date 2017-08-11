@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\People;
 
 use App\Gift;
@@ -51,19 +50,16 @@ class GiftsController extends Controller
                 'value_in_dollars',
             ])
             + [
-                'account_id' => $contact->account_id,
-                'is_an_idea' => ! $request->get('offered'),
+                'company_id' => $contact->company_id,
+                'is_an_idea' => !$request->get('offered'),
                 'has_been_offered' => $request->get('offered'),
             ]
         );
-
         if ($request->get('has_recipient')) {
             $gift->forRecipient($request->get('recipient'))->save();
         }
-
         $contact->logEvent('gift', $gift->id, 'create');
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.gifts_add_success'));
     }
 
@@ -111,19 +107,16 @@ class GiftsController extends Controller
                 'value_in_dollars',
             ])
             + [
-                'account_id' => $contact->account_id,
-                'is_an_idea' => ! (bool) $request->get('offered'),
-                'has_been_offered' => (bool) $request->get('offered'),
+                'company_id' => $contact->company_id,
+                'is_an_idea' => !(bool)$request->get('offered'),
+                'has_been_offered' => (bool)$request->get('offered'),
             ]
         );
-
         if ($request->get('has_recipient')) {
             $gift->forRecipient($request->get('recipient'))->save();
         }
-
         $contact->logEvent('gift', $gift->id, 'update');
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.gifts_update_success'));
     }
 
@@ -137,10 +130,8 @@ class GiftsController extends Controller
     public function destroy(Contact $contact, Gift $gift)
     {
         $gift->delete();
-
         $contact->events()->forObject($gift)->get()->each->delete();
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.gifts_delete_success'));
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\People;
 
 use App\Contact;
@@ -51,17 +50,15 @@ class SignificantOthersController extends Controller
                 'is_birthdate_approximate',
             ])
             + [
-                'account_id' => $contact->account_id,
+                'company_id' => $contact->company_id,
                 'status' => 'active',
             ]
         );
-
         $significantOther->assignBirthday(
             $request->get('is_birthdate_approximate'),
             $request->get('birthdate'),
             $request->get('age')
         );
-
         if ($significantOther->is_birthdate_approximate === 'exact') {
             $reminder = Reminder::addBirthdayReminder(
                 $contact,
@@ -73,15 +70,12 @@ class SignificantOthersController extends Controller
                 null,
                 $significantOther
             );
-
             $significantOther->update([
                 'birthday_reminder_id' => $reminder->id,
             ]);
         }
-
         $contact->logEvent('significantother', $significantOther->id, 'create');
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.significant_other_add_success'));
     }
 
@@ -128,27 +122,22 @@ class SignificantOthersController extends Controller
                 'is_birthdate_approximate',
             ])
             + [
-                'account_id' => $contact->account_id,
+                'company_id' => $contact->company_id,
                 'status' => 'active',
             ]
         );
-
         $significantOther->assignBirthday(
             $request->get('is_birthdate_approximate'),
             $request->get('birthdate'),
             $request->get('age')
         );
-
         if ($significantOther->reminder) {
             $significantOther->update([
                 'birthday_reminder_id' => null,
             ]);
-
             $significantOther->reminder->delete();
         }
-
         $significantOther->refresh();
-
         if ($significantOther->is_birthdate_approximate === 'exact') {
             $reminder = Reminder::addBirthdayReminder(
                 $contact,
@@ -160,15 +149,12 @@ class SignificantOthersController extends Controller
                 null,
                 $significantOther
             );
-
             $significantOther->update([
                 'birthday_reminder_id' => $reminder->id,
             ]);
         }
-
         $contact->logEvent('significantother', $significantOther->id, 'update');
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.significant_other_edit_success'));
     }
 
@@ -184,12 +170,9 @@ class SignificantOthersController extends Controller
         if ($significantOther->reminder) {
             $significantOther->reminder->delete();
         }
-
         $contact->events()->forObject($significantOther)->get()->each->delete();
-
         $significantOther->delete();
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.significant_other_delete_success'));
     }
 }

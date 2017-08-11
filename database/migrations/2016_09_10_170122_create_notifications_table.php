@@ -1,8 +1,7 @@
 <?php
-
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateNotificationsTable extends Migration
 {
@@ -15,7 +14,7 @@ class CreateNotificationsTable extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('account_id');
+            $table->integer('company_id');
             $table->integer('people_id');
             $table->enum('for', ['reminder']);
             $table->enum('how', ['email']);

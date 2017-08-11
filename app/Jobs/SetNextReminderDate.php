@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Jobs;
 
 use App\Reminder;
@@ -38,7 +37,6 @@ class SetNextReminderDate implements ShouldQueue
             case 'one_time':
                 $this->reminder->delete();
                 break;
-
             default:
                 $this->reminder->last_triggered = $this->reminder->next_expected_date;
                 $this->reminder->calculateNextExpectedDate($this->timezone);

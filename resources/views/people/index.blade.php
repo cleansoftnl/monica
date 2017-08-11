@@ -51,10 +51,10 @@
             <div class="col-xs-12 col-md-9">
 
               @if (! is_null($tag))
-              <p class="clear-filter">
-                {!! trans('people.people_list_filter_tag', ['name' => $tag->name]) !!}
-                <a href="/people">{{ trans('people.people_list_clear_filter') }}</a>
-              </p>
+                <p class="clear-filter">
+                  {!! trans('people.people_list_filter_tag', ['name' => $tag->name]) !!}
+                  <a href="/people">{{ trans('people.people_list_clear_filter') }}</a>
+                </p>
               @endif
 
               <ul class="list">
@@ -65,21 +65,30 @@
 
                   <div class="options">
                     <div class="options-dropdowns">
-                      <a href="" class="dropdown-btn" data-toggle="dropdown" id="dropdownSort">{{ trans('people.people_list_sort') }}</a>
+                      <a href="" class="dropdown-btn" data-toggle="dropdown"
+                         id="dropdownSort">{{ trans('people.people_list_sort') }}</a>
                       <div class="dropdown-menu" aria-labelledby="dropdownSort">
-                        <a class="dropdown-item {{ (auth()->user()->contacts_sort_order == 'firstnameAZ')?'selected':'' }}" href="/people?sort=firstnameAZ">
+                        <a
+                          class="dropdown-item {{ (auth()->user()->contacts_sort_order == 'firstnameAZ')?'selected':'' }}"
+                          href="/people?sort=firstnameAZ">
                           {{ trans('people.people_list_firstnameAZ') }}
                         </a>
 
-                        <a class="dropdown-item {{ (auth()->user()->contacts_sort_order == 'firstnameZA')?'selected':'' }}" href="/people?sort=firstnameZA">
+                        <a
+                          class="dropdown-item {{ (auth()->user()->contacts_sort_order == 'firstnameZA')?'selected':'' }}"
+                          href="/people?sort=firstnameZA">
                           {{ trans('people.people_list_firstnameZA') }}
                         </a>
 
-                        <a class="dropdown-item {{ (auth()->user()->contacts_sort_order == 'lastnameAZ')?'selected':'' }}" href="/people?sort=lastnameAZ">
+                        <a
+                          class="dropdown-item {{ (auth()->user()->contacts_sort_order == 'lastnameAZ')?'selected':'' }}"
+                          href="/people?sort=lastnameAZ">
                           {{ trans('people.people_list_lastnameAZ') }}
                         </a>
 
-                        <a class="dropdown-item {{ (auth()->user()->contacts_sort_order == 'lastnameZA')?'selected':'' }}" href="/people?sort=lastnameZA">
+                        <a
+                          class="dropdown-item {{ (auth()->user()->contacts_sort_order == 'lastnameZA')?'selected':'' }}"
+                          href="/people?sort=lastnameZA">
                           {{ trans('people.people_list_lastnameZA') }}
                         </a>
                       </div>
@@ -90,26 +99,26 @@
 
                 @foreach($contacts as $contact)
 
-                <li class="people-list-item">
-                  <a href="/people/{{ $contact->id }}">
-                    @if ($contact->has_avatar == 'true')
-                      <img src="{{ $contact->getAvatarURL(110) }}" width="43">
-                    @else
-                      @if (! is_null($contact->gravatar_url))
-                        <img src="{{ $contact->gravatar_url }}" width="43">
+                  <li class="people-list-item">
+                    <a href="/people/{{ $contact->id }}">
+                      @if ($contact->has_avatar == 'true')
+                        <img src="{{ $contact->getAvatarURL(110) }}" width="43">
                       @else
-                        @if (count($contact->getInitials()) == 1)
-                        <div class="avatar one-letter" style="background-color: {{ $contact->getAvatarColor() }};">
-                          {{ $contact->getInitials() }}
-                        </div>
+                        @if (! is_null($contact->gravatar_url))
+                          <img src="{{ $contact->gravatar_url }}" width="43">
                         @else
-                        <div class="avatar" style="background-color: {{ $contact->getAvatarColor() }};">
-                          {{ $contact->getInitials() }}
-                        </div>
+                          @if (count($contact->getInitials()) == 1)
+                            <div class="avatar one-letter" style="background-color: {{ $contact->getAvatarColor() }};">
+                              {{ $contact->getInitials() }}
+                            </div>
+                          @else
+                            <div class="avatar" style="background-color: {{ $contact->getAvatarColor() }};">
+                              {{ $contact->getInitials() }}
+                            </div>
+                          @endif
                         @endif
                       @endif
-                    @endif
-                    <span class="people-list-item-name">
+                      <span class="people-list-item-name">
                       {{ $contact->getCompleteName(auth()->user()->name_order) }}
                     </span>
 
@@ -117,8 +126,8 @@
                       {{ trans_choice('people.people_list_number_kids', $contact->getNumberOfKids(), ['count' => $contact->getNumberOfKids()]) }}
                       <span>{{ trans('people.people_list_last_updated') }} {{ \App\Helpers\DateHelper::getShortDate($contact->updated_at) }}</span>
                     </span>
-                  </a>
-                </li>
+                    </a>
+                  </li>
 
                 @endforeach
               </ul>
@@ -130,14 +139,15 @@
               </a>
 
               <ul>
-              @foreach (auth()->user()->account->tags as $tag)
-                @if ($tag->contacts()->count() > 0)
-                <li>
-                  <span class="pretty-tag"><a href="/people?tags={{ $tag->name_slug }}">{{ $tag->name }}</a></span>
-                  <span class="number-contacts-per-tag">{{ trans_choice('people.people_list_contacts_per_tags', $tag->contacts()->count(), ['count' => $tag->contacts()->count()]) }}</span>
-                </li>
-                @endif
-              @endforeach
+                @foreach (auth()->user()->account->tags as $tag)
+                  @if ($tag->contacts()->count() > 0)
+                    <li>
+                      <span class="pretty-tag"><a href="/people?tags={{ $tag->name_slug }}">{{ $tag->name }}</a></span>
+                      <span
+                        class="number-contacts-per-tag">{{ trans_choice('people.people_list_contacts_per_tags', $tag->contacts()->count(), ['count' => $tag->contacts()->count()]) }}</span>
+                    </li>
+                  @endif
+                @endforeach
               </ul>
             </div>
 

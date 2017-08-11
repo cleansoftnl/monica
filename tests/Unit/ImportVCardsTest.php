@@ -50,7 +50,7 @@ class ImportVCardsTest extends TestCase
         $user = $this->getUser();
         $path = 'tests/stubs/vcard_stub.vcf';
 
-        $totalContacts = Contact::where('account_id', $user->account_id)->count();
+        $totalContacts = Contact::where('company_id', $user->account_id)->count();
 
         $exitCode = $this->artisan('import:vcard', ['user' => $user->email, 'path' => $path, '--no-interaction' => true]);
 
@@ -81,7 +81,7 @@ class ImportVCardsTest extends TestCase
         // Asserts that only 3 new contacts were created
         $this->assertEquals(
             $totalContacts + 3,
-            Contact::where('account_id', $user->account_id)->count()
+            Contact::where('company_id', $user->account_id)->count()
         );
 
         $this->assertEquals(0, $exitCode);

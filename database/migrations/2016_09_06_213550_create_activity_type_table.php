@@ -1,7 +1,6 @@
 <?php
-
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class CreateActivityTypeTable extends Migration
 {
@@ -18,7 +17,6 @@ class CreateActivityTypeTable extends Migration
             $table->string('key');
             $table->timestamps();
         });
-
         Schema::create('activity_type_groups', function ($table) {
             $table->increments('id');
             $table->string('key');

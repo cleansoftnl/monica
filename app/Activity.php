@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use Carbon\Carbon;
@@ -82,7 +81,6 @@ class Activity extends Model
         if (auth()->user()) {
             return Carbon::parse($value, auth()->user()->timezone);
         }
-
         return Carbon::parse($value);
     }
 

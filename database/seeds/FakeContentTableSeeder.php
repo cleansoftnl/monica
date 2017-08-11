@@ -1,5 +1,4 @@
 <?php
-
 use App\Contact;
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
@@ -14,7 +13,7 @@ class FakeContentTableSeeder extends Seeder
     public function run()
     {
         // truncate all the tables
-        DB::table('accounts')->delete();
+        DB::table('companies')->delete();
         DB::table('users')->delete();
         DB::table('contacts')->delete();
         DB::table('reminders')->delete();
@@ -23,15 +22,13 @@ class FakeContentTableSeeder extends Seeder
         DB::table('tasks')->delete();
         DB::table('notes')->delete();
         DB::table('activities')->delete();
-
         // populate account table
-        $accountID = DB::table('accounts')->insertGetId([
+        $accountID = DB::table('companies')->insertGetId([
             'api_key' => str_random(30),
         ]);
-
         // populate user table
         $userId = DB::table('users')->insertGetId([
-            'account_id' => $accountID,
+            'company_id' => $accountID,
             'first_name' => 'John',
             'last_name' => 'Doe',
             'email' => 'admin@admin.com',
@@ -39,39 +36,31 @@ class FakeContentTableSeeder extends Seeder
             'timezone' => config('app.timezone'),
             'remember_token' => str_random(10),
         ]);
-
         $faker = Faker::create();
-
         // create a random number of contacts
         $numberOfContacts = rand(3, 100);
-        echo 'Generating '.$numberOfContacts.' fake contacts'.PHP_EOL;
-
+        echo 'Generating ' . $numberOfContacts . ' fake contacts' . PHP_EOL;
         for ($i = 0; $i < $numberOfContacts; $i++) {
             $timezone = config('app.timezone');
             $gender = (rand(1, 2) == 1) ? 'male' : 'female';
-
             // create contact entry
             $contactID = DB::table('contacts')->insertGetId([
-                'account_id' => $accountID,
+                'company_id' => $accountID,
                 'gender' => $gender,
                 'first_name' => $faker->firstName($gender),
                 'middle_name' => (rand(1, 2) == 1) ? $faker->firstName : null,
                 'last_name' => (rand(1, 2) == 1) ? $faker->lastName : null,
             ]);
-
             $contact = Contact::find($contactID);
             $contact->setAvatarColor();
-
             // add email
             if (rand(1, 2) == 1) {
                 $contact->email = $faker->email;
             }
-
             // add phonenumber
             if (rand(1, 2) == 1) {
                 $contact->phone_number = $faker->phoneNumber;
             }
-
             // add address
             if (rand(1, 2) == 1) {
                 $contact->street = $faker->streetAddress;
@@ -80,14 +69,11 @@ class FakeContentTableSeeder extends Seeder
                 $contact->city = $faker->city;
                 $countryID = '1';
             }
-
             // add food preferencies
             if (rand(1, 2) == 1) {
                 $contact->food_preferencies = $faker->realText();
             }
-
             $contact->save();
-
             // create significant other data
             if (rand(1, 3) == 1) {
                 $gender = (rand(1, 2) == 1) ? 'male' : 'female';
@@ -104,19 +90,17 @@ class FakeContentTableSeeder extends Seeder
                 } else {
                     $birthdate_approximate = 'exact';
                 }
-
                 $contact->significantOthers()->create(
                     [
                         'first_name' => $firstname,
                         'gender' => $gender,
                         'is_birthdate_approximate' => $birthdate_approximate,
                         'birthdate' => $birthdate_approximate !== 'unknown' ? $birthdate : null,
-                        'account_id' => $contact->account_id,
+                        'company_id' => $contact->company_id,
                         'status' => 'active',
                     ]
                 );
             }
-
             // create kids
             if (rand(1, 2) == 1) {
                 foreach (range(1, rand(2, 6)) as $index) {
@@ -129,31 +113,27 @@ class FakeContentTableSeeder extends Seeder
                     } else {
                         $birthdate_approximate = 'exact';
                     }
-
                     $contact->kids()->create(
                         [
                             'first_name' => $name,
                             'gender' => $gender,
                             'is_birthdate_approximate' => $birthdate_approximate,
                             'birthdate' => $birthdate_approximate !== 'unknown' ? $birthdate : null,
-                            'account_id' => $contact->account_id,
+                            'company_id' => $contact->company_id,
                         ]
                     );
                 }
             }
-
             // notes
             if (rand(1, 2) == 1) {
                 for ($j = 0; $j < rand(1, 13); $j++) {
                     $note = $contact->notes()->create([
                         'body' => $faker->realText(rand(40, 500)),
-                        'account_id' => $contact->account_id,
+                        'company_id' => $contact->company_id,
                     ]);
-
                     $contact->logEvent('note', $note->id, 'create');
                 }
             }
-
             // activities
             if (rand(1, 2) == 1) {
                 for ($j = 0; $j < rand(1, 13); $j++) {
@@ -162,13 +142,11 @@ class FakeContentTableSeeder extends Seeder
                         'date_it_happened' => $faker->date($format = 'Y-m-d', $max = 'now'),
                         'activity_type_id' => rand(1, 13),
                         'description' => $faker->realText(rand(100, 1000)),
-                        'account_id' => $contact->account_id,
+                        'company_id' => $contact->company_id,
                     ]);
-
                     $contact->logEvent('activity', $activity->id, 'create');
                 }
             }
-
             // tasks
             if (rand(1, 2) == 1) {
                 for ($j = 0; $j < rand(1, 6); $j++) {
@@ -176,13 +154,11 @@ class FakeContentTableSeeder extends Seeder
                         'title' => $faker->realText(rand(40, 100)),
                         'description' => $faker->realText(rand(100, 1000)),
                         'status' => (rand(1, 2) == 1 ? 'inprogress' : 'completed'),
-                        'account_id' => $contact->account_id,
+                        'company_id' => $contact->company_id,
                     ]);
-
                     $contact->logEvent('task', $task->id, 'create');
                 }
             }
-
             // debts
             if (rand(1, 2) == 1) {
                 for ($j = 0; $j < rand(1, 6); $j++) {
@@ -191,40 +167,34 @@ class FakeContentTableSeeder extends Seeder
                         'amount' => rand(321, 39391),
                         'reason' => $faker->realText(rand(100, 1000)),
                         'status' => 'inprogress',
-                        'account_id' => $contact->account_id,
+                        'company_id' => $contact->company_id,
                     ]);
-
                     $contact->logEvent('debt', $debt->id, 'create');
                 }
             }
-
             // gifts
             if (rand(1, 2) == 1) {
                 for ($j = 0; $j < rand(1, 31); $j++) {
                     $gift = $contact->gifts()->create([
-
                         'name' => $faker->realText(rand(10, 100)),
                         'comment' => $faker->realText(rand(1000, 5000)),
                         'url' => $faker->url,
                         'value_in_dollars' => rand(12, 120),
-                        'account_id' => $contact->account_id,
+                        'company_id' => $contact->company_id,
                         'is_an_idea' => 'true',
                         'has_been_offered' => 'false',
                     ]);
-
                     $contact->logEvent('gift', $gift->id, 'create');
                 }
             }
         }
-
         // create the second test, blank account
-        $accountID = DB::table('accounts')->insertGetId([
+        $accountID = DB::table('companies')->insertGetId([
             'api_key' => str_random(30),
         ]);
-
         // populate user table
         $userId = DB::table('users')->insertGetId([
-            'account_id' => $accountID,
+            'company_id' => $accountID,
             'first_name' => 'Blank',
             'last_name' => 'State',
             'email' => 'blank@blank.com',

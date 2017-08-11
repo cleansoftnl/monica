@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Console\Commands;
 
 use DB;
@@ -43,10 +42,8 @@ class ResetTestDB extends Command
                 $table_array = get_object_vars($table);
                 \Schema::drop($table_array[key($table_array)]);
             }
-
             $this->call('migrate');
             $this->call('db:seed');
-
             $this->info('Local database has been reset');
         } else {
             $this->info('Can\'t execute this command in this environment');

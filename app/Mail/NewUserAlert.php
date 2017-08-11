@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Mail;
 
 use App\User;
@@ -31,9 +30,9 @@ class NewUserAlert extends Mailable
     public function build()
     {
         return $this->text('emails.registration.alert')
-                    ->subject('New registration: '.$this->user->first_name.' '.$this->user->last_name)
-                    ->with([
-                        'user' => $this->user,
-                    ]);
+            ->subject('New registration: ' . $this->user->first_name . ' ' . $this->user->last_name)
+            ->with([
+                'user' => $this->user,
+            ]);
     }
 }

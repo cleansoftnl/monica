@@ -1,5 +1,4 @@
 <?php
-
 return [
     'update' => 'Обновить',
     'save' => 'Сохранить',
@@ -9,10 +8,8 @@ return [
     'edit' => 'Редактировать',
     'upload' => 'Upload',
     'close' => 'Close',
-
     'header_settings_link' => 'Настройки',
     'header_logout_link' => 'Выйти',
-
     'main_nav_cta' => 'Добавить людей',
     'main_nav_dashboard' => 'Обзор',
     'main_nav_family' => 'Люди',
@@ -20,7 +17,6 @@ return [
     'main_nav_activities' => 'Активности',
     'main_nav_tasks' => 'Задачи',
     'main_nav_trash' => 'Корзина',
-
     'footer_remarks' => 'Есть предложения?',
     'footer_send_email' => 'Отправьте мне email',
     'footer_privacy' => 'Политика конфиденциальности',
@@ -29,10 +25,8 @@ return [
     'footer_source_code' => 'Monica on GitHub',
     'footer_version' => 'Version: :version',
     'footer_new_version' => 'A new version is available',
-
     'footer_modal_version_whats_new' => 'What\'s new',
     'footer_modal_version_release_away' => 'You are 1 release behind the latest version available. You should update your instance.|You are :number releases behind the latest version available. You should update your instance.',
-
     'breadcrumb_dashboard' => 'Обзор',
     'breadcrumb_list_contacts' => 'Список контактов',
     'breadcrumb_journal' => 'Журнал',
@@ -45,7 +39,6 @@ return [
     'breadcrumb_settings_import_report' => 'Import report',
     'breadcrumb_settings_import_upload' => 'Upload',
     'breadcrumb_settings_tags' => 'Tags',
-
     'gender_male' => 'Мужской',
     'gender_female' => 'Женский',
     'gender_none' => 'Неизвестно',

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Auth;
@@ -24,29 +23,23 @@ class PeopleController extends Controller
     {
         $user = $request->user();
         $sort = $request->get('sort') ?? $user->contacts_sort_order;
-
         if ($user->contacts_sort_order !== $sort) {
             $user->updateContactViewPreference($sort);
         }
-
         $tag = null;
-
         if ($request->get('tags')) {
             $tag = Tag::where('name_slug', $request->get('tags'))
-                        ->where('account_id', auth()->user()->account_id)
-                        ->first();
-
+                ->where('company_id', auth()->user()->company_id)
+                ->first();
             if (is_null($tag)) {
                 return redirect()->route('people.index');
             }
-
             $contacts = $user->account->contacts()->whereHas('tags', function ($query) use ($tag) {
                 $query->where('id', $tag->id);
             })->sortedBy($sort)->get();
         } else {
             $contacts = $user->account->contacts()->sortedBy($sort)->get();
         }
-
         return view('people.index')
             ->withContacts($contacts)
             ->withTag($tag);
@@ -74,29 +67,22 @@ class PeopleController extends Controller
             'first_name' => 'required|max:255',
             'gender' => 'required',
         ]);
-
         if ($validator->fails()) {
             return back()
                 ->withInput()
                 ->withErrors($validator);
         }
-
         $contact = new Contact;
-        $contact->account_id = Auth::user()->account_id;
+        $contact->company_id = Auth::user()->company_id;
         $contact->gender = $request->input('gender');
         $contact->first_name = ucfirst($request->input('first_name'));
-
-        if (! empty($request->input('last_name'))) {
+        if (!empty($request->input('last_name'))) {
             $contact->last_name = ucfirst($request->input('last_name'));
         }
-
         $contact->is_birthdate_approximate = 'unknown';
         $contact->save();
-
         $contact->setAvatarColor();
-
         $contact->logEvent('contact', $contact->id, 'create');
-
         return redirect()->route('people.show', ['id' => $contact->id]);
     }
 
@@ -111,7 +97,6 @@ class PeopleController extends Controller
         $contact->load(['notes' => function ($query) {
             $query->orderBy('updated_at', 'desc');
         }]);
-
         return view('people.profile')
             ->withContact($contact);
     }
@@ -142,83 +127,68 @@ class PeopleController extends Controller
             'gender' => 'required',
             'file' => 'max:10240',
         ]);
-
         if ($validator->fails()) {
             return back()
                 ->withInput()
                 ->withErrors($validator);
         }
-
         $contact->gender = $request->input('gender');
         $contact->first_name = $request->input('firstname');
-
         if ($request->input('lastname') != '') {
             $contact->last_name = $request->input('lastname');
         } else {
             $contact->last_name = null;
         }
-
         if ($request->file('avatar') != '') {
             $contact->has_avatar = 'true';
             $contact->avatar_file_name = $request->file('avatar')->store('avatars', 'public');
         }
-
         if ($request->input('email') != '') {
             $contact->email = $request->input('email');
         } else {
             $contact->email = null;
         }
-
         if ($request->input('phone') != '') {
             $contact->phone_number = $request->input('phone');
         } else {
             $contact->phone_number = null;
         }
-
         if ($request->input('facebook') != '') {
             $contact->facebook_profile_url = $request->input('facebook');
         } else {
             $contact->facebook_profile_url = null;
         }
-
         if ($request->input('twitter') != '') {
             $contact->twitter_profile_url = $request->input('twitter');
         } else {
             $contact->twitter_profile_url = null;
         }
-
         if ($request->input('street') != '') {
             $contact->street = $request->input('street');
         } else {
             $contact->street = null;
         }
-
         if ($request->input('postalcode') != '') {
             $contact->postal_code = $request->input('postalcode');
         } else {
             $contact->postal_code = null;
         }
-
         if ($request->input('province') != '') {
             $contact->province = $request->input('province');
         } else {
             $contact->province = null;
         }
-
         if ($request->input('city') != '') {
             $contact->city = $request->input('city');
         } else {
             $contact->city = null;
         }
-
         if ($request->input('country') != '---') {
             $contact->country_id = $request->input('country');
         } else {
             $contact->country_id = null;
         }
-
         $birthdateApproximate = $request->input('is_birthdate_approximate');
-
         if ($birthdateApproximate == 'approximate') {
             $age = $request->input('age');
             $year = Carbon::now()->subYears($age)->year;
@@ -230,18 +200,14 @@ class PeopleController extends Controller
             $birthdate = Carbon::createFromFormat('Y-m-d', $request->input('specificDate'));
             $contact->birthdate = $birthdate;
         }
-
         $contact->is_birthdate_approximate = $birthdateApproximate;
         $contact->save();
-
         if ($birthdateApproximate == 'exact') {
-
             // check if a reminder was previously set for this birthdate
             // if so, we delete the old reminder, and create a new one
-            if (! is_null($contact->birthday_reminder_id)) {
+            if (!is_null($contact->birthday_reminder_id)) {
                 $contact->reminders->find($contact->birthday_reminder_id)->delete();
             }
-
             $reminder = Reminder::addBirthdayReminder(
                 $contact,
                 trans(
@@ -250,28 +216,22 @@ class PeopleController extends Controller
                 ),
                 $request->get('specificDate')
             );
-
             $contact->update([
                 'birthday_reminder_id' => $reminder->id,
             ]);
         } else {
-
             // the birthdate is approximate or unknown. in both cases, we need
             // to remove the previous reminder about the birthday if there was
             // an existing one
-            if (! is_null($contact->birthday_reminder_id)) {
+            if (!is_null($contact->birthday_reminder_id)) {
                 $contact->reminders->find($contact->birthday_reminder_id)->delete();
-
                 $contact->update([
                     'birthday_reminder_id' => null,
                 ]);
             }
         }
-
         $contact->logEvent('contact', $contact->id, 'update');
-
         dispatch(new ResizeAvatars($contact));
-
         // for performance reasons, we check if a gravatar exists for this email
         // address. if it does, we store the gravatar url in the database.
         // while this is not ideal because the gravatar can change, at least we
@@ -285,8 +245,7 @@ class PeopleController extends Controller
             $contact->gravatar_url = null;
             $contact->save();
         }
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.information_edit_success'));
     }
 
@@ -308,9 +267,7 @@ class PeopleController extends Controller
         $contact->reminders->each->delete();
         $contact->significantOthers->each->delete();
         $contact->tasks->each->delete();
-
         $contact->delete();
-
         return redirect()->route('people.index')
             ->with('success', trans('people.people_delete_success'));
     }
@@ -340,14 +297,11 @@ class PeopleController extends Controller
         $job = $request->input('job');
         $company = $request->input('company');
         $linkedin = $request->input('linkedin');
-
-        $contact->job = ! empty($job) ? $job : null;
-        $contact->company = ! empty($company) ? $company : null;
-        $contact->linkedin_profile_url = ! empty($linkedin) ? $linkedin : null;
-
+        $contact->job = !empty($job) ? $job : null;
+        $contact->company = !empty($company) ? $company : null;
+        $contact->linkedin_profile_url = !empty($linkedin) ? $linkedin : null;
         $contact->save();
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.work_edit_success'));
     }
 
@@ -373,11 +327,9 @@ class PeopleController extends Controller
      */
     public function updateFoodPreferencies(Request $request, Contact $contact)
     {
-        $food = ! empty($request->get('food')) ? $request->get('food') : null;
-
+        $food = !empty($request->get('food')) ? $request->get('food') : null;
         $contact->updateFoodPreferencies($food);
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.food_preferencies_add_success'));
     }
 
@@ -389,19 +341,15 @@ class PeopleController extends Controller
     {
         $needle = $request->needle;
         $accountId = $request->accountId;
-
-        if ($accountId != auth()->user()->account_id) {
+        if ($accountId != auth()->user()->company_id) {
             return;
         }
-
         if ($needle == null) {
             return;
         }
-
         if ($accountId == null) {
             return;
         }
-
         $results = Contact::search($needle, $accountId);
         if (count($results) !== 0) {
             return $results;

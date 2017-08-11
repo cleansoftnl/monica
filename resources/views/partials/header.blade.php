@@ -5,13 +5,14 @@
         <div class="row">
           <div class="logo">
             <a href="/dashboard">
-              <img src="/img/small-logo.png" width="40" height="43" />
+              <img src="/img/small-logo.png" width="40" height="43"/>
             </a>
           </div>
           <div class="col-sm-9 header-search">
             <form role="search" method="POST" action="people/search">
               {{ csrf_field() }}
-              <input type="search" placeholder="{{ trans('people.people_search') }}" class="form-control header-search-input">
+              <input type="search" placeholder="{{ trans('people.people_search') }}"
+                     class="form-control header-search-input">
             </form>
             <ul class="header-search-results"></ul>
           </div>
@@ -43,7 +44,8 @@
         <div class="header-search">
           <form role="search" method="POST" action="people/search">
             {{ csrf_field() }}
-            <input type="search" placeholder="{{ trans('people.people_search') }}" class="form-control header-search-input">
+            <input type="search" placeholder="{{ trans('people.people_search') }}"
+                   class="form-control header-search-input">
           </form>
           <ul class="header-search-results"></ul>
         </div>

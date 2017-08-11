@@ -1,7 +1,5 @@
 <?php
-
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Language Lines
@@ -12,10 +10,8 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
     'failed' => 'As informações de login não foram encontradas.',
     'throttle' => 'Muitas tentativas de login. Por favor tente novamente em :seconds segundos.',
     'not_authorized' => 'Você não está autorizado a executar esta ação',
     'signup_disabled' => 'Atualmente o registro está desativado',
-
 ];

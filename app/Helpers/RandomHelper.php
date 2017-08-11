@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Helpers;
-
 class RandomHelper
 {
     /**
@@ -12,14 +10,12 @@ class RandomHelper
      */
     public static function generateString($length)
     {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0987654321'.time();
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0987654321' . time();
         $charactersLength = strlen($characters);
         $randomString = '';
-
         for ($i = $length; $i > 0; $i--) {
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
-
         return $randomString;
     }
 }

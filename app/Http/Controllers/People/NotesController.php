@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\People;
 
 use App\Note;
@@ -47,12 +46,10 @@ class NotesController extends Controller
             $request->only([
                 'body',
             ])
-            + ['account_id' => $contact->account_id]
+            + ['company_id' => $contact->company_id]
         );
-
         $contact->logEvent('note', $note->id, 'create');
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.notes_create_success'));
     }
 
@@ -96,12 +93,10 @@ class NotesController extends Controller
             $request->only([
                 'body',
             ])
-            + ['account_id' => $contact->account_id]
+            + ['company_id' => $contact->company_id]
         );
-
         $contact->logEvent('note', $note->id, 'update');
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.notes_update_success'));
     }
 
@@ -115,10 +110,8 @@ class NotesController extends Controller
     public function destroy(Contact $contact, Note $note)
     {
         $note->delete();
-
         $contact->events()->forObject($note)->get()->each->delete();
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.notes_delete_success'));
     }
 }

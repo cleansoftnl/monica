@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\People;
 
 use App\Call;
@@ -24,15 +23,12 @@ class CallsController extends Controller
             ])
             + [
                 'content' => ($request->get('content') == '' ? null : $request->get('content')),
-                'account_id' => $contact->account_id,
+                'company_id' => $contact->company_id,
             ]
         );
-
         $contact->logEvent('call', $call->id, 'create');
-
         $contact->updateLastCalledInfo($call);
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.calls_add_success'));
     }
 
@@ -45,20 +41,16 @@ class CallsController extends Controller
      */
     public function destroy(Contact $contact, Call $call)
     {
-        if ($contact->account_id != $call->account_id) {
+        if ($contact->company_id != $call->company_id) {
             return redirect('/people');
         }
-
         $call->delete();
-
         $contact->events()->forObject($call)->get()->each->delete();
-
         if ($contact->calls()->count() == 0) {
             $contact->last_talked_to = null;
             $contact->save();
         }
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.call_delete_success'));
     }
 }

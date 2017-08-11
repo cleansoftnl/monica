@@ -1,8 +1,7 @@
 <?php
-
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddGiftsTable extends Migration
 {
@@ -15,7 +14,7 @@ class AddGiftsTable extends Migration
     {
         Schema::create('gifts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('account_id');
+            $table->integer('company_id');
             $table->integer('people_id');
             $table->string('about_object_type')->nullable();
             $table->string('about_object_id')->nullable();

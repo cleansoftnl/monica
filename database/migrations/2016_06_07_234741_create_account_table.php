@@ -1,7 +1,6 @@
 <?php
-
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateAccountTable extends Migration
 {
@@ -12,7 +11,7 @@ class CreateAccountTable extends Migration
      */
     public function up()
     {
-        Schema::create('accounts', function (Blueprint $table) {
+        Schema::create('companies', function (Blueprint $table) {
             $table->increments('id');
             $table->string('api_key');
             $table->timestamps();
@@ -26,6 +25,6 @@ class CreateAccountTable extends Migration
      */
     public function down()
     {
-        Schema::drop('accounts');
+        Schema::drop('companies');
     }
 }

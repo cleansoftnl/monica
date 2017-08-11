@@ -1,10 +1,8 @@
 <?php
-
 return [
     'reminders_title' => 'Nadcházející upozornění',
     'reminders_blank_description' => 'Nejsou naplánována žádná upozornění.',
     'event_title' => 'Nejnovější změny',
-
     'event_create_contact' => 'kontakt přidán',
     'event_update_contact' => 'kontakt aktualizován',
     'event_create_reminder' => 'upozornění přidáno',
@@ -23,10 +21,8 @@ return [
     'event_update_debt' => 'dluh aktualizován',
     'event_create_gift' => 'dárek přidán',
     'event_update_gift' => 'dárek aktualizován',
-
     'blank_title' => 'Ještě není zaznamenána žádná aktivita.',
     'blank_cta' => 'Přidat kontakt',
-
     'tab_last_edited_contacts' => 'Naposledy upravované kontakty',
     'tab_whats_coming' => 'Co bude dál',
     'tab_lastest_actions' => 'Nejnovější změny',
@@ -48,5 +44,4 @@ return [
     'debts_you_due' => 'Dlužím do',
     'debts_for' => 'komu',
     'debts_blank' => 'Nemám dluhy.',
-
 ];

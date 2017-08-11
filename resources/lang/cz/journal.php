@@ -1,5 +1,4 @@
 <?php
-
 return [
     'journal_add' => 'Přidat deníkový záznam',
     'journal_entry_delete' => 'Smazat',

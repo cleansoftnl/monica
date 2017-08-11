@@ -1,5 +1,4 @@
 <?php
-
 return [
     'sidebar_settings' => 'Kontoeinstellungen',
     'sidebar_settings_export' => 'Daten exportieren',
@@ -7,14 +6,12 @@ return [
     'sidebar_settings_subscriptions' => 'Abonnement',
     'sidebar_settings_import' => 'Daten importieren',
     'sidebar_settings_tags' => 'Tags bearbeiten',
-
     'export_title' => 'Exportiere die Daten deines Kontos',
     'export_be_patient' => 'Button klicken um den Export zu starten. Dies kann mehrere Minuten dauern - sei bitte geduldig und klicke nicht mehrfach auf den Button.',
     'export_title_sql' => 'Nach SQL exportieren',
     'export_sql_explanation' => 'Der SQL-Export ermöglicht es dir deine Daten in einer eigenen monica-Installation zu importieren. Dies ist nur sinnvoll, wenn du einen eigenen Server besitzt.',
     'export_sql_cta' => 'SQL exportieren',
     'export_sql_link_instructions' => 'Hinweis: <a href=":url">lies die Anleitung</a> umd mehr über das Importieren in die eigene Installation zu erfahren.',
-
     'name_order' => 'Namensortierrichtung',
     'name_order_firstname_first' => 'Vorname zuerst (Max Mustermann)',
     'name_order_lastname_first' => 'Nachname zuerst (Mustermann Max)',
@@ -46,7 +43,6 @@ return [
     'locale_cz' => 'Tschechisch',
     'locale_it' => 'Italienisch',
     'locale_de' => 'Deutsch',
-
     'users_list_title' => 'Benutzer, die Zugriff auf dein Konto haben',
     'users_list_add_user' => 'Einen Benutzer einladen',
     'users_list_you' => 'Das bist du',
@@ -70,7 +66,6 @@ return [
     'users_invitation_deleted_confirmation_message' => 'Die Einladung wurde erfolgreich gelöscht',
     'users_invitations_delete_confirmation' => 'Möchtest du die Einladung wirklich löschen?',
     'users_list_delete_confirmation' => 'Möchtest du den Benutzer wirklich aus deinem Konto entfernen?',
-
     'subscriptions_account_current_plan' => 'Dein aktuelles Abonnement',
     'subscriptions_account_paid_plan' => 'Du hast folgendes Abonnement :name . Es kostet $:price im Monat.',
     'subscriptions_account_next_billing' => 'Dein Abonnement erneuert sich automatisch am <strong>:date</strong>. Du kannst dein Abonnement jederzeit <a href=":url">kündigen</a>.',
@@ -94,7 +89,6 @@ return [
     'subscriptions_upgrade_warning' => 'Dein Konto wird sofort geupgraded. Du kannst jederzeit upgraden, downgraden, oder kündigen. Wenn du kündigt, wird dein Konto nicht mehr belastet. Die Zahlung für den aktuallen Monat wird jedoch nicht erstattet.',
     'subscriptions_upgrade_cta' => ' Belaste meine Karte monatlich mit $:price ',
     'subscriptions_pdf_title' => 'Dein :name monatliches Abonnement',
-
     'import_title' => 'Importiere Kontakte in dein Konto',
     'import_cta' => 'Kontakte hochladen',
     'import_stat' => 'Du hast bisher :number Dateien importiert.',
@@ -125,7 +119,6 @@ return [
     'import_blank_question' => 'Möchtest du jetzt Kontakte importieren?',
     'import_blank_description' => 'Wir können vCard-Dateien importieren, die du aus Google Contacts oder deinem Kontakt-Manager erhalten kannst.',
     'import_blank_cta' => 'Importiere vCard',
-
     'tags_list_title' => 'Tags',
     'tags_list_description' => 'Du kannst deine Kontakte mithilfe von Tags organisieren. Tags funktionieren wie Ordner, wobei ein Kontakt auch mehrere Tags erhalten kann. Um einen neuen Tag anzulegen, musst du ihn nur beim Kontakt hinzufügen.',
     'tags_list_contact_number' => ':count Kontakte',
@@ -133,5 +126,4 @@ return [
     'tags_list_delete_confirmation' => 'Möchtest du den Tag wirklich löschen? Kontakte werden nicht gelöscht, sondern nur der Tag.',
     'tags_blank_title' => 'Tags bieten eine tolle Möglichkeit Kontakte zu organisieren.',
     'tags_blank_description' => 'Tags funktionieren wie Ordner, wobei ein Kontakt auch mehrere Tags erhalten kann. Öffne einen Kontakt und tagge einen Freund direkt unter dem Namen. So bald dein Kontakt getaggt ist, kannst du hier deine Tags verwalten.',
-
 ];

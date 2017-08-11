@@ -1,5 +1,4 @@
 <?php
-
 return [
     'update' => 'Mettre à jour',
     'save' => 'Sauver',
@@ -9,10 +8,8 @@ return [
     'edit' => 'Mettre à jour',
     'upload' => 'Upload',
     'close' => 'Close',
-
     'header_settings_link' => 'Paramètres',
     'header_logout_link' => 'Déconnexion',
-
     'main_nav_cta' => 'Ajouter des gens',
     'main_nav_dashboard' => 'Tableau de bord',
     'main_nav_family' => 'Contacts',
@@ -20,7 +17,6 @@ return [
     'main_nav_activities' => 'Activités',
     'main_nav_tasks' => 'Tâches',
     'main_nav_trash' => 'Poubelle',
-
     'footer_remarks' => 'Une remarque ?',
     'footer_send_email' => 'Envoyez moi un courriel',
     'footer_privacy' => 'Politique de confidentialité (en)',
@@ -29,10 +25,8 @@ return [
     'footer_source_code' => 'Monica on GitHub',
     'footer_version' => 'Version: :version',
     'footer_new_version' => 'A new version is available',
-
     'footer_modal_version_whats_new' => 'What\'s new',
     'footer_modal_version_release_away' => 'You are 1 release behind the latest version available. You should update your instance.|You are :number releases behind the latest version available. You should update your instance.',
-
     'breadcrumb_dashboard' => 'Tableau de bord',
     'breadcrumb_list_contacts' => 'Liste de contacts',
     'breadcrumb_journal' => 'Journal',
@@ -45,7 +39,6 @@ return [
     'breadcrumb_settings_import_report' => 'Import report',
     'breadcrumb_settings_import_upload' => 'Upload',
     'breadcrumb_settings_tags' => 'Tags',
-
     'gender_male' => 'Homme',
     'gender_female' => 'Femme',
     'gender_none' => 'Aucun',

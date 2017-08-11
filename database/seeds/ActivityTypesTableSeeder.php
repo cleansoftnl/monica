@@ -1,5 +1,4 @@
 <?php
-
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
@@ -14,14 +13,12 @@ class ActivityTypesTableSeeder extends Seeder
     {
         DB::table('activity_types')->truncate();
         DB::table('activity_type_groups')->truncate();
-
         // SIMPLE ACTIVITIES
         DB::table('activity_type_groups')->insert([
             'key' => 'simple_activities',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-
         DB::table('activity_types')->insert([
             'key' => 'just_hung_out',
             'location_type' => 'outside',
@@ -30,7 +27,6 @@ class ActivityTypesTableSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-
         DB::table('activity_types')->insert([
             'key' => 'watched_movie_at_home',
             'location_type' => 'my_place',
@@ -39,7 +35,6 @@ class ActivityTypesTableSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-
         DB::table('activity_types')->insert([
             'key' => 'talked_at_home',
             'location_type' => 'my_place',
@@ -48,14 +43,12 @@ class ActivityTypesTableSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-
         // SPORT
         DB::table('activity_type_groups')->insert([
             'key' => 'sport',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-
         DB::table('activity_types')->insert([
             'key' => 'did_sport_activities_together',
             'location_type' => 'outside',
@@ -64,14 +57,12 @@ class ActivityTypesTableSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-
         // FOOD
         DB::table('activity_type_groups')->insert([
             'key' => 'food',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-
         DB::table('activity_types')->insert([
             'key' => 'ate_at_his_place',
             'location_type' => 'his_place',
@@ -80,7 +71,6 @@ class ActivityTypesTableSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-
         DB::table('activity_types')->insert([
             'key' => 'went_bar',
             'location_type' => 'outside',
@@ -89,7 +79,6 @@ class ActivityTypesTableSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-
         DB::table('activity_types')->insert([
             'key' => 'ate_at_home',
             'location_type' => 'my_place',
@@ -98,7 +87,6 @@ class ActivityTypesTableSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-
         DB::table('activity_types')->insert([
             'key' => 'picknicked',
             'location_type' => 'outside',
@@ -107,7 +95,6 @@ class ActivityTypesTableSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-
         DB::table('activity_types')->insert([
             'key' => 'ate_restaurant',
             'location_type' => 'outside',
@@ -116,14 +103,12 @@ class ActivityTypesTableSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-
         // CULTURAL
         DB::table('activity_type_groups')->insert([
             'key' => 'cultural_activities',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-
         DB::table('activity_types')->insert([
             'key' => 'went_theater',
             'location_type' => 'outside',
@@ -132,7 +117,6 @@ class ActivityTypesTableSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-
         DB::table('activity_types')->insert([
             'key' => 'went_concert',
             'location_type' => 'outside',
@@ -141,7 +125,6 @@ class ActivityTypesTableSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-
         DB::table('activity_types')->insert([
             'key' => 'went_play',
             'location_type' => 'outside',
@@ -150,7 +133,6 @@ class ActivityTypesTableSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-
         DB::table('activity_types')->insert([
             'key' => 'went_museum',
             'location_type' => 'outside',

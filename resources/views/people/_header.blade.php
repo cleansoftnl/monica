@@ -14,13 +14,13 @@
               <img src="{{ $contact->gravatar_url }}" width="87">
             @else
               @if (count($contact->getInitials()) == 1)
-              <div class="avatar one-letter" style="background-color: {{ $contact->getAvatarColor() }};">
-                {{ $contact->getInitials() }}
-              </div>
+                <div class="avatar one-letter" style="background-color: {{ $contact->getAvatarColor() }};">
+                  {{ $contact->getInitials() }}
+                </div>
               @else
-              <div class="avatar" style="background-color: {{ $contact->getAvatarColor() }};">
-                {{ $contact->getInitials() }}
-              </div>
+                <div class="avatar" style="background-color: {{ $contact->getAvatarColor() }};">
+                  {{ $contact->getInitials() }}
+                </div>
               @endif
             @endif
           @endif
@@ -40,7 +40,7 @@
 
           <form method="POST" action="/people/{{ $contact->id }}/tags/update" id="tagsForm">
             {{ csrf_field() }}
-            <input name="tags" id="tags" value="{{ $contact->getTagsAsString() }}" />
+            <input name="tags" id="tags" value="{{ $contact->getTagsAsString() }}"/>
             <div class="tagsFormActions">
               <button type="submit" class="btn btn-primary">{{ trans('app.update') }}</button>
               <a href="#" class="btn" id="tagsFormCancel">{{ trans('app.cancel') }}</a>
@@ -66,7 +66,8 @@
 
           <ul class="horizontal quick-actions">
             <li>
-              <a href="/people/{{ $contact->id }}/edit" class="btn edit-information">{{ trans('people.edit_contact_information') }}</a>
+              <a href="/people/{{ $contact->id }}/edit"
+                 class="btn edit-information">{{ trans('people.edit_contact_information') }}</a>
             </li>
           </ul>
         </div>

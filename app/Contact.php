@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use Carbon\Carbon;
@@ -199,7 +198,7 @@ class Contact extends Model
      */
     public function tags()
     {
-        return $this->belongsToMany('App\Tag')->withPivot('account_id')->withTimestamps();
+        return $this->belongsToMany('App\Tag')->withPivot('company_id')->withTimestamps();
     }
 
     /**
@@ -242,7 +241,6 @@ class Contact extends Model
     public function getInitialsAttribute()
     {
         preg_match_all('/(?<=\s|^)[a-zA-Z0-9]/i', $this->getCompleteName(), $initials);
-
         return implode('', $initials[0]);
     }
 
@@ -254,29 +252,23 @@ class Contact extends Model
     public function getCompleteName($nameOrder = 'firstname_first')
     {
         $completeName = '';
-
         if ($nameOrder == 'firstname_first') {
             $completeName = $this->first_name;
-
-            if (! is_null($this->middle_name)) {
-                $completeName = $completeName.' '.$this->middle_name;
+            if (!is_null($this->middle_name)) {
+                $completeName = $completeName . ' ' . $this->middle_name;
             }
-
-            if (! is_null($this->last_name)) {
-                $completeName = $completeName.' '.$this->last_name;
+            if (!is_null($this->last_name)) {
+                $completeName = $completeName . ' ' . $this->last_name;
             }
         } else {
-            if (! is_null($this->last_name)) {
+            if (!is_null($this->last_name)) {
                 $completeName = $this->last_name;
             }
-
-            if (! is_null($this->middle_name)) {
-                $completeName = $completeName.' '.$this->middle_name;
+            if (!is_null($this->middle_name)) {
+                $completeName = $completeName . ' ' . $this->middle_name;
             }
-
-            $completeName = $completeName.' '.$this->first_name;
+            $completeName = $completeName . ' ' . $this->first_name;
         }
-
         return $completeName;
     }
 
@@ -330,9 +322,7 @@ class Contact extends Model
         if ($this->activities->count() === 0) {
             return;
         }
-
         $lastActivity = $this->activities->sortByDesc('date_it_happened')->first();
-
         return DateHelper::getShortDate(
             Carbon::parse($lastActivity->date_it_happened, $timezone)
         );
@@ -348,7 +338,6 @@ class Contact extends Model
         if (is_null($this->last_talked_to)) {
             return;
         }
-
         return DateHelper::getShortDate(
             Carbon::parse($this->last_talked_to, $timezone)
         );
@@ -364,7 +353,6 @@ class Contact extends Model
         if (is_null($this->birthdate)) {
             return;
         }
-
         return $this->birthdate;
     }
 
@@ -379,7 +367,6 @@ class Contact extends Model
         if (is_null($this->birthdate)) {
             return;
         }
-
         return $this->birthdate->diffInYears(Carbon::now());
     }
 
@@ -393,7 +380,6 @@ class Contact extends Model
         if (is_null($this->phone_number)) {
             return;
         }
-
         return $this->phone_number;
     }
 
@@ -407,7 +393,6 @@ class Contact extends Model
         if (is_null($this->job)) {
             return;
         }
-
         return $this->job;
     }
 
@@ -421,7 +406,6 @@ class Contact extends Model
         if (is_null($this->company)) {
             return;
         }
-
         return $this->company;
     }
 
@@ -435,11 +419,9 @@ class Contact extends Model
         if ($this->is_birthdate_approximate === 'unknown') {
             return true;
         }
-
         if ($this->is_birthdate_approximate === 'exact') {
             return false;
         }
-
         return $this->is_birthdate_approximate;
     }
 
@@ -451,15 +433,12 @@ class Contact extends Model
     public function getPartialAddress()
     {
         $address = $this->getCity();
-
         if (is_null($address)) {
             return;
         }
-
-        if (! is_null($this->getProvince())) {
-            $address = $address.', '.$this->getProvince();
+        if (!is_null($this->getProvince())) {
+            $address = $address . ', ' . $this->getProvince();
         }
-
         return $address;
     }
 
@@ -473,7 +452,6 @@ class Contact extends Model
         if (is_null($this->street)) {
             return;
         }
-
         return $this->street;
     }
 
@@ -487,7 +465,6 @@ class Contact extends Model
         if (is_null($this->province)) {
             return;
         }
-
         return $this->province;
     }
 
@@ -501,7 +478,6 @@ class Contact extends Model
         if (is_null($this->postal_code)) {
             return;
         }
-
         return $this->postal_code;
     }
 
@@ -527,7 +503,6 @@ class Contact extends Model
         if (is_null($this->city)) {
             return;
         }
-
         return $this->city;
     }
 
@@ -562,7 +537,6 @@ class Contact extends Model
     {
         $address = $this->getFullAddress();
         $address = urlencode($address);
-
         return "https://www.google.ca/maps/place/{$address}";
     }
 
@@ -616,7 +590,6 @@ class Contact extends Model
         if (is_null($this->email)) {
             return;
         }
-
         return $this->email;
     }
 
@@ -630,7 +603,6 @@ class Contact extends Model
         if (is_null($this->twitter_profile_url)) {
             return;
         }
-
         return $this->twitter_profile_url;
     }
 
@@ -644,7 +616,6 @@ class Contact extends Model
         if (is_null($this->facebook_profile_url)) {
             return;
         }
-
         return $this->facebook_profile_url;
     }
 
@@ -658,7 +629,6 @@ class Contact extends Model
         if (is_null($this->linkedin_profile_url)) {
             return;
         }
-
         return $this->linkedin_profile_url;
     }
 
@@ -712,7 +682,6 @@ class Contact extends Model
         if (is_null($this->food_preferencies)) {
             return;
         }
-
         return $this->food_preferencies;
     }
 
@@ -744,9 +713,7 @@ class Contact extends Model
             '#5f479a',
             '#e5e5cd',
         ];
-
         $this->default_avatar_color = $color ?? $colors[mt_rand(0, count($colors) - 1)];
-
         $this->save();
     }
 
@@ -761,12 +728,11 @@ class Contact extends Model
     public function logEvent($objectType, $objectId, $natureOfOperation)
     {
         $event = $this->events()->create([]);
-        $event->account_id = $this->account_id;
+        $event->company_id = $this->company_id;
         $event->object_type = $objectType;
         $event->object_id = $objectId;
         $event->nature_of_operation = $natureOfOperation;
         $event->save();
-
         return $event->id;
     }
 
@@ -783,19 +749,14 @@ class Contact extends Model
         if ($firstName == '') {
             return false;
         }
-
         $this->first_name = $firstName;
-
-        if (! is_null($middleName)) {
+        if (!is_null($middleName)) {
             $this->middle_name = $middleName;
         }
-
-        if (! is_null($lastName)) {
+        if (!is_null($lastName)) {
             $this->last_name = $lastName;
         }
-
         $this->save();
-
         return true;
     }
 
@@ -812,7 +773,6 @@ class Contact extends Model
         } else {
             $this->food_preferencies = $foodPreferencies;
         }
-
         $this->save();
     }
 
@@ -836,12 +796,11 @@ class Contact extends Model
     {
         // Delete the Activities statistics table for this contact
         $this->activityStatistics->each->delete();
-
         // Create the statistics again
         $this->activities->groupBy('date_it_happened.year')
             ->map(function (Collection $activities, $year) {
                 $activityStatistic = $this->activityStatistics()->create([]);
-                $activityStatistic->account_id = $this->account_id;
+                $activityStatistic->company_id = $this->company_id;
                 $activityStatistic->year = $year;
                 $activityStatistic->count = $activities->count();
                 $activityStatistic->save();
@@ -928,8 +887,7 @@ class Contact extends Model
         $original_avatar_url = Storage::disk('public')->url($this->avatar_file_name);
         $avatar_filename = pathinfo($original_avatar_url, PATHINFO_FILENAME);
         $avatar_extension = pathinfo($original_avatar_url, PATHINFO_EXTENSION);
-        $resized_avatar = 'avatars/'.$avatar_filename.'_'.$size.'.'.$avatar_extension;
-
+        $resized_avatar = 'avatars/' . $avatar_filename . '_' . $size . '.' . $avatar_extension;
         return Storage::disk('public')->url($resized_avatar);
     }
 
@@ -944,14 +902,13 @@ class Contact extends Model
         if (empty($this->email)) {
             return false;
         }
-        $gravatar_url = 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email)));
+        $gravatar_url = 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($this->email)));
         // check if gravatar exists by appending ?d=404, returns 404 response if does not exist
-        $gravatarHeaders = get_headers($gravatar_url.'?d=404');
+        $gravatarHeaders = get_headers($gravatar_url . '?d=404');
         if ($gravatarHeaders[0] == 'HTTP/1.1 404 Not Found') {
             return false;
         }
-
-        return $gravatar_url.'?s='.$size;
+        return $gravatar_url . '?s=' . $size;
     }
 
     /**
@@ -978,11 +935,9 @@ class Contact extends Model
     public function getTagsAsString()
     {
         $tags = [];
-
         foreach ($this->tags as $tag) {
             array_push($tags, $tag->name);
         }
-
         return implode(',', $tags);
     }
 
@@ -990,7 +945,7 @@ class Contact extends Model
      * Update the last called info on the contact, if the call has been made
      * in the most recent date.
      *
-     * @param  Call   $call
+     * @param  Call $call
      * @return void
      */
     public function updateLastCalledInfo(Call $call)
@@ -1000,7 +955,6 @@ class Contact extends Model
         } else {
             $this->last_talked_to = $this->last_talked_to->max($call->called_at);
         }
-
         $this->save();
     }
 
@@ -1017,7 +971,7 @@ class Contact extends Model
             ->sum(function ($d) {
                 return $d->in_debt === 'yes' ? -$d->amount : $d->amount;
             })
-            > 0;
+        > 0;
     }
 
     /**

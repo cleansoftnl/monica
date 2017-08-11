@@ -20,7 +20,7 @@ class ActivityTest extends FeatureTestCase
         $user = $this->signIn();
 
         $contact = factory(Contact::class)->create([
-            'account_id' => $user->account_id,
+            'company_id' => $user->account_id,
         ]);
 
         return [$user, $contact];
@@ -72,7 +72,7 @@ class ActivityTest extends FeatureTestCase
         $response->assertRedirect('/people/'.$contact->id);
 
         // Assert the note has been added for the correct user.
-        $params['account_id'] = $user->account_id;
+        $params['company_id'] = $user->account_id;
         $params['contact_id'] = $contact->id;
         $params['summary'] = $activityTitle;
         $params['date_it_happened'] = $activityDate;
@@ -84,7 +84,7 @@ class ActivityTest extends FeatureTestCase
         $response->assertSee($activityTitle);
 
         // Make sure an event has been created for this action
-        $eventParams['account_id'] = $user->account_id;
+        $eventParams['company_id'] = $user->account_id;
         $eventParams['contact_id'] = $contact->id;
         $eventParams['object_type'] = 'activity';
         $eventParams['nature_of_operation'] = 'create';
@@ -103,7 +103,7 @@ class ActivityTest extends FeatureTestCase
 
         $activity = factory(\App\Activity::class)->create([
             'contact_id' => $contact->id,
-            'account_id' => $user->account_id,
+            'company_id' => $user->account_id,
             'summary' => 'This is the title',
             'date_it_happened' => \Carbon\Carbon::now(),
         ]);
@@ -123,7 +123,7 @@ class ActivityTest extends FeatureTestCase
         $this->put('/people/'.$contact->id.'/activities/'.$activity->id, $params);
 
         // see if the change is in the database
-        $newParams['account_id'] = $user->account_id;
+        $newParams['company_id'] = $user->account_id;
         $newParams['contact_id'] = $contact->id;
         $newParams['id'] = $activity->id;
         $newParams['summary'] = 'this is another test';
@@ -131,7 +131,7 @@ class ActivityTest extends FeatureTestCase
         $this->assertDatabaseHas('activities', $newParams);
 
         // make sure an event has been created for this action
-        $eventParams['account_id'] = $user->account_id;
+        $eventParams['company_id'] = $user->account_id;
         $eventParams['contact_id'] = $contact->id;
         $eventParams['object_type'] = 'activity';
         $eventParams['object_id'] = $activity->id;
@@ -152,7 +152,7 @@ class ActivityTest extends FeatureTestCase
 
         $activity = factory(\App\Activity::class)->create([
             'contact_id' => $contact->id,
-            'account_id' => $user->account_id,
+            'company_id' => $user->account_id,
             'summary' => 'This is the title',
             'date_it_happened' => \Carbon\Carbon::now(),
         ]);
@@ -172,7 +172,7 @@ class ActivityTest extends FeatureTestCase
         $this->assertDatabaseMissing('activities', $params);
 
         // make sure an event has been created for this action
-        $eventParams['account_id'] = $user->account_id;
+        $eventParams['company_id'] = $user->account_id;
         $eventParams['contact_id'] = $contact->id;
         $eventParams['object_id'] = $activity->id;
 

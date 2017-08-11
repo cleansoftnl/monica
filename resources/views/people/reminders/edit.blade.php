@@ -27,7 +27,7 @@
     <!-- Page header -->
     @include('people._header')
 
-    <!-- Page content -->
+      <!-- Page content -->
     <div class="main-content reminders central-form">
       <div class="{{ Auth::user()->getFluidLayout() }}">
         <div class="row">

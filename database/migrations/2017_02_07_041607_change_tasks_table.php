@@ -1,8 +1,7 @@
 <?php
-
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class ChangeTasksTable extends Migration
 {
@@ -18,9 +17,8 @@ class ChangeTasksTable extends Migration
                 'people_id', 'deleted_at'
             );
         });
-
         Schema::table('tasks', function (Blueprint $table) {
-            $table->integer('contact_id')->after('account_id');
+            $table->integer('contact_id')->after('company_id');
         });
     }
 
@@ -36,9 +34,8 @@ class ChangeTasksTable extends Migration
                 'contact_id'
             );
         });
-
         Schema::table('tasks', function (Blueprint $table) {
-            $table->integer('people_id')->after('account_id');
+            $table->integer('people_id')->after('company_id');
             $table->softDeletes();
         });
     }

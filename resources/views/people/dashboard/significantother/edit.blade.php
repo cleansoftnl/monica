@@ -25,9 +25,9 @@
     </div>
 
     <!-- Page header -->
-  @include('people._header')
+    @include('people._header')
 
-  <!-- Page content -->
+      <!-- Page content -->
     <div class="main-content central-form">
       <div class="{{ Auth::user()->getFluidLayout() }}">
         <div class="row">

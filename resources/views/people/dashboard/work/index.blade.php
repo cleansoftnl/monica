@@ -30,9 +30,9 @@
       <li>
         <i class="fa fa-linkedin-square"></i>
         @if (is_null($contact->getLinkedin()))
-        {{ trans('people.information_no_linkedin_defined') }}
+          {{ trans('people.information_no_linkedin_defined') }}
         @else
-        <a href="{{ $contact->getLinkedin() }}">LinkedIn</a>
+          <a href="{{ $contact->getLinkedin() }}">LinkedIn</a>
         @endif
       </li>
     </ul>

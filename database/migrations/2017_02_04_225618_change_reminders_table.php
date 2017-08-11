@@ -1,8 +1,7 @@
 <?php
-
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class ChangeRemindersTable extends Migration
 {
@@ -18,9 +17,8 @@ class ChangeRemindersTable extends Migration
                 'deleted_at', 'people_id'
             );
         });
-
         Schema::table('reminders', function (Blueprint $table) {
-            $table->integer('contact_id')->after('account_id');
+            $table->integer('contact_id')->after('company_id');
         });
     }
 
@@ -36,9 +34,8 @@ class ChangeRemindersTable extends Migration
                 'contact_id'
             );
         });
-
         Schema::table('reminders', function (Blueprint $table) {
-            $table->integer('people_id')->after('account_id');
+            $table->integer('people_id')->after('company_id');
             $table->softDeletes();
         });
     }

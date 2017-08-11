@@ -1,15 +1,14 @@
 <?php
-
 namespace App\Jobs;
 
-use App\User;
-use App\Reminder;
 use App\Mail\UserReminded;
+use App\Reminder;
+use App\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Mail;
 
 class SendReminderEmail implements ShouldQueue
 {

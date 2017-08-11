@@ -1,7 +1,5 @@
 <?php
-
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Locales supported by the application
@@ -20,17 +18,15 @@ return [
         'it',
         'de',
     ],
-
-   /*
-    |--------------------------------------------------------------------------
-    | Disable User registration
-    |--------------------------------------------------------------------------
-    |
-    | Disables registration of new users
-    |
-    */
+    /*
+     |--------------------------------------------------------------------------
+     | Disable User registration
+     |--------------------------------------------------------------------------
+     |
+     | Disables registration of new users
+     |
+     */
     'disable_signup' => env('APP_DISABLE_SIGNUP', false),
-
     /*
     |--------------------------------------------------------------------------
     | New User Email Notification
@@ -40,7 +36,6 @@ return [
     |
     */
     'email_new_user_notification' => env('APP_EMAIL_NEW_USERS_NOTIFICATION'),
-
     /*
     |--------------------------------------------------------------------------
     | User and error tracking
@@ -52,7 +47,6 @@ return [
     'google_analytics_app_id' => env('GOOGLE_ANALYTICS_APP_ID'),
     'intercom_app_id' => env('INTERCOM_APP_ID'),
     'sentry_support' => env('SENTRY_SUPPORT', false),
-
     /*
     |--------------------------------------------------------------------------
     | Access to paid features
@@ -66,7 +60,6 @@ return [
     |
     */
     'requires_subscription' => env('REQUIRES_SUBSCRIPTION', false),
-
     /*
     |--------------------------------------------------------------------------
     | Paid plan settings
@@ -78,10 +71,9 @@ return [
     |
     |
     */
-   'paid_plan_friendly_name' => env('PAID_PLAN_FRIENDLY_NAME', null),
-   'paid_plan_id' => env('PAID_PLAN_ID', null),
-   'paid_plan_price' => env('PAID_PLAN_PRICE', null),
-
+    'paid_plan_friendly_name' => env('PAID_PLAN_FRIENDLY_NAME', null),
+    'paid_plan_id' => env('PAID_PLAN_ID', null),
+    'paid_plan_price' => env('PAID_PLAN_PRICE', null),
     /*
     |--------------------------------------------------------------------------
     | Ping that checks if a new version is available
@@ -92,7 +84,6 @@ return [
     |
     */
     'check_version' => env('CHECK_VERSION', true),
-
     /*
     |--------------------------------------------------------------------------
     | URL of the server for the version check
@@ -103,7 +94,6 @@ return [
     |
     */
     'weekly_ping_server_url' => 'https://version.monicahq.com/ping',
-
     /*
     |--------------------------------------------------------------------------
     | Version of the application that you run

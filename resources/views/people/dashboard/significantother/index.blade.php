@@ -20,8 +20,11 @@
         ({{ $contact->getCurrentSignificantOther()->getAge() }})
       @endif
 
-      <a href="/people/{{ $contact->id }}/significant-others/{{ $contact->getCurrentSignificantOther()->id }}/edit" class="action-link">{{ trans('app.edit') }}</a>
-      <a href="/people/{{ $contact->id }}/significant-others/{{ $contact->getCurrentSignificantOther()->id }}/delete" onclick="return confirm('{{ trans('people.significant_other_delete_confirmation') }}');" class="action-link">{{ trans('app.delete') }}</a>
+      <a href="/people/{{ $contact->id }}/significant-others/{{ $contact->getCurrentSignificantOther()->id }}/edit"
+         class="action-link">{{ trans('app.edit') }}</a>
+      <a href="/people/{{ $contact->id }}/significant-others/{{ $contact->getCurrentSignificantOther()->id }}/delete"
+         onclick="return confirm('{{ trans('people.significant_other_delete_confirmation') }}');"
+         class="action-link">{{ trans('app.delete') }}</a>
     </p>
 
   @endif

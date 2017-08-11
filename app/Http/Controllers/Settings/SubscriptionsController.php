@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Settings;
 
 use Illuminate\Http\Request;
@@ -14,10 +13,9 @@ class SubscriptionsController extends Controller
      */
     public function index()
     {
-        if (! config('monica.requires_subscription')) {
+        if (!config('monica.requires_subscription')) {
             return redirect('settings/');
         }
-
         return view('settings.subscriptions.account');
     }
 
@@ -28,16 +26,13 @@ class SubscriptionsController extends Controller
      */
     public function upgrade()
     {
-        if (! config('monica.requires_subscription')) {
+        if (!config('monica.requires_subscription')) {
             return redirect('settings/');
         }
-
         $account = auth()->user()->account;
-
         if ($account->isSubscribed()) {
             return redirect('/settings/subscriptions');
         }
-
         return view('settings.subscriptions.upgrade');
     }
 
@@ -48,14 +43,12 @@ class SubscriptionsController extends Controller
      */
     public function downgrade()
     {
-        if (! config('monica.requires_subscription')) {
+        if (!config('monica.requires_subscription')) {
             return redirect('settings/');
         }
-
-        if (! auth()->user()->account->subscribed(config('monica.paid_plan_friendly_name'))) {
+        if (!auth()->user()->account->subscribed(config('monica.paid_plan_friendly_name'))) {
             return redirect('/settings');
         }
-
         return view('settings.subscriptions.downgrade-checklist');
     }
 
@@ -66,12 +59,10 @@ class SubscriptionsController extends Controller
      */
     public function processDowngrade()
     {
-        if (! auth()->user()->account->canDowngrade()) {
+        if (!auth()->user()->account->canDowngrade()) {
             return redirect('/settings/users/subscriptions/downgrade');
         }
-
         auth()->user()->account->subscription(config('monica.paid_plan_friendly_name'))->cancelNow();
-
         return redirect('/settings/subscriptions');
     }
 
@@ -82,15 +73,12 @@ class SubscriptionsController extends Controller
      */
     public function processPayment(Request $request)
     {
-        if (! config('monica.requires_subscription')) {
+        if (!config('monica.requires_subscription')) {
             return redirect('settings/');
         }
-
         $stripeToken = $request->input('stripeToken');
-
         auth()->user()->account->newSubscription(config('monica.paid_plan_friendly_name'), config('monica.paid_plan_id'))
-                    ->create($stripeToken);
-
+            ->create($stripeToken);
         return redirect('settings/subscriptions');
     }
 
@@ -102,7 +90,7 @@ class SubscriptionsController extends Controller
     public function downloadInvoice(Request $request, $invoiceId)
     {
         return auth()->user()->account->downloadInvoice($invoiceId, [
-            'vendor'  => 'Monica',
+            'vendor' => 'Monica',
             'product' => trans('settings.subscriptions_pdf_title', ['name' => config('monica.paid_plan_friendly_name')]),
         ]);
     }

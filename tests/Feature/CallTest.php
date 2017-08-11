@@ -20,7 +20,7 @@ class CallTest extends FeatureTestCase
         $user = $this->signIn();
 
         $contact = factory(Contact::class)->create([
-            'account_id' => $user->account_id,
+            'company_id' => $user->account_id,
         ]);
 
         return [$user, $contact];
@@ -73,7 +73,7 @@ class CallTest extends FeatureTestCase
         $response->assertRedirect('/people/'.$contact->id);
 
         // Assert the call has been added for the correct user.
-        $params['account_id'] = $user->account_id;
+        $params['company_id'] = $user->account_id;
         $params['contact_id'] = $contact->id;
         $params['called_at'] = '2013-01-01 00:00:00';
 
@@ -85,7 +85,7 @@ class CallTest extends FeatureTestCase
         $response->assertSee('Last called: Jan 01, 2013');
 
         // Make sure an event has been created for this action
-        $eventParams['account_id'] = $user->account_id;
+        $eventParams['company_id'] = $user->account_id;
         $eventParams['contact_id'] = $contact->id;
         $eventParams['object_type'] = 'call';
         $eventParams['nature_of_operation'] = 'create';
@@ -111,7 +111,7 @@ class CallTest extends FeatureTestCase
         $response->assertRedirect('/people/'.$contact->id);
 
         // Assert the call has been added for the correct user.
-        $params['account_id'] = $user->account_id;
+        $params['company_id'] = $user->account_id;
         $params['contact_id'] = $contact->id;
         $params['called_at'] = '2013-01-01 00:00:00';
 
@@ -123,7 +123,7 @@ class CallTest extends FeatureTestCase
         $response->assertSee('This is a test call');
 
         // Make sure an event has been created for this action
-        $eventParams['account_id'] = $user->account_id;
+        $eventParams['company_id'] = $user->account_id;
         $eventParams['contact_id'] = $contact->id;
         $eventParams['object_type'] = 'call';
         $eventParams['nature_of_operation'] = 'create';
@@ -142,7 +142,7 @@ class CallTest extends FeatureTestCase
 
         $call = factory(\App\Call::class)->create([
             'contact_id' => $contact->id,
-            'account_id' => $user->account_id,
+            'company_id' => $user->account_id,
             'content' => 'this is a test',
             'called_at' => '2013-01-01 00:00:00',
         ]);
@@ -162,7 +162,7 @@ class CallTest extends FeatureTestCase
         $this->assertDatabaseMissing('calls', $params);
 
         // make sure no event is in the database about this object
-        $eventParams['account_id'] = $user->account_id;
+        $eventParams['company_id'] = $user->account_id;
         $eventParams['contact_id'] = $contact->id;
         $eventParams['object_id'] = $call->id;
 

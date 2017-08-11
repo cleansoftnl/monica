@@ -1,5 +1,4 @@
 <?php
-
 return [
     'sidebar_settings' => 'Nastavení účtu',
     'sidebar_settings_export' => 'Exportovat data',
@@ -7,14 +6,12 @@ return [
     'sidebar_settings_subscriptions' => 'Odběry',
     'sidebar_settings_import' => 'Importovat data',
     'sidebar_settings_tags' => 'Správa tagů',
-
     'export_title' => 'Exportovat data účtu',
     'export_be_patient' => 'Kliknout na tlačítko pro spuštění exportu. Zpracování exportu může zabrat až několik minut - buďte prosím trpěliví a neklikejte vícekrát.',
     'export_title_sql' => 'Exportovat jako SQL',
     'export_sql_explanation' => 'Export dat v SQL formátu je umožňuje převést a importovat do vlastní instance Monica. Toto se hodí hlavně pokud provozujete vlastní server.',
     'export_sql_cta' => 'Exportovat jako SQL',
     'export_sql_link_instructions' => 'Poznámka: <a href=":url">přečtěte si instrukce</a> abyste se dozvěděli více o importu tohoto souboru do vlastní instance.',
-
     'name_order' => 'Řazení jmen',
     'name_order_firstname_first' => 'Jméno první (Josef Vomáčka)',
     'name_order_lastname_first' => 'Příjmení první (Vomáčka Josef)',
@@ -45,7 +42,6 @@ return [
     'locale_ru' => 'Ruština',
     'locale_cz' => 'Čeština',
     'locale_de' => 'Němec',
-
     'users_list_title' => 'Uživatelé s přístupem k tomuto účtu',
     'users_list_add_user' => 'Pozvat nového uživatele',
     'users_list_you' => 'Toto jsi ty',
@@ -69,7 +65,6 @@ return [
     'users_invitation_deleted_confirmation_message' => 'Pozvánka byla úspěšně smazána',
     'users_invitations_delete_confirmation' => 'Opravdu chcete smazat tuto pozvánku?',
     'users_list_delete_confirmation' => 'Opravdu chcete smazat tohoto uživatele z tohoto účtu?',
-
     'subscriptions_account_current_plan' => 'Aktuální plán',
     'subscriptions_account_paid_plan' => 'Využíváte plán :name. Měsíční náklady $:price.',
     'subscriptions_account_next_billing' => 'K automatickému obnovení dojde <strong>:date</strong>. Odběr můžete <a href=":url">zrušit</a> kdykoliv.',
@@ -93,7 +88,6 @@ return [
     'subscriptions_upgrade_warning' => 'Váš účet bude okamžitě aktualizován. Účet můžete kdykoliv povýšit, snížit nebo zrušit. Pokud účet zrušíte, nebudete již dále platit. Platba za aktuální měsíc ale nebude vracena.',
     'subscriptions_upgrade_cta' => ' Strhněte z mé karty $:price každý měsíc',
     'subscriptions_pdf_title' => 'Váš měsíční plán :name',
-
     'import_title' => 'Importovat kontakty do svého účtu',
     'import_cta' => 'Nahrát kontakty',
     'import_stat' => 'Zatím jste importovali :number souborů.',
@@ -124,7 +118,6 @@ return [
     'import_blank_question' => 'Chcete nyní importovat kontakty?',
     'import_blank_description' => 'Umíme importovat soubory vCard, které můžete získat z Google Contacts nebo svého správce kontaktů.',
     'import_blank_cta' => 'Importovat vCard',
-
     'tags_list_title' => 'Tagy',
     'tags_list_description' => 'Své kontakty můžete organizovat pomocí tagů. Tagy fungují jako adresáře, kontaktům můžete ale přidat vícero tagů. Nový tag přidáte úpravou vlastního kontaktu.',
     'tags_list_contact_number' => ':count kontaktů',
@@ -132,5 +125,4 @@ return [
     'tags_list_delete_confirmation' => 'Opravdu chcete smazat tento tag? Bude smazán pouze vybraný tag, žádné kontakty.',
     'tags_blank_title' => 'Tagy jsou šikovné řešení kategorizace kontaktů.',
     'tags_blank_description' => 'Tagy fungují jako adresáře, kontaktům můžete ale přidat vícero tagů. Přejděte na kontakt a otagujte přítele hned pod jeho jménem. Jakmile je kontakt otagován, vraťte se zpět pro správu všech tagů v tomto účtu.',
-
 ];

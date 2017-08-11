@@ -1,10 +1,8 @@
 <?php
-
 return [
     'reminders_title' => 'Anstehende Erinnerungen',
     'reminders_blank_description' => 'Es sind keine Erinnerungen geplant.',
     'event_title' => 'Letzte Aktionen',
-
     'event_create_contact' => 'Kontakt hinzugefügt',
     'event_update_contact' => 'Kontakt aktualisiert',
     'event_create_reminder' => 'Erinnerung hinzugefügt',
@@ -24,10 +22,8 @@ return [
     'event_create_gift' => 'Geschenk hinzugefügt',
     'event_update_gift' => 'Geschenk aktualisiert',
     'event_create_call' => 'Telefonat mit :name hinzugefügt',
-
     'blank_title' => 'Du hast noch keine Aktivitäten.',
     'blank_cta' => 'Kontakt hinzufügen',
-
     'tab_last_edited_contacts' => 'zuletzt bearbeitete Kontakte',
     'tab_whats_coming' => 'Was steht an',
     'tab_lastest_actions' => 'letzte Aktionen',
@@ -49,5 +45,4 @@ return [
     'debts_you_due' => 'Du bekommst',
     'debts_for' => 'für',
     'debts_blank' => 'Du hast keine Schulden.',
-
 ];

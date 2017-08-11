@@ -1,5 +1,4 @@
 <?php
-
 use App\Contact;
 use Illuminate\Database\Seeder;
 
@@ -14,7 +13,6 @@ class UsersColorSeeder extends Seeder
     public function run()
     {
         $contacts = Contact::all();
-
         foreach ($contacts as $contact) {
             $contact->setAvatarColor();
         }

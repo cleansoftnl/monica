@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Auth;
@@ -23,26 +22,20 @@ class DashboardController extends Controller
                 'contacts', 'reminders', 'notes', 'activities', 'gifts', 'tasks', 'kids'
             )->with('debts.contact')
             ->first();
-
         $lastUpdatedContacts = $account->contacts()->latest('updated_at')->limit(10)->get();
-
         // Latest statistics
         if ($account->contacts()->count() === 0) {
             return view('dashboard.blank');
         }
-
         $debt = $account->debts->where('status', 'inprogress');
-
         $debt_due = $debt->where('in_debt', 'yes')
             ->reduce(function ($totalDueDebt, Debt $debt) {
                 return $totalDueDebt + $debt->amount;
             }, 0);
-
         $debt_owed = $debt->where('in_debt', 'no')
             ->reduce(function ($totalOwedDebt, Debt $debt) {
                 return $totalOwedDebt + $debt->amount;
             }, 0);
-
         // List of events
         $events = $account->events()->with('contact.significantOthers', 'contact.kids')->limit(30)->get()
             ->reject(function (Event $event) {
@@ -54,7 +47,6 @@ class DashboardController extends Controller
                 } elseif ($event->object_type === 'kid') {
                     $object = $event->contact->kids->where('id', $event->object_id)->first();
                 }
-
                 return [
                     'id' => $event->id,
                     'date' => DateHelper::createDateFromFormat($event->created_at, auth()->user()->timezone),
@@ -66,7 +58,6 @@ class DashboardController extends Controller
                     'nature_of_operation' => $event->nature_of_operation,
                 ];
             });
-
         // List of upcoming reminders
         $upcomingReminders = $account->reminders()
             ->where('next_expected_date', '>', Carbon::now())
@@ -74,10 +65,8 @@ class DashboardController extends Controller
             ->with('contact')
             ->limit(10)
             ->get();
-
         // Active tasks
         $tasks = $account->tasks()->with('contact')->where('status', 'inprogress')->get();
-
         $data = [
             'events' => $events,
             'lastUpdatedContacts' => $lastUpdatedContacts,
@@ -95,7 +84,6 @@ class DashboardController extends Controller
             'debts' => $debt,
             'user' => auth()->user(),
         ];
-
         return view('dashboard.index', $data);
     }
 }

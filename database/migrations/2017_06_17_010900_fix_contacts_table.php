@@ -1,5 +1,4 @@
 <?php
-
 use App\Contact;
 use Illuminate\Database\Migrations\Migration;
 

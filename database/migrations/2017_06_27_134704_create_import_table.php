@@ -1,8 +1,7 @@
 <?php
-
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateImportTable extends Migration
 {
@@ -15,7 +14,7 @@ class CreateImportTable extends Migration
     {
         Schema::create('import_jobs', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('account_id');
+            $table->integer('company_id');
             $table->integer('user_id');
             $table->string('type')->default('vcard');
             $table->integer('contacts_found')->nullable();
@@ -28,10 +27,9 @@ class CreateImportTable extends Migration
             $table->mediumText('failed_reason')->nullable();
             $table->timestamps();
         });
-
         Schema::create('import_job_reports', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('account_id');
+            $table->integer('company_id');
             $table->integer('user_id');
             $table->integer('import_job_id');
             $table->mediumText('contact_information');

@@ -1,10 +1,8 @@
 <?php
-
 return [
     'reminders_title' => 'Prochains rappels',
     'reminders_blank_description' => 'Aucun rappel planifié.',
     'event_title' => 'Dernières actions',
-
     'event_create_contact' => 'contact added',
     'event_update_contact' => 'contact updated',
     'event_create_reminder' => 'added a reminder',
@@ -23,10 +21,8 @@ return [
     'event_update_debt' => 'updated a debt',
     'event_create_gift' => 'added a gift',
     'event_update_gift' => 'updated a gift',
-
     'blank_title' => 'Vous n\'avez encore aucune activité.',
     'blank_cta' => 'Ajoutez un contact',
-
     'tab_last_edited_contacts' => 'Derniers contacts modifiés',
     'tab_whats_coming' => 'Prochainement',
     'tab_lastest_actions' => 'Dernières actions',
@@ -48,5 +44,4 @@ return [
     'debts_you_due' => 'On vous doit',
     'debts_for' => 'pour',
     'debts_blank' => 'Vous n\'avez pas de dettes.',
-
 ];

@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
@@ -51,7 +50,7 @@ class User extends Authenticatable
      */
     public function getContactsSortOrderAttribute($value)
     {
-        return ! empty($value) ? $value : 'firstnameAZ';
+        return !empty($value) ? $value : 'firstnameAZ';
     }
 
     /**
@@ -88,21 +87,17 @@ class User extends Authenticatable
     public function getNameAttribute()
     {
         $completeName = '';
-
         if ($this->name_order == 'firstname_first') {
             $completeName = $this->first_name;
-
-            if (! is_null($this->last_name)) {
-                $completeName = $completeName.' '.$this->last_name;
+            if (!is_null($this->last_name)) {
+                $completeName = $completeName . ' ' . $this->last_name;
             }
         } else {
-            if (! is_null($this->last_name)) {
+            if (!is_null($this->last_name)) {
                 $completeName = $this->last_name;
             }
-
-            $completeName = $completeName.' '.$this->first_name;
+            $completeName = $completeName . ' ' . $this->first_name;
         }
-
         return $completeName;
     }
 

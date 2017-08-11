@@ -1,8 +1,7 @@
 <?php
-
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class ChangePeopleInEvents extends Migration
 {
@@ -18,9 +17,8 @@ class ChangePeopleInEvents extends Migration
                 'people_id'
             );
         });
-
         Schema::table('events', function (Blueprint $table) {
-            $table->integer('contact_id')->after('account_id');
+            $table->integer('contact_id')->after('company_id');
         });
     }
 
@@ -36,9 +34,8 @@ class ChangePeopleInEvents extends Migration
                 'contact_id'
             );
         });
-
         Schema::table('events', function (Blueprint $table) {
-            $table->integer('people_id')->after('account_id');
+            $table->integer('people_id')->after('company_id');
         });
     }
 }

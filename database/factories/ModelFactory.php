@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -10,7 +9,6 @@
 | database. Just tell the factory how a default model should look.
 |
 */
-
 use App\Helpers\RandomHelper;
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
@@ -22,19 +20,17 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
         'timezone' => config('app.timezone'),
         'name_order' => 'firstname_first',
-        'account_id' => factory('App\Account')->create()->id,
+        'company_id' => factory('App\Account')->create()->id,
     ];
 });
-
 $factory->define(App\Account::class, function (Faker\Generator $faker) {
     return [
         'api_key' => RandomHelper::generateString(30),
     ];
 });
-
 $factory->define(App\Activity::class, function (Faker\Generator $faker) {
     return [
-        'account_id' => 1,
+        'company_id' => 1,
         'contact_id' => 1,
         'activity_type_id' => function () {
             return factory(App\ActivityType::class)->create()->id;
@@ -43,7 +39,6 @@ $factory->define(App\Activity::class, function (Faker\Generator $faker) {
         'date_it_happened' => \Carbon\Carbon::createFromTimeStamp($faker->dateTimeThisCentury()->getTimeStamp()),
     ];
 });
-
 $factory->define(App\ActivityType::class, function (Faker\Generator $faker) {
     return [
         'key' => $faker->sentence,
@@ -51,62 +46,54 @@ $factory->define(App\ActivityType::class, function (Faker\Generator $faker) {
         'icon' => $faker->word,
     ];
 });
-
 $factory->define(App\Reminder::class, function (Faker\Generator $faker) {
     return [
-        'account_id' => 1,
+        'company_id' => 1,
         'contact_id' => 1,
     ];
 });
-
 $factory->define(App\Contact::class, function (Faker\Generator $faker) {
     return [
-        'account_id' => 1,
+        'company_id' => 1,
         'first_name' => 'John',
         'last_name' => 'Doe',
         'birthdate' => \Carbon\Carbon::createFromTimeStamp($faker->dateTimeThisCentury()->getTimeStamp()),
     ];
 });
-
 $factory->define(App\Gift::class, function (Faker\Generator $faker) {
     return [
         'created_at' => \Carbon\Carbon::createFromTimeStamp($faker->dateTimeThisCentury()->getTimeStamp()),
     ];
 });
-
 $factory->define(App\Call::class, function (Faker\Generator $faker) {
     return [
         'created_at' => \Carbon\Carbon::createFromTimeStamp($faker->dateTimeThisCentury()->getTimeStamp()),
     ];
 });
-
 $factory->define(App\Task::class, function (Faker\Generator $faker) {
     return [
-        'account_id' => 1,
+        'company_id' => 1,
         'contact_id' => 1,
         'created_at' => \Carbon\Carbon::createFromTimeStamp($faker->dateTimeThisCentury()->getTimeStamp()),
     ];
 });
-
 $factory->define(App\SignificantOther::class, function (Faker\Generator $faker) {
     return [
-        'account_id' => 1,
+        'company_id' => 1,
         'contact_id' => 1,
         'status' => 'active',
         'birthdate' => \Carbon\Carbon::createFromTimeStamp($faker->dateTimeThisCentury()->getTimeStamp()),
     ];
 });
-
 $factory->define(App\Note::class, function (Faker\Generator $faker) {
     return [
-        'account_id' => 1,
+        'company_id' => 1,
         'body' => encrypt($faker->text(200)),
     ];
 });
-
 $factory->define(App\Kid::class, function (Faker\Generator $faker) {
     return [
-        'account_id' => 1,
+        'company_id' => 1,
         'child_of_contact_id' => 1,
         'gender' => 'male',
         'first_name' => encrypt($faker->firstName),
@@ -116,7 +103,6 @@ $factory->define(App\Kid::class, function (Faker\Generator $faker) {
         'food_preferencies' => encrypt($faker->sentence),
     ];
 });
-
 $factory->define(App\Country::class, function (Faker\Generator $faker) {
     return [
         'iso' => 'ca',

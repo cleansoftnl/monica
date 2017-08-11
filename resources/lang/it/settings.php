@@ -1,5 +1,4 @@
 <?php
-
 return [
     'sidebar_settings' => 'Impostazioni accounto',
     'sidebar_settings_export' => 'Esporta dati',
@@ -7,14 +6,12 @@ return [
     'sidebar_settings_subscriptions' => 'Sottoscrizioni',
     'sidebar_settings_import' => 'Importa dati',
     'sidebar_settings_tags' => 'Gestione etichette',
-
     'export_title' => 'Esporta i dati del tuo account',
     'export_be_patient' => 'Clicca il pulsante per iniziare l\'esportazione. Potrebbe volerci qualche minuto - ti chiediamo di portare pazienza e non premere il pulsante a ripetizione.',
     'export_title_sql' => 'Esporta a SQL',
     'export_sql_explanation' => 'Esportare i dati in formato SQL ti permette di importarli nella tua istanza di Monica. Ciò ha senso solo se hai un tuo proprio server.',
     'export_sql_cta' => 'Esporta a SQL',
     'export_sql_link_instructions' => 'Nota: <a href=":url">leggi le istruzioni</a> per capire come importare questo file nella tua istanza di Monica.',
-
     'name_order' => 'Ordine del nome',
     'name_order_firstname_first' => 'Prima il nome (Mario Rossi)',
     'name_order_lastname_first' => 'Prima il cognome (Rossi Mario)',
@@ -46,7 +43,6 @@ return [
     'locale_cz' => 'Ceco',
     'locale_it' => 'Italiano',
     'locale_de' => 'Tedesco',
-
     'users_list_title' => 'Utenti con accesso al tuo account',
     'users_list_add_user' => 'Invita un nouvo utente',
     'users_list_you' => 'Sei tu',
@@ -70,7 +66,6 @@ return [
     'users_invitation_deleted_confirmation_message' => 'Invito rimosso',
     'users_invitations_delete_confirmation' => 'Rimuovere invito?',
     'users_list_delete_confirmation' => 'Rimuovere questo utente dal tuo account?',
-
     'subscriptions_account_current_plan' => 'Il tuo piano attuale',
     'subscriptions_account_paid_plan' => 'Stai usando il piano :name. Costa $:price al mese.',
     'subscriptions_account_next_billing' => 'La tua sottoscrizione si aggiornerà automaticamente il <strong>:date</strong>. Puoi <a href=":url">cancellare la tua sottoscrizione</a> in qualsiasi momento.',
@@ -94,7 +89,6 @@ return [
     'subscriptions_upgrade_warning' => 'Il tuo account verrà promosso immediatamente. Puoi promuoverlo, retrocederlo, o cancellare la tua sottoscrizione in qualsiasi momento. Se cancelli la sottoscrizione, non ti verrà più addebitato niente, ma il mese corrente non ti verrà rimborsato.',
     'subscriptions_upgrade_cta' => ' Addebita $:price alla mia carta mensilmente',
     'subscriptions_pdf_title' => 'Sottoscrizione mensile a :name',
-
     'import_title' => 'Importa contatti nel tuo account',
     'import_cta' => 'Carica contatti',
     'import_stat' => 'Hai importato :number file.',
@@ -125,7 +119,6 @@ return [
     'import_blank_question' => 'Importare contatti?',
     'import_blank_description' => 'Possiamo importare file vCard ottenibili da Google Contacts o dal tuo gestore di contatti.',
     'import_blank_cta' => 'Importa vCard',
-
     'tags_list_title' => 'Etichette',
     'tags_list_description' => 'Puoi organizzare i tuoi contatti attraverso le etichette. Le etichette funzionano come delle cartelle, ma puoi aggiungere più di un\'etichetta a ogni contatto. Per aggiungere una nuova etichetta, aggiungila al contatto stesso.',
     'tags_list_contact_number' => ':count contatti',
@@ -133,5 +126,4 @@ return [
     'tags_list_delete_confirmation' => 'Rimuovere etichetta? Nessun contatto verrà rimosso, solo l\'etichetta.',
     'tags_blank_title' => 'Le etichette sono un buon modo di organizzare i tuoi contatti.',
     'tags_blank_description' => 'Le etichette funzionano come delle cartelle, ma puoi aggiungere più di un\'etichetta a ogni contatto. Entra nella pagina di un contatto ed etichettalo come amico, giusto sotto al nome. Quando un contatto è stato etichettato, puoi tornare qui per gestire tutte le tue etichette.',
-
 ];

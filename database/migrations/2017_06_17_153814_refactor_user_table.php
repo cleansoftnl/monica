@@ -1,8 +1,7 @@
 <?php
-
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class RefactorUserTable extends Migration
 {
@@ -24,13 +23,11 @@ class RefactorUserTable extends Migration
                 'gender',
                 'deleted_at',
             ]);
-
             $table->integer('invited_by_user_id')->after('contacts_sort_order')->nullable();
         });
-
         Schema::create('invitations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('account_id');
+            $table->integer('company_id');
             $table->integer('invited_by_user_id');
             $table->string('email');
             $table->string('invitation_key');

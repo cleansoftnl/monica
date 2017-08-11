@@ -20,7 +20,7 @@ class NoteTest extends FeatureTestCase
         $user = $this->signIn();
 
         $contact = factory(Contact::class)->create([
-            'account_id' => $user->account_id,
+            'company_id' => $user->account_id,
         ]);
 
         return [$user, $contact];
@@ -70,7 +70,7 @@ class NoteTest extends FeatureTestCase
         $response->assertRedirect('/people/'.$contact->id);
 
         // Assert the note has been added for the correct user.
-        $params['account_id'] = $user->account_id;
+        $params['company_id'] = $user->account_id;
         $params['contact_id'] = $contact->id;
         $params['body'] = $noteBody;
 
@@ -81,7 +81,7 @@ class NoteTest extends FeatureTestCase
         $response->assertSee($noteBody);
 
         // Make sure an event has been created for this action
-        $eventParams['account_id'] = $user->account_id;
+        $eventParams['company_id'] = $user->account_id;
         $eventParams['contact_id'] = $contact->id;
         $eventParams['object_type'] = 'note';
         $eventParams['nature_of_operation'] = 'create';
@@ -100,7 +100,7 @@ class NoteTest extends FeatureTestCase
 
         $note = factory(\App\Note::class)->create([
             'contact_id' => $contact->id,
-            'account_id' => $user->account_id,
+            'company_id' => $user->account_id,
             'body' => 'this is a test',
         ]);
 
@@ -116,7 +116,7 @@ class NoteTest extends FeatureTestCase
         $this->put('/people/'.$contact->id.'/notes/'.$note->id, $params);
 
         // see if the change is in the database
-        $newParams['account_id'] = $user->account_id;
+        $newParams['company_id'] = $user->account_id;
         $newParams['contact_id'] = $contact->id;
         $newParams['id'] = $note->id;
         $newParams['body'] = 'this is another test';
@@ -124,7 +124,7 @@ class NoteTest extends FeatureTestCase
         $this->assertDatabaseHas('notes', $newParams);
 
         // make sure an event has been created for this action
-        $eventParams['account_id'] = $user->account_id;
+        $eventParams['company_id'] = $user->account_id;
         $eventParams['contact_id'] = $contact->id;
         $eventParams['object_type'] = 'note';
         $eventParams['object_id'] = $note->id;
@@ -145,7 +145,7 @@ class NoteTest extends FeatureTestCase
 
         $note = factory(\App\Note::class)->create([
             'contact_id' => $contact->id,
-            'account_id' => $user->account_id,
+            'company_id' => $user->account_id,
             'body' => 'this is a test',
         ]);
 
@@ -164,7 +164,7 @@ class NoteTest extends FeatureTestCase
         $this->assertDatabaseMissing('notes', $params);
 
         // make sure no event is in the database about this object
-        $eventParams['account_id'] = $user->account_id;
+        $eventParams['company_id'] = $user->account_id;
         $eventParams['contact_id'] = $contact->id;
         $eventParams['object_id'] = $note->id;
 

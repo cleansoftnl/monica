@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
@@ -114,7 +113,6 @@ class Gift extends Model
             $this->about_object_id = $recipient->id;
             $this->about_object_type = camel_case(class_basename($recipient));
         }
-
         return $this;
     }
 

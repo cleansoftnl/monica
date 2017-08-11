@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 
 class AddIndianRupeeToCurrenciesTable extends Migration
@@ -11,6 +10,6 @@ class AddIndianRupeeToCurrenciesTable extends Migration
      */
     public function up()
     {
-        DB::table('currencies')->insert(['iso' => 'INR', 'name' => 'Indian rupee', 'symbol'=>'₹']);
+        DB::table('currencies')->insert(['iso' => 'INR', 'name' => 'Indian rupee', 'symbol' => '₹']);
     }
 }

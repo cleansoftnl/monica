@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Mail;
 
 use App\User;
@@ -35,15 +34,13 @@ class UserReminded extends Mailable
     public function build()
     {
         $contact = Contact::findOrFail($this->reminder->contact_id);
-
         \App::setLocale($this->user->locale);
-
         return $this->text('emails.reminder.reminder')
-                    ->subject(trans('mail.subject_line', ['contact' => $contact->getCompleteName($this->user->name_order)]))
-                    ->with([
-                        'contact' => $contact,
-                        'reminder' => $this->reminder,
-                        'user' => $this->user,
-                    ]);
+            ->subject(trans('mail.subject_line', ['contact' => $contact->getCompleteName($this->user->name_order)]))
+            ->with([
+                'contact' => $contact,
+                'reminder' => $this->reminder,
+                'user' => $this->user,
+            ]);
     }
 }

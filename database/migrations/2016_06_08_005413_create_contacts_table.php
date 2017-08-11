@@ -1,7 +1,6 @@
 <?php
-
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateContactsTable extends Migration
 {
@@ -14,7 +13,7 @@ class CreateContactsTable extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('account_id');
+            $table->integer('company_id');
             $table->integer('entity_id')->nullable();
             $table->enum('status', ['adult', 'parent', 'kid']);
             $table->string('first_name');
@@ -50,37 +49,33 @@ class CreateContactsTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
-
         Schema::create('kids', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('account_id');
+            $table->integer('company_id');
             $table->integer('contact_id_first_parent');
             $table->integer('contact_id_second_parent')->nullable();
             $table->string('was_part_of_entity_id');
             $table->timestamps();
         });
-
-        Schema::create('entities', function (Blueprint $table) {
+        Schema::create('relations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('account_id');
+            $table->integer('company_id');
             $table->string('name');
             $table->softDeletes();
             $table->timestamps();
         });
-
         Schema::create('important_dates', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('account_id');
+            $table->integer('company_id');
             $table->enum('type', ['entity', 'contact']);
             $table->integer('contact_id');
             $table->dateTime('date_to_remember');
             $table->string('description');
             $table->timestamps();
         });
-
         Schema::create('gifts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('account_id');
+            $table->integer('company_id');
             $table->string('people_id');
             $table->enum('type_of_people', ['parent', 'kid']);
             $table->enum('nature', ['amazon', 'other']);
@@ -89,27 +84,24 @@ class CreateContactsTable extends Migration
             $table->string('giving_date')->nullable();
             $table->timestamps();
         });
-
         Schema::create('countries', function (Blueprint $table) {
             $table->increments('id');
             $table->string('iso');
             $table->string('country');
         });
-
         Schema::create('peoples', function (Blueprint $table) {
             $table->increments('id');
             $table->string('api_id');
-            $table->integer('account_id');
+            $table->integer('company_id');
             $table->enum('type', ['entity', 'contact']);
             $table->integer('object_id');
             $table->dateTime('viewed_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
-
         Schema::create('reminders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('account_id');
+            $table->integer('company_id');
             $table->integer('people_id');
             $table->string('title')->nullable();
             $table->longText('description')->nullable();
@@ -129,6 +121,6 @@ class CreateContactsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('contacts', 'kids', 'important_dates', 'entities', 'gifts', 'note_object', 'notes', 'countries', 'peoples', 'reminders');
+        //Schema::drop('contacts', 'kids', 'important_dates', 'relations', 'gifts', 'note_object', 'notes', 'countries', 'peoples', 'reminders');
     }
 }

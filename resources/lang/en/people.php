@@ -1,7 +1,5 @@
 <?php
-
 return [
-
     //index
     'people_list_number_kids' => '{0} 0 kids|{1,1} 1 kid|{2,*} :count kids',
     'people_list_last_updated' => 'Last consulted:',
@@ -19,7 +17,6 @@ return [
     'people_list_contacts_per_tags' => '{0} 0 contact|{1,1} 1 contact|{2,*} :count contacts',
     'people_search' => 'Search your contacts...',
     'people_search_no_results' => 'No relevant contacts found :(',
-
     // people add
     'people_add_title' => 'Add a new person',
     'people_add_firstname' => 'First name',
@@ -33,21 +30,17 @@ return [
     'people_delete_confirmation' => 'Are you sure you want to delete this contact? Deletion is permanent.',
     'people_add_birthday_reminder' => 'Wish happy birthday to :name',
     'people_add_import' => 'Do you want to <a href="/settings/import">import your contacts</a>?',
-
     // show
     'section_personal_information' => 'Personal information',
     'section_personal_activities' => 'Activities',
     'section_personal_reminders' => 'Reminders',
     'section_personal_tasks' => 'Tasks',
     'section_personal_gifts' => 'Gifts',
-
     //
     'link_to_list' => 'List of people',
-
     // Header
     'edit_contact_information' => 'Edit contact information',
     'call_button' => 'Log a call',
-
     // Calls
     'modal_call_title' => 'Log a call',
     'modal_call_comment' => 'What did you talk about? (optional)',
@@ -60,19 +53,16 @@ return [
     'call_title' => 'Phone calls',
     'call_empty_comment' => 'No details',
     'call_blank_title' => 'Keep track of the phone calls you\'ve done with :name',
-
     // age - birthday
     'birthdate_not_set' => 'Birthdate is not set',
     'age_approximate_in_years' => 'around :age years old',
     'age_exact_in_years' => ':age years old',
     'age_exact_birthdate' => 'born :date',
-
     // Last called
     'last_called' => 'Last called: :date',
     'last_called_empty' => 'Last called: unknown',
     'last_activity_date' => 'Last activity together: :date',
     'last_activity_date_empty' => 'Last activity together: unknown',
-
     // additional information
     'information_edit_success' => 'The profile has been updated successfully',
     'information_edit_title' => 'Edit :name\'s personal information',
@@ -107,7 +97,6 @@ return [
     'work_edit_title' => 'Update :name\'s job information',
     'work_edit_job' => 'Job title (optional)',
     'work_edit_company' => 'Company (optional)',
-
     // food preferencies
     'food_preferencies_add_success' => 'Food preferences have been saved',
     'food_preferencies_edit_description' => 'Perhaps :firstname or someone in the :family\'s family has an allergy. Or doesn\'t like a specific bottle of wine. Indicate them here so you will remember it next time you invite them for dinner',
@@ -116,7 +105,6 @@ return [
     'food_preferencies_edit_cta' => 'Save food preferences',
     'food_preferencies_title' => 'Food preferences',
     'food_preferencies_cta' => 'Add food preferences',
-
     // reminders
     'reminders_blank_title' => 'Is there something you want to be reminded of about :name?',
     'reminders_blank_add_activity' => 'Add a reminder',
@@ -132,7 +120,6 @@ return [
     'reminders_add_error_custom_text' => 'You need to indicate a text for this reminder',
     'reminders_create_success' => 'The reminder has been added successfully',
     'reminders_delete_success' => 'The reminder has been deleted successfully',
-
     'reminder_frequency_week' => 'every week|every :number weeks',
     'reminder_frequency_month' => 'every month|every :number months',
     'reminder_frequency_year' => 'every year|every :number year',
@@ -146,7 +133,6 @@ return [
     'reminders_type_week' => 'week',
     'reminders_type_month' => 'month',
     'reminders_type_year' => 'year',
-
     // significant other
     'significant_other_sidebar_title' => 'Significant other',
     'significant_other_cta' => 'Add significant other',
@@ -164,7 +150,6 @@ return [
     'significant_other_edit_success' => 'The significant other has been updated successfully',
     'significant_other_delete_success' => 'The significant other has been deleted successfully',
     'significant_other_add_birthday_reminder' => 'Wish happy birthday to :name, :contact_firstname\'s significant other',
-
     // kids
     'kids_sidebar_title' => 'Children',
     'kids_sidebar_cta' => 'Add another child',
@@ -186,7 +171,6 @@ return [
     'kids_update_success' => 'The child has been updated successfully',
     'kids_delete_success' => 'The child has been deleted successfully',
     'kids_add_birthday_reminder' => 'Wish happy birthday to :name, :contact_firstname\'s child',
-
     // tasks
     'tasks_desc' => 'Keep tracks of things you need to do for :name',
     'tasks_blank_title' => 'It looks like you don\'t have any tasks about :name yet',
@@ -204,7 +188,6 @@ return [
     'tasks_delete_confirmation' => 'Are you sure you want to delete this task?',
     'tasks_delete_success' => 'The task has been deleted successfully',
     'tasks_complete_success' => 'The task has changed status successfully',
-
     // activities
     'activity_title' => 'Activities',
     'activity_type_group_simple_activities' => 'Simple activities',
@@ -241,7 +224,6 @@ return [
     'activities_add_success' => 'The activity has been added successfully',
     'activities_update_success' => 'The activity has been updated successfully',
     'activities_delete_success' => 'The activity has been deleted successfully',
-
     // notes
     'notes_create_success' => 'The note has been created successfully',
     'notes_update_success' => 'The note has been saved successfully',
@@ -256,7 +238,6 @@ return [
     'notes_blank_link' => 'Add a note',
     'notes_blank_name' => 'about :name',
     'notes_delete_confirmation' => 'Are you sure you want to delete this note? Deletion is permanent',
-
     // gifts
     'gifts_blank_title' => 'Manage your gifts ideas and the ones you\'ve offered to :name',
     'gifts_blank_add_gift' => 'Add a gift',
@@ -282,7 +263,6 @@ return [
     'gifts_table_date_added' => 'Date added',
     'gifts_table_description' => 'Description',
     'gifts_table_actions' => 'Actions',
-
     // debts
     'debt_delete_confirmation' => 'Are you sure you want to delete this debt?',
     'debt_delete_success' => 'The debt has been deleted successfully',
@@ -300,7 +280,6 @@ return [
     'debt_edit_update_cta' => 'Update debt',
     'debt_edit_success' => 'The debt has been updated successfully',
     'debts_blank_title' => 'Manage debts you owe to :name or :name owes you',
-
     // tags
     'tag_edit' => 'Edit tag',
 ];

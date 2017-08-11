@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\People;
 
 use App\Contact;
@@ -18,45 +17,35 @@ class TagsController extends Controller
      */
     public function update(TagsRequest $request, Contact $contact)
     {
-        if (auth()->user()->account_id != $contact->account_id) {
+        if (auth()->user()->company_id != $contact->company_id) {
             return response()->json(['status' => 'no']);
         }
-
         $tags = explode(',', $request->input('tags'));
-
         // if we receive an empty string, that means all tags have been removed.
         if ($request->input('tags') == '') {
             $contact->tags()->detach();
-
             return response()->json(['status' => 'no', 'tags' => '']);
         }
-
         $tagsIDs = [];
         $tagsWithIdAndSlug = [];
         foreach ($tags as $tag) {
             $tag = auth()->user()->account->tags()->firstOrCreate([
                 'name' => $tag,
             ]);
-
             $tag->name_slug = str_slug($tag->name);
             $tag->save();
-
-            $tagsIDs[$tag->id] = ['account_id' => auth()->user()->account_id];
-
+            $tagsIDs[$tag->id] = ['company_id' => auth()->user()->company_id];
             // this is passed back in json to JS
             array_push($tagsWithIdAndSlug, [
-              'id' => $tag->id,
-              'slug' => $tag->name_slug,
+                'id' => $tag->id,
+                'slug' => $tag->name_slug,
             ]);
         }
-
         $contact->tags()->sync($tagsIDs);
-
         $response = [
-          'status' => 'yes',
-          'tags' => $tagsWithIdAndSlug,
+            'status' => 'yes',
+            'tags' => $tagsWithIdAndSlug,
         ];
-
         return response()->json($response);
     }
 }

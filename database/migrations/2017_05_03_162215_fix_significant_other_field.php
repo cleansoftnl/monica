@@ -1,5 +1,4 @@
 <?php
-
 use App\SignificantOther;
 use Illuminate\Database\Migrations\Migration;
 
@@ -17,7 +16,6 @@ class FixSignificantOtherField extends Migration
             if ($significantother->is_birthdate_approximate == 'true') {
                 $significantother->is_birthdate_approximate = 'approximate';
             }
-
             if ($significantother->is_birthdate_approximate == 'false') {
                 $significantother->is_birthdate_approximate = 'exact';
             }

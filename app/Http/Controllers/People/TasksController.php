@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\People;
 
 use App\Task;
@@ -49,14 +48,12 @@ class TasksController extends Controller
                 'description',
             ])
             + [
-                'account_id' => $contact->account_id,
+                'company_id' => $contact->company_id,
                 'status' => 'inprogress',
             ]
         );
-
         $contact->logEvent('task', $task->id, 'create');
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.tasks_add_success'));
     }
 
@@ -101,12 +98,10 @@ class TasksController extends Controller
                 'description',
                 'completed_at',
             ])
-            + ['account_id' => $contact->account_id]
+            + ['company_id' => $contact->company_id]
         );
-
         $contact->logEvent('task', $task->id, 'update');
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.tasks_update_success'));
     }
 
@@ -121,8 +116,7 @@ class TasksController extends Controller
     public function toggle(TasksRequest $request, Contact $contact, Task $task)
     {
         $task->toggle();
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.tasks_complete_success'));
     }
 
@@ -136,10 +130,8 @@ class TasksController extends Controller
     public function destroy(Contact $contact, Task $task)
     {
         $task->delete();
-
         $contact->events()->forObject($task)->get()->each->delete();
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.tasks_delete_success'));
     }
 }

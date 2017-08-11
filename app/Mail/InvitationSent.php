@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Mail;
 
 use App\Invitation;
@@ -31,9 +30,9 @@ class InvitationSent extends Mailable
     public function build()
     {
         return $this->view('emails.invitation.index')
-                    ->subject('You are invited to join Monica')
-                    ->with([
-                        'invitation' => $this->invitation,
-                    ]);
+            ->subject('You are invited to join Monica')
+            ->with([
+                'invitation' => $this->invitation,
+            ]);
     }
 }

@@ -1,7 +1,5 @@
 <?php
-
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Language Lines
@@ -12,8 +10,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
-    'failed'   => 'Ces identifiants ne correspondent pas à nos enregistrements',
+    'failed' => 'Ces identifiants ne correspondent pas à nos enregistrements',
     'throttle' => 'Trop de tentatives de connexion. Veuillez essayer de nouveau dans :seconds secondes.',
     'not_authorized' => 'Vous n\'êtes pas autorisé à exécuter cette action',
     'signup_disabled' => 'L\'inscription est actuellement désactivée',

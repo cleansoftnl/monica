@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Helpers;
 
 use Auth;
@@ -18,7 +17,6 @@ class DateHelper
     public static function createDateFromFormat($date, $timezone)
     {
         $date = Carbon::createFromFormat('Y-m-d H:i:s', $date, $timezone);
-
         return $date;
     }
 
@@ -33,7 +31,6 @@ class DateHelper
     {
         $date = new Date($date);
         $locale = self::getLocale($locale);
-
         switch ($locale) {
             case 'en':
                 $format = 'M d, Y';
@@ -46,7 +43,6 @@ class DateHelper
                 $format = 'M d, Y';
                 break;
         }
-
         return $date->format($format);
     }
 
@@ -61,7 +57,6 @@ class DateHelper
     {
         $date = new Date($date);
         $locale = self::getLocale($locale);
-
         switch ($locale) {
             case 'en':
                 $format = 'M d, Y H:i';
@@ -73,7 +68,6 @@ class DateHelper
             default:
                 $format = 'M d, Y H:i';
         }
-
         return $date->format($format);
     }
 
@@ -90,17 +84,15 @@ class DateHelper
         } else {
             $locale = $locale ?: 'en';
         }
-
         Date::setLocale($locale);
-
         return $locale;
     }
 
     /**
      * Add a given number of week/month/year to a date.
-     * @param Carbon $date      the start date
+     * @param Carbon $date the start date
      * @param string $frequency week/month/year
-     * @param int $number    the number of week/month/year to increment to
+     * @param int $number the number of week/month/year to increment to
      */
     public static function addTimeAccordingToFrequencyType(Carbon $date, $frequency, $number)
     {
@@ -115,7 +107,6 @@ class DateHelper
                 $date->addYears($number);
                 break;
         }
-
         return $date;
     }
 }

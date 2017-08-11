@@ -1,7 +1,5 @@
 <?php
-
 return [
-
     //index
     'people_list_number_kids' => '{0} 0 enfant |{1,1} 1 enfant|{2,*} :count enfants',
     'people_list_last_updated' => 'Last consulted:',
@@ -19,7 +17,6 @@ return [
     'people_list_contacts_per_tags' => '{0} 0 contact|{1,1} 1 contact|{2,*} :count contacts',
     'people_search' => 'Search your contacts...',
     'people_search_no_results' => 'No relevant contacts found :(',
-
     // people add
     'people_add_title' => 'Ajouter une nouvelle personne',
     'people_add_firstname' => 'Prénom',
@@ -33,21 +30,17 @@ return [
     'people_delete_confirmation' => 'Etes-vous sûr de vouloir supprimer ce contact ? La suppression est permanente.',
     'people_add_birthday_reminder' => 'Wish happy birthday to :name',
     'people_add_import' => 'Do you want to <a href="/settings/import">import your contacts</a>?',
-
     // show
     'section_personal_information' => 'Informations personnelles',
     'section_personal_activities' => 'Activités',
     'section_personal_reminders' => 'Rappels',
     'section_personal_tasks' => 'Tâches',
     'section_personal_gifts' => 'Cadeaux',
-
     //
     'link_to_list' => 'Retour à la liste',
-
     // Header
     'edit_contact_information' => 'Mettre à jour les informations',
     'call_button' => 'Log a call',
-
     // Calls
     'modal_call_title' => 'Log a call',
     'modal_call_comment' => 'What did you talk about? (optional)',
@@ -60,19 +53,16 @@ return [
     'call_title' => 'Phone calls',
     'call_empty_comment' => 'No details',
     'call_blank_title' => 'Keep track of the phone calls you\'ve done with :name',
-
     // age - birthday
     'birthdate_not_set' => 'Non indiqué.',
     'age_approximate_in_years' => 'env. :age ans',
     'age_exact_in_years' => ':age ans',
     'age_exact_birthdate' => 'né le :date',
-
     // Last called
     'last_called' => 'Dernier appel : :date',
     'last_called_empty' => 'Dernier appel : inconnu',
     'last_activity_date' => 'Dernière activité ensemble : :date',
     'last_activity_date_empty' => 'Dernière activité ensemble : inconnu',
-
     // additional information
     'information_edit_success' => 'Le profil a été mis à jour avec succès',
     'information_edit_title' => 'Mettre à jour les informations personnelles de :name',
@@ -107,7 +97,6 @@ return [
     'work_edit_title' => 'Mettre à jour les informations professionnelles de :name',
     'work_edit_job' => 'Poste (optionel)',
     'work_edit_company' => 'Entreprise (optionel)',
-
     // food preferencies
     'food_preferencies_add_success' => 'Les préférences alimentaires ont été mises à jour.',
     'food_preferencies_edit_description' => 'Peut-être que :firstname ou quelqu\'un dans la famille :family a une allergie. Ou peut-être qu\'il n\'aime pas un vin spécifique. Indiquez ici ses préférences alimentaires afin que vous vous en rappeliez la prochaine fois que vous l\'inviterez à dîner.',
@@ -116,7 +105,6 @@ return [
     'food_preferencies_edit_cta' => 'Enregistrer les préférences alimentaires',
     'food_preferencies_title' => 'Préférences alimentaires',
     'food_preferencies_cta' => 'Ajouter',
-
     // reminders
     'reminders_blank_title' => 'De quoi souhaitez-vous être rappelé à propos de :name ?',
     'reminders_blank_add_activity' => 'Ajouter un rappel',
@@ -135,7 +123,6 @@ return [
     'reminders_type_week' => 'semaine',
     'reminders_type_month' => 'mois',
     'reminders_type_year' => 'année',
-
     'reminder_frequency_week' => 'chaque semaine|chaque :number semaines',
     'reminder_frequency_month' => 'chaque mois|chaque :number mois',
     'reminder_frequency_year' => 'chaque année|chaque :number années',
@@ -146,7 +133,6 @@ return [
     'reminders_cta' => 'Ajouter un rappel',
     'reminders_description' => 'Nous vous enverrons un courriel pour chacun des rappels ci-dessous. Les rappels sont envoyés le matin du jour où l\'évènement se passe.',
     'reminders_one_time' => 'Unique',
-
     // significant other
     'significant_other_sidebar_title' => 'Conjoint',
     'significant_other_cta' => 'Ajouter un conjoint',
@@ -164,7 +150,6 @@ return [
     'significant_other_edit_success' => 'Le conjoint a été mis à jour avec succès.',
     'significant_other_delete_success' => 'Le conjoint a été supprimé avec succès.',
     'significant_other_add_birthday_reminder' => 'Souhaiter bon anniversaire à :name, conjoint de :contact_firstname.',
-
     // kids
     'kids_sidebar_title' => 'Enfants',
     'kids_sidebar_cta' => 'Ajouter un autre enfant',
@@ -186,7 +171,6 @@ return [
     'kids_update_success' => 'L\'enfant a été mis à jour avec succès.',
     'kids_delete_success' => 'L\'enfant a été supprimé avec succès.',
     'kids_add_birthday_reminder' => 'Souhaiter bon anniversaire à :name, enfant de :contact_firstname.',
-
     // tasks
     'tasks_desc' => 'Gardez une trace des choses à faire pour :name.',
     'tasks_blank_title' => 'Il semble que vous n\'ayez aucune tâche définie pour :name pour le moment.',
@@ -204,7 +188,6 @@ return [
     'tasks_delete_confirmation' => 'Êtes-vous sûr de vouloir supprimer cette tâche ?',
     'tasks_delete_success' => 'La tâche a été supprimée avec succès.',
     'tasks_complete_success' => 'La tâche a été mise à jour avec succès.',
-
     // activities
     'activity_title' => 'Activités',
     'activity_type_group_simple_activities' => 'Activités simples',
@@ -241,7 +224,6 @@ return [
     'activities_add_success' => ':L\'activité a été ajoutée avec succès.',
     'activities_update_success' => 'L\'activité a été mise à jour avec succès.',
     'activities_delete_success' => 'L\'activité a été supprimée avec succès.',
-
     // notes
     'notes_create_success' => 'La note a été ajoutée avec succès.',
     'notes_update_success' => 'La note a été modifiée avec succès.',
@@ -256,7 +238,6 @@ return [
     'notes_blank_link' => 'Ajouter une note',
     'notes_blank_name' => 'à propos de :name',
     'notes_delete_confirmation' => 'Etes-vous sûr de vouloir supprimer cette note ?',
-
     // gifts
     'gifts_blank_title' => 'Gérez vos idées de cadeaux ou les cadeaux que vous avez offert à :name.',
     'gifts_blank_add_gift' => 'Ajouter un cadeau',
@@ -282,7 +263,6 @@ return [
     'gifts_table_date_added' => 'Date ajoutée',
     'gifts_table_description' => 'Description',
     'gifts_table_actions' => 'Actions',
-
     // debts
     'debt_delete_confirmation' => 'Etes-vous sûr de vouloir effacer cette dette ?',
     'debt_delete_success' => 'La dette a été effacée avec succès.',
@@ -300,8 +280,6 @@ return [
     'debt_edit_update_cta' => 'Mettre à jour la dette',
     'debt_edit_success' => 'La dette a été modifiée avec succès',
     'debts_blank_title' => 'Gérez les dettes que vous devez à :name ou que :name vous doit',
-
     // tags
     'tag_edit' => 'Edit tag',
-
 ];

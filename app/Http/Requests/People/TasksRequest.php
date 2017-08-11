@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests\People;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -26,7 +25,6 @@ class TasksRequest extends FormRequest
         if ($this->method() === 'PATCH') {
             return [];
         }
-
         return [
             'title' => 'required|string',
             'description' => '',

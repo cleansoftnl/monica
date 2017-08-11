@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 
 class AddZarCurrencyToCurrenciesTable extends Migration
@@ -11,6 +10,6 @@ class AddZarCurrencyToCurrenciesTable extends Migration
      */
     public function up()
     {
-        DB::table('currencies')->insert(['iso' => 'ZAR', 'name' => 'South African Rand', 'symbol'=>'R ']);
+        DB::table('currencies')->insert(['iso' => 'ZAR', 'name' => 'South African Rand', 'symbol' => 'R ']);
     }
 }

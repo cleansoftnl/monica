@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\People;
 
 use App\Debt;
@@ -50,14 +49,12 @@ class DebtController extends Controller
                 'reason',
             ])
             + [
-                'account_id' => $contact->account_id,
+                'company_id' => $contact->company_id,
                 'status' => 'inprogress',
             ]
         );
-
         $contact->logEvent('debt', $debt->id, 'create');
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.debt_add_success'));
     }
 
@@ -104,14 +101,12 @@ class DebtController extends Controller
                 'reason',
             ])
             + [
-                'account_id' => $contact->account_id,
+                'company_id' => $contact->company_id,
                 'status' => 'inprogress',
             ]
         );
-
         $contact->logEvent('debt', $debt->id, 'update');
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.debt_edit_success'));
     }
 
@@ -125,10 +120,8 @@ class DebtController extends Controller
     public function destroy(Contact $contact, Debt $debt)
     {
         $debt->delete();
-
         $contact->events()->forObject($debt)->get()->each->delete();
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.debt_delete_success'));
     }
 }

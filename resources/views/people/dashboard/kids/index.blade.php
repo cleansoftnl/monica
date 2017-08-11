@@ -11,16 +11,17 @@
   @else
     <ul class="people-list">
       @foreach($contact->kids as $kid)
-      <li>
-        <span class="name">{{ $kid->first_name }}</span>
+        <li>
+          <span class="name">{{ $kid->first_name }}</span>
 
-        @if (! is_null($kid->age))
-          ({{ $kid->age }})
-        @endif
+          @if (! is_null($kid->age))
+            ({{ $kid->age }})
+          @endif
 
-        <a href="{{ route('people.kids.edit', [$contact, $kid]) }}" class="action-link">{{ trans('app.edit') }}</a>
-        <a href="{{ route('people.kids.delete', [$contact, $kid]) }}" class="action-link" onclick="return confirm('{{ trans('people.kids_delete_confirmation') }}');">{{ trans('app.delete') }}</a>
-      </li>
+          <a href="{{ route('people.kids.edit', [$contact, $kid]) }}" class="action-link">{{ trans('app.edit') }}</a>
+          <a href="{{ route('people.kids.delete', [$contact, $kid]) }}" class="action-link"
+             onclick="return confirm('{{ trans('people.kids_delete_confirmation') }}');">{{ trans('app.delete') }}</a>
+        </li>
       @endforeach
     </ul>
 

@@ -21,9 +21,9 @@
       <li>
         <i class="fa fa-globe"></i>
         @if (is_null($contact->getPartialAddress()))
-        {{ trans('people.information_no_address_defined') }}
+          {{ trans('people.information_no_address_defined') }}
         @else
-        {{ $contact->getPartialAddress() }}
+          {{ $contact->getPartialAddress() }}
         @endif
       </li>
 
@@ -31,11 +31,11 @@
       <li>
         <i class="fa fa-envelope-open-o"></i>
         @if (is_null($contact->getEmail()))
-        {{ trans('people.information_no_email_defined') }}
+          {{ trans('people.information_no_email_defined') }}
         @else
-        <a href="mailto:{{ $contact->getEmail() }}">
-          {{ $contact->getEmail() }}
-        </a>
+          <a href="mailto:{{ $contact->getEmail() }}">
+            {{ $contact->getEmail() }}
+          </a>
         @endif
       </li>
 
@@ -43,11 +43,11 @@
       <li>
         <i class="fa fa-volume-control-phone"></i>
         @if (is_null($contact->getPhone()))
-        {{ trans('people.information_no_phone_defined') }}
+          {{ trans('people.information_no_phone_defined') }}
         @else
-        <a href="tel:{{ $contact->getPhone() }}">
-          {{ $contact->getPhone() }}
-        </a>
+          <a href="tel:{{ $contact->getPhone() }}">
+            {{ $contact->getPhone() }}
+          </a>
         @endif
       </li>
 
@@ -55,9 +55,9 @@
       <li>
         <i class="fa fa-facebook-official"></i>
         @if (is_null($contact->getFacebook()))
-        {{ trans('people.information_no_facebook_defined') }}
+          {{ trans('people.information_no_facebook_defined') }}
         @else
-        <a href="{{ $contact->getFacebook() }}">Facebook</a>
+          <a href="{{ $contact->getFacebook() }}">Facebook</a>
         @endif
       </li>
 
@@ -65,9 +65,9 @@
       <li>
         <i class="fa fa-twitter-square"></i>
         @if (is_null($contact->getTwitter()))
-        {{ trans('people.information_no_twitter_defined') }}
+          {{ trans('people.information_no_twitter_defined') }}
         @else
-        <a href="{{ $contact->getTwitter() }}">Twitter</a>
+          <a href="{{ $contact->getTwitter() }}">Twitter</a>
         @endif
       </li>
     </ul>

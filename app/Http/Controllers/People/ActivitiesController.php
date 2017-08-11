@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\People;
 
 use App\Contact;
@@ -50,13 +49,11 @@ class ActivitiesController extends Controller
                 'activity_type_id',
                 'description',
             ])
-            + ['account_id' => $contact->account_id]
+            + ['company_id' => $contact->company_id]
         );
-
         $contact->logEvent('activity', $activity->id, 'create');
         $contact->calculateActivitiesStatistics();
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.activities_add_success'));
     }
 
@@ -103,13 +100,11 @@ class ActivitiesController extends Controller
                 'activity_type_id',
                 'description',
             ])
-            + ['account_id' => $contact->account_id]
+            + ['company_id' => $contact->company_id]
         );
-
         $contact->logEvent('activity', $activity->id, 'update');
         $contact->calculateActivitiesStatistics();
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.activities_update_success'));
     }
 
@@ -123,12 +118,9 @@ class ActivitiesController extends Controller
     public function destroy(Contact $contact, Activity $activity)
     {
         $activity->delete();
-
         $contact->events()->forObject($activity)->get()->each->delete();
-
         $contact->calculateActivitiesStatistics();
-
-        return redirect('/people/'.$contact->id)
+        return redirect('/people/' . $contact->id)
             ->with('success', trans('people.activities_delete_success'));
     }
 }

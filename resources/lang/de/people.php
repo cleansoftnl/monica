@@ -1,7 +1,5 @@
 <?php
-
 return [
-
     //index
     'people_list_number_kids' => '{0} 0 Kinder|{1,1} 1 Kind|{2,*} :count Kinder',
     'people_list_last_updated' => 'Zuletzt geändert:',
@@ -19,7 +17,6 @@ return [
     'people_list_contacts_per_tags' => '{0} 0 Kontakte|{1,1} 1 Kontakt|{2,*} :count Kontakte',
     'people_search' => 'Suche in deinen Kontakten...',
     'people_search_no_results' => 'Keine passenden Kontakte gefunden :(',
-
     // people add
     'people_add_title' => 'Person hinzufügen',
     'people_add_firstname' => 'Vorname',
@@ -33,21 +30,17 @@ return [
     'people_delete_confirmation' => 'Möchtest du den Kontakt wirklich löschen? Es gibt kein Zurück.',
     'people_add_birthday_reminder' => 'Gratuliere :name zum Geburtstag',
     'people_add_import' => 'Möchtest du Kontakte <a href="/settings/import">importieren</a>?',
-
     // show
     'section_personal_information' => 'Persönliche Informationen',
     'section_personal_activities' => 'Aktivitäten',
     'section_personal_reminders' => 'Erinnerungen',
     'section_personal_tasks' => 'Aufgaben',
     'section_personal_gifts' => 'Geschenke',
-
     //
     'link_to_list' => 'Personenliste',
-
     // Header
     'edit_contact_information' => 'Konraktinformationen bearbeiten',
     'call_button' => 'Telefonat vermerken',
-
     // Calls
     'modal_call_title' => 'Telefonat vermerken',
     'modal_call_comment' => 'Worüber habt ihr geredet? (optional)',
@@ -60,19 +53,16 @@ return [
     'call_title' => 'Telefonate',
     'call_empty_comment' => 'Keine Details',
     'call_blank_title' => 'Behalte deine Telefonate mit :name im Auge',
-
     // age - birthday
     'birthdate_not_set' => 'Geburstag noch nicht gesetzt',
     'age_approximate_in_years' => 'ungefähr :age Jahre alt',
     'age_exact_in_years' => ':age Jahre alt',
     'age_exact_birthdate' => 'geboren am :date',
-
     // Last called
     'last_called' => 'Letztes Telefonat: :date',
     'last_called_empty' => 'Letztes Telefonat: unbekannt',
     'last_activity_date' => 'Letzte gemeinsame Aktivität: :date',
     'last_activity_date_empty' => 'Letzte gemeinsame Aktivität: unbekannt',
-
     // additional information
     'information_edit_success' => 'Das Profil wurde erfolgreich aktualisiert',
     'information_edit_title' => 'Ändere :name\'s persönliche informations',
@@ -107,7 +97,6 @@ return [
     'work_edit_title' => 'Änderer :name\'s Arbeitsplatz-Informationen',
     'work_edit_job' => 'Position (optional)',
     'work_edit_company' => 'Firma (optional)',
-
     // food preferencies
     'food_preferencies_add_success' => 'Essensvorlieben gespeichert',
     'food_preferencies_edit_description' => 'Vielleicht hat :firstname oder jemand in der :family Familie eine Allergie oder mag einen bestimmten Wein nicht. Vermerke so etwas hier, damit du dich beim der nächsten Einladung zum Abendessen daran erinnerst',
@@ -116,7 +105,6 @@ return [
     'food_preferencies_edit_cta' => 'Speichere Essensvorlieben',
     'food_preferencies_title' => 'Essensvorlieben',
     'food_preferencies_cta' => 'Essensvorlieben hinzufügen',
-
     // reminders
     'reminders_blank_title' => 'Gibt es etwas woran du über :name erinnert werden willst?',
     'reminders_blank_add_activity' => 'Erinnerung hinzufügen',
@@ -132,7 +120,6 @@ return [
     'reminders_add_error_custom_text' => 'Du musst einen Text für die Erinnerung angeben',
     'reminders_create_success' => 'Die Erinnerung wurde erfolgreich hinzugefügt',
     'reminders_delete_success' => 'Die Erinnerung wurde erfolgreich gelöscht',
-
     'reminder_frequency_week' => 'jede Woche|alle :number Wochen',
     'reminder_frequency_month' => 'jeden Monat|alle :number Monate',
     'reminder_frequency_year' => 'jedes jahr|alle :number Jahre',
@@ -146,7 +133,6 @@ return [
     'reminders_type_week' => 'Woche',
     'reminders_type_month' => 'Monat',
     'reminders_type_year' => 'Jahr',
-
     // significant other
     'significant_other_sidebar_title' => 'Lebensgefährte',
     'significant_other_cta' => 'Lebensgefährte hinzufügen',
@@ -164,7 +150,6 @@ return [
     'significant_other_edit_success' => 'Lebensgefährte wurde erfolgreich aktualisiert',
     'significant_other_delete_success' => 'Lebensgefährte wurde erfolgreich gelöscht',
     'significant_other_add_birthday_reminder' => 'Gratuliere :name zum Geburstag, :contact_firstname\'s Lebensgefährte',
-
     // kids
     'kids_sidebar_title' => 'Kinder',
     'kids_sidebar_cta' => 'Kind hinzufügen',
@@ -186,7 +171,6 @@ return [
     'kids_update_success' => 'Das Kind wurde erfolgreich aktualisiert',
     'kids_delete_success' => 'Das Kind wurde erfolgreich gelöscht',
     'kids_add_birthday_reminder' => 'Gratuliere :name zum Geburtstag, :contact_firstname\'s Kind',
-
     // tasks
     'tasks_desc' => 'Behalte Aufgaben für :name im Auge',
     'tasks_blank_title' => 'Es scheint als hättest du noch keine Aufgaben für :name',
@@ -204,7 +188,6 @@ return [
     'tasks_delete_confirmation' => 'Möchtest du diese Aufgabe wirklich löschen?',
     'tasks_delete_success' => 'Die Aufgabe wurde erfolgreich gelöscht',
     'tasks_complete_success' => 'Der Status der Aufgabe wurder erfolgreich geändert',
-
     // activities
     'activity_title' => 'Aktivitäten',
     'activity_type_group_simple_activities' => 'Einfache Aktivitäten',
@@ -241,7 +224,6 @@ return [
     'activities_add_success' => 'Aktivität erfolgreich hinzugefügt',
     'activities_update_success' => 'Aktivität erfolgreich aktualisiert',
     'activities_delete_success' => 'Aktivität erfolgreich gelöscht',
-
     // notes
     'notes_create_success' => 'Die Notiz wurde erfolgreich hinzugefügt',
     'notes_update_success' => 'Die Notiz wurde erfolgreich aktualisiert',
@@ -256,7 +238,6 @@ return [
     'notes_blank_link' => 'Notiz hinzufügen',
     'notes_blank_name' => 'über :name',
     'notes_delete_confirmation' => 'Möchtest du diese Notiz wirklich löschen?',
-
     // gifts
     'gifts_blank_title' => 'Verwalte deine Geschenkideen und bereits an :name gemachte Geschenke',
     'gifts_blank_add_gift' => 'Geschenk hinzufügen',
@@ -282,7 +263,6 @@ return [
     'gifts_table_date_added' => 'Hinzugefügt am',
     'gifts_table_description' => 'Beschreibung',
     'gifts_table_actions' => 'Aktionen',
-
     // debts
     'debt_delete_confirmation' => 'Möchtest du die Schulden wirklich löschen?',
     'debt_delete_success' => 'Die Schulden wurden erfolgreich gelöscht',
@@ -300,7 +280,6 @@ return [
     'debt_edit_update_cta' => 'Schulden bearbeiten',
     'debt_edit_success' => 'Die Schulden wurden erfolgreich aktualisiert',
     'debts_blank_title' => 'Verwalte die Schulden, die du :name schuldest oder:name dir schuldet',
-
     // tags
     'tag_edit' => 'Tag bearbeiten',
 ];

@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 
 class AddDanishKronerToCurrenciesTable extends Migration
@@ -11,6 +10,6 @@ class AddDanishKronerToCurrenciesTable extends Migration
      */
     public function up()
     {
-        DB::table('currencies')->insert(['iso' => 'DKK', 'name' => 'Danish krone', 'symbol'=>'kr.']);
+        DB::table('currencies')->insert(['iso' => 'DKK', 'name' => 'Danish krone', 'symbol' => 'kr.']);
     }
 }

@@ -1,7 +1,5 @@
 <?php
-
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Password Reset Language Lines
@@ -12,11 +10,9 @@ return [
     | has failed, such as for an invalid token or invalid new password.
     |
     */
-
     'password' => 'Hesla musí obsahovat alespoň šest znaků a oba zápisy se musí shodovat.',
     'reset' => 'Heslo bylo resetováno!',
     'sent' => 'Byl odeslán odkaz na reset hesla!',
     'token' => 'Toto není platný odkaz na reset hesla.',
     'user' => 'Byl odeslán odkaz na reset hesla!',
-
 ];

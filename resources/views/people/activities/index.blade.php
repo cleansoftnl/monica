@@ -3,7 +3,8 @@
   <h3>
     {{ trans('people.section_personal_activities') }}
 
-    <span><a href="/people/{{ $contact->id }}/activities/add" class="btn">{{ trans('people.activities_add_activity') }}</a></span>
+    <span><a href="/people/{{ $contact->id }}/activities/add"
+             class="btn">{{ trans('people.activities_add_activity') }}</a></span>
   </h3>
 </div>
 
@@ -22,22 +23,23 @@
 
     <ul class="table">
       @foreach($contact->getActivities() as $activity)
-      <li class="table-row">
-        <div class="table-cell date">
-          {{ \App\Helpers\DateHelper::getShortDate($activity->getDateItHappened()) }}
-        </div>
-        <div class="table-cell">
-          {{ $activity->getSummary() }}
-        </div>
-        <div class="table-cell list-actions">
-          <a href="/people/{{ $contact->id }}/activities/{{ $activity->id }}/edit" class="edit">
-            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-          </a>
-          <a href="/people/{{ $contact->id }}/activities/{{ $activity->id }}/delete" onclick="return confirm('{{ trans('people.activities_delete_confirmation') }}')">
-            <i class="fa fa-trash-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </li>
+        <li class="table-row">
+          <div class="table-cell date">
+            {{ \App\Helpers\DateHelper::getShortDate($activity->getDateItHappened()) }}
+          </div>
+          <div class="table-cell">
+            {{ $activity->getSummary() }}
+          </div>
+          <div class="table-cell list-actions">
+            <a href="/people/{{ $contact->id }}/activities/{{ $activity->id }}/edit" class="edit">
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </a>
+            <a href="/people/{{ $contact->id }}/activities/{{ $activity->id }}/delete"
+               onclick="return confirm('{{ trans('people.activities_delete_confirmation') }}')">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
       @endforeach
     </ul>
   </div>

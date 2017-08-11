@@ -56,13 +56,13 @@
             @endforeach
           </ul>
 
-          @if (auth()->user()->account->invitations()->count() != 0)
+          @if (auth()->user()->company->invitations()->count() != 0)
             <h3>{{ trans('settings.users_list_invitations_title') }}</h3>
 
             <p>{{ trans('settings.users_list_invitations_explanation') }}</p>
 
             <ul class="table">
-              @foreach (auth()->user()->account->invitations as $invitation)
+              @foreach (auth()->user()->company->invitations as $invitation)
                 <li class="table-row">
                   <div class="table-cell">
                     {{ $invitation->email }}

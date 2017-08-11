@@ -32,7 +32,7 @@
 
         <div class="col-xs-12 col-sm-9 tags-list">
 
-          @if (auth()->user()->account->tags->count() == 0)
+          @if (auth()->user()->company->tags->count() == 0)
 
             <div class="col-xs-12 col-sm-9 blank-screen">
 
@@ -59,7 +59,7 @@
             @endif
 
             <ul class="table">
-              @foreach (auth()->user()->account->tags as $tag)
+              @foreach (auth()->user()->company->tags as $tag)
                 <li class="table-row" data-tag-id="{{ $tag->id }}">
                   <div class="table-cell">
                     {{ $tag->name }}

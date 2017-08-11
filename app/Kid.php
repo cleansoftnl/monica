@@ -29,7 +29,7 @@ class Kid extends Model
     /**
      * Get the account record associated with the kid.
      */
-    public function account()
+    public function company()
     {
         return $this->belongsTo(Account::class);
     }

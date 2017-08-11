@@ -36,18 +36,18 @@
 
             <ul>
 
-              <li class="{{ (auth()->user()->account->users()->count() > 1)?'fail':'success' }}">
+              <li class="{{ (auth()->user()->company->users()->count() > 1)?'fail':'success' }}">
                 <span class="icon"></span>
                 <span class="rule-title">{{ trans('settings.subscriptions_downgrade_rule_users') }}</span>
                 <span
-                  class="rule-to-succeed">{!! trans('settings.subscriptions_downgrade_rule_users_constraint', ['url' => '/settings/users', 'count' => auth()->user()->account->users()->count()]) !!}</span>
+                  class="rule-to-succeed">{!! trans('settings.subscriptions_downgrade_rule_users_constraint', ['url' => '/settings/users', 'count' => auth()->user()->company->users()->count()]) !!}</span>
               </li>
 
-              <li class="{{ (auth()->user()->account->invitations()->count() > 0)?'fail':'success' }}">
+              <li class="{{ (auth()->user()->company->invitations()->count() > 0)?'fail':'success' }}">
                 <span class="icon"></span>
                 <span class="rule-title">{{ trans('settings.subscriptions_downgrade_rule_invitations') }}</span>
                 <span
-                  class="rule-to-succeed">{!! trans('settings.subscriptions_downgrade_rule_invitations_constraint', ['url' => '/settings/users/invitations', 'count' => auth()->user()->account->invitations()->count()]) !!}</span>
+                  class="rule-to-succeed">{!! trans('settings.subscriptions_downgrade_rule_invitations_constraint', ['url' => '/settings/users/invitations', 'count' => auth()->user()->company->invitations()->count()]) !!}</span>
               </li>
 
             </ul>
@@ -55,7 +55,7 @@
             <form method="POST" action="/settings/subscriptions/downgrade">
               {{ csrf_field() }}
 
-              @if (auth()->user()->account->canDowngrade())
+              @if (auth()->user()->company->canDowngrade())
                 <p>
                   <button href="" class="btn btn-primary">{{ trans('settings.subscriptions_downgrade_cta') }}</button>
                 </p>

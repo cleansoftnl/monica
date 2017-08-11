@@ -17,9 +17,9 @@ class Event extends Model
      *
      * @return BelongsTo
      */
-    public function account()
+    public function company()
     {
-        return $this->belongsTo('App\Account');
+        return $this->belongsTo('App\Company');
     }
 
     /**

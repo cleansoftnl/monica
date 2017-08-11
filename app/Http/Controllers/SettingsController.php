@@ -141,7 +141,7 @@ class SettingsController extends Controller
      */
     public function import()
     {
-        if (auth()->user()->account->importjobs->count() == 0) {
+        if (auth()->user()->company->importjobs->count() == 0) {
             return view('settings.imports.blank');
         }
         return view('settings.imports.index');
@@ -160,7 +160,7 @@ class SettingsController extends Controller
     public function storeImport(ImportsRequest $request)
     {
         $filename = $request->file('vcard')->store('imports', 'public');
-        $importJob = auth()->user()->account->importjobs()->create([
+        $importJob = auth()->user()->company->importjobs()->create([
             'user_id' => auth()->user()->id,
             'type' => 'vcard',
             'filename' => $filename,
@@ -177,7 +177,7 @@ class SettingsController extends Controller
     public function report($importJobId)
     {
         $importJob = ImportJob::findOrFail($importJobId);
-        if ($importJob->company_id != auth()->user()->account->id) {
+        if ($importJob->company_id != auth()->user()->company->id) {
             return redirect()->route('settings.index');
         }
         return view('settings.imports.report', compact('importJob'));
@@ -190,8 +190,8 @@ class SettingsController extends Controller
      */
     public function users()
     {
-        $users = auth()->user()->account->users;
-        if ($users->count() == 1 && auth()->user()->account->invitations()->count() == 0) {
+        $users = auth()->user()->company->users;
+        if ($users->count() == 1 && auth()->user()->company->invitations()->count() == 0) {
             return view('settings.users.blank');
         }
         return view('settings.users.index', compact('users'));
@@ -204,7 +204,7 @@ class SettingsController extends Controller
      */
     public function addUser()
     {
-        if (config('monica.requires_subscription') && !auth()->user()->account->isSubscribed()) {
+        if (config('monica.requires_subscription') && !auth()->user()->company->isSubscribed()) {
             return redirect('/settings/subscriptions');
         }
         return view('settings.users.add');
@@ -232,7 +232,7 @@ class SettingsController extends Controller
         if ($invitations > 0) {
             return redirect()->back()->withErrors(trans('settings.users_error_already_invited'))->withInput();
         }
-        $invitation = auth()->user()->account->invitations()->create(
+        $invitation = auth()->user()->company->invitations()->create(
             $request->only([
                 'email',
             ])
@@ -243,8 +243,8 @@ class SettingsController extends Controller
             ]
         );
         dispatch(new SendInvitationEmail($invitation));
-        auth()->user()->account->update([
-            'number_of_invitations_sent' => auth()->user()->account->number_of_invitations_sent + 1,
+        auth()->user()->company->update([
+            'number_of_invitations_sent' => auth()->user()->company->number_of_invitations_sent + 1,
         ]);
         return redirect('settings/users')
             ->with('status', trans('settings.settings_success'));

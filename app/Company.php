@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property Collection|SignificantOther[] $significantOthers
  * @property Collection|Task[] $tasks
  */
-class Account extends Model
+class Company extends Model
 {
     use Billable;
 

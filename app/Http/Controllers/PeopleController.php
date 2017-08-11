@@ -34,11 +34,11 @@ class PeopleController extends Controller
             if (is_null($tag)) {
                 return redirect()->route('people.index');
             }
-            $contacts = $user->account->contacts()->whereHas('tags', function ($query) use ($tag) {
+            $contacts = $user->company->contacts()->whereHas('tags', function ($query) use ($tag) {
                 $query->where('id', $tag->id);
             })->sortedBy($sort)->get();
         } else {
-            $contacts = $user->account->contacts()->sortedBy($sort)->get();
+            $contacts = $user->company->contacts()->sortedBy($sort)->get();
         }
         return view('people.index')
             ->withContacts($contacts)

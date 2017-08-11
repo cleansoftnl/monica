@@ -139,7 +139,7 @@
               </a>
 
               <ul>
-                @foreach (auth()->user()->account->tags as $tag)
+                @foreach (auth()->user()->company->tags as $tag)
                   @if ($tag->contacts()->count() > 0)
                     <li>
                       <span class="pretty-tag"><a href="/people?tags={{ $tag->name_slug }}">{{ $tag->name }}</a></span>

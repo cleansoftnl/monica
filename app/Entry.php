@@ -10,9 +10,9 @@ class Entry extends Model
     /**
      * Get the account record associated with the entry.
      */
-    public function account()
+    public function company()
     {
-        return $this->belongsTo('App\Account');
+        return $this->belongsTo('App\Company');
     }
 
     public function getPost()

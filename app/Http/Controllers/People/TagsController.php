@@ -29,7 +29,7 @@ class TagsController extends Controller
         $tagsIDs = [];
         $tagsWithIdAndSlug = [];
         foreach ($tags as $tag) {
-            $tag = auth()->user()->account->tags()->firstOrCreate([
+            $tag = auth()->user()->company->tags()->firstOrCreate([
                 'name' => $tag,
             ]);
             $tag->name_slug = str_slug($tag->name);

@@ -21,7 +21,7 @@ class User extends Authenticatable
     /**
      * Eager load account with every user.
      */
-    protected $with = ['account'];
+    protected $with = ['company'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -37,9 +37,9 @@ class User extends Authenticatable
      *
      * @return BelongsTo
      */
-    public function account()
+    public function company()
     {
-        return $this->belongsTo('App\Account');
+        return $this->belongsTo('App\Company');
     }
 
     /**

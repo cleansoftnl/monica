@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 use Auth;
 use App\User;
 use Validator;
-use App\Account;
+use App\Company;
 use Carbon\Carbon;
 use App\Helpers\RandomHelper;
 use App\Jobs\SendNewUserAlert;

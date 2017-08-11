@@ -34,11 +34,11 @@
 
           <h3>{{ trans('settings.subscriptions_account_current_plan') }}</h3>
 
-          @if (auth()->user()->account->subscribed(config('monica.paid_plan_friendly_name')))
+          @if (auth()->user()->company->subscribed(config('monica.paid_plan_friendly_name')))
 
             {{-- User is subscribed --}}
             <p>{{ trans('settings.subscriptions_account_paid_plan', ['name' => config('monica.paid_plan_friendly_name'), 'price' => ((int)config('monica.paid_plan_price')/100)]) }}</p>
-            <p>{!! trans('settings.subscriptions_account_next_billing', ['date' => auth()->user()->account->getNextBillingDate(), 'url' => '/settings/subscriptions/downgrade']) !!}</p>
+            <p>{!! trans('settings.subscriptions_account_next_billing', ['date' => auth()->user()->company->getNextBillingDate(), 'url' => '/settings/subscriptions/downgrade']) !!}</p>
 
           @else
 
@@ -54,11 +54,11 @@
           @endif
 
           {{-- Only display invoices if the subscription exists or existed --}}
-          @if (auth()->user()->account->hasInvoices())
+          @if (auth()->user()->company->hasInvoices())
             <div class="invoices">
               <h3>{{ trans('settings.subscriptions_account_invoices') }}</h3>
               <ul class="table">
-                @foreach (auth()->user()->account->invoices() as $invoice)
+                @foreach (auth()->user()->company->invoices() as $invoice)
                   <li class="table-row">
                     <div class="table-cell date">
                       {{ $invoice->date()->toFormattedDateString() }}

@@ -20,10 +20,10 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
         'timezone' => config('app.timezone'),
         'name_order' => 'firstname_first',
-        'company_id' => factory('App\Account')->create()->id,
+        'company_id' => factory('App\Company')->create()->id,
     ];
 });
-$factory->define(App\Account::class, function (Faker\Generator $faker) {
+$factory->define(App\Company::class, function (Faker\Generator $faker) {
     return [
         'api_key' => RandomHelper::generateString(30),
     ];

@@ -46,7 +46,7 @@ class SubscriptionsController extends Controller
         if (!config('monica.requires_subscription')) {
             return redirect('settings/');
         }
-        if (!auth()->user()->account->subscribed(config('monica.paid_plan_friendly_name'))) {
+        if (!auth()->user()->company->subscribed(config('monica.paid_plan_friendly_name'))) {
             return redirect('/settings');
         }
         return view('settings.subscriptions.downgrade-checklist');
@@ -59,10 +59,10 @@ class SubscriptionsController extends Controller
      */
     public function processDowngrade()
     {
-        if (!auth()->user()->account->canDowngrade()) {
+        if (!auth()->user()->company->canDowngrade()) {
             return redirect('/settings/users/subscriptions/downgrade');
         }
-        auth()->user()->account->subscription(config('monica.paid_plan_friendly_name'))->cancelNow();
+        auth()->user()->company->subscription(config('monica.paid_plan_friendly_name'))->cancelNow();
         return redirect('/settings/subscriptions');
     }
 
@@ -77,7 +77,7 @@ class SubscriptionsController extends Controller
             return redirect('settings/');
         }
         $stripeToken = $request->input('stripeToken');
-        auth()->user()->account->newSubscription(config('monica.paid_plan_friendly_name'), config('monica.paid_plan_id'))
+        auth()->user()->company->newSubscription(config('monica.paid_plan_friendly_name'), config('monica.paid_plan_id'))
             ->create($stripeToken);
         return redirect('settings/subscriptions');
     }
@@ -89,7 +89,7 @@ class SubscriptionsController extends Controller
      */
     public function downloadInvoice(Request $request, $invoiceId)
     {
-        return auth()->user()->account->downloadInvoice($invoiceId, [
+        return auth()->user()->company->downloadInvoice($invoiceId, [
             'vendor' => 'Monica',
             'product' => trans('settings.subscriptions_pdf_title', ['name' => config('monica.paid_plan_friendly_name')]),
         ]);

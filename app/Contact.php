@@ -58,7 +58,7 @@ class Contact extends Model
      * Eager load account with every contact.
      */
     protected $with = [
-        'account',
+        'company',
     ];
 
     /**
@@ -66,9 +66,9 @@ class Contact extends Model
      *
      * @return BelongsTo
      */
-    public function account()
+    public function company()
     {
-        return $this->belongsTo('App\Account');
+        return $this->belongsTo('App\Company');
     }
 
     /**

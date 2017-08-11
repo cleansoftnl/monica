@@ -22,7 +22,7 @@ class Invitation extends Model
      *
      * @return BelongsTo
      */
-    public function account()
+    public function company()
     {
         return $this->belongsTo(Account::class);
     }

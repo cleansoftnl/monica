@@ -37,10 +37,10 @@
             <a href="/settings/import/upload" class="btn">{{ trans('settings.import_cta') }}</a>
           </h3>
 
-          <p>{{ trans('settings.import_stat', ['number' => auth()->user()->account->importjobs->count()]) }}</p>
+          <p>{{ trans('settings.import_stat', ['number' => auth()->user()->company->importjobs->count()]) }}</p>
 
           <ul class="table">
-            @foreach (auth()->user()->account->importjobs as $importJob)
+            @foreach (auth()->user()->company->importjobs as $importJob)
               <li class="table-row">
                 <div class="table-cell">
                   @if (! is_null($importJob->ended_at))

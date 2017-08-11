@@ -2,7 +2,7 @@
 namespace App\Console\Commands;
 
 use App\User;
-use App\Account;
+use App\Company;
 use App\Reminder;
 use Carbon\Carbon;
 use App\Jobs\SendReminderEmail;

@@ -13,7 +13,7 @@ class FakeContentTableSeeder extends Seeder
     public function run()
     {
         // truncate all the tables
-        DB::table('companies')->delete();
+        /*DB::table('companies')->delete();
         DB::table('users')->delete();
         DB::table('contacts')->delete();
         DB::table('reminders')->delete();
@@ -21,7 +21,7 @@ class FakeContentTableSeeder extends Seeder
         DB::table('kids')->delete();
         DB::table('tasks')->delete();
         DB::table('notes')->delete();
-        DB::table('activities')->delete();
+        DB::table('activities')->delete();*/
         // populate account table
         $accountID = DB::table('companies')->insertGetId([
             'api_key' => str_random(30),
@@ -31,7 +31,7 @@ class FakeContentTableSeeder extends Seeder
             'company_id' => $accountID,
             'first_name' => 'John',
             'last_name' => 'Doe',
-            'email' => 'admin@admin.com',
+            'email' => 'adminia@admin.com',
             'password' => bcrypt('admin'),
             'timezone' => config('app.timezone'),
             'remember_token' => str_random(10),
